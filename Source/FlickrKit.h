@@ -8,3 +8,4 @@
 
 #import "FlickrPhoto.h"
 #import "FlickrAPIResponse.h"
+#import "FlickrTag.h"
