@@ -26,6 +26,7 @@
 @synthesize dateTaken;
 @synthesize datePosted;
 @synthesize dateLastUpdate;
+@synthesize URLs;
 
 #pragma mark - Object initialization
 
@@ -66,9 +67,11 @@
 	if((self = [super init]))
 		{
 		self.ID = [[(NSXMLElement*)photoElement attributeForName:@"id"] stringValue];
-		self.license = [[[(NSXMLElement*)photoElement attributeForName:@"license"] stringValue] intValue];
 		self.title = [[[(NSXMLElement*)photoElement nodesForXPath:@"title" error:nil] lastObject] stringValue];
 		self.description = [[[(NSXMLElement*)photoElement nodesForXPath:@"description" error:nil] lastObject] stringValue];
+
+		self.commentCount = [[[[(NSXMLElement*)photoElement nodesForXPath:@"comments" error:nil] lastObject] stringValue] intValue];
+		self.license = [[[(NSXMLElement*)photoElement attributeForName:@"license"] stringValue] intValue];
 
 		NSXMLElement* datesElement = [[(NSXMLElement*)photoElement nodesForXPath:@"dates" error:nil] lastObject];
 		self.dateTaken = [NSDate dateWithNaturalLanguageString:[[datesElement attributeForName:@"taken"] stringValue]];
@@ -82,7 +85,12 @@
 		}];
 		self.tags = (NSArray*)parsedTagsArray;
 		
-		self.commentCount = [[[[(NSXMLElement*)photoElement nodesForXPath:@"comments" error:nil] lastObject] stringValue] intValue];
+		NSArray* urlsArray = [(NSXMLElement*)photoElement nodesForXPath:@"urls/url" error:nil];
+		NSMutableDictionary* urlsDictionary = [NSMutableDictionary dictionaryWithCapacity:[urlsArray count]];
+		[urlsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+			[urlsDictionary setObject:[NSURL URLWithString:[obj stringValue]] forKey:[[obj attributeForName:@"type"] stringValue]];
+		}];
+		self.URLs = (NSDictionary*)urlsDictionary;
 		}
 	return self;
 	}
@@ -121,6 +129,7 @@
 	[title release];
 	[favorites release];
 	[galleries release];
+	[URLs release];
 	[super dealloc];
 	}
 
