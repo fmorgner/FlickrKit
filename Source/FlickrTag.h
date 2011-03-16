@@ -11,16 +11,19 @@
 
 @interface FlickrTag : NSObject
 	{
-	
+	NSString* author;
+	NSString* rawName;
+	NSString* name;
+	NSString* ID;
 	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
-- (FlickrTag*)tagWithXMLElement:(NSXMLElement*)anElement;
++ (FlickrTag*)tagWithXMLElement:(NSXMLElement*)anElement;
 
 
-@property(nonatomic,copy) NSString* author;
-@property(nonatomic,copy) NSString* rawName;
-@property(nonatomic,copy) NSString* name;
-@property(nonatomic,copy) NSString* ID;
+@property(nonatomic,retain) NSString* author;
+@property(nonatomic,retain) NSString* rawName;
+@property(nonatomic,retain) NSString* name;
+@property(nonatomic,retain) NSString* ID;
 
 @end
