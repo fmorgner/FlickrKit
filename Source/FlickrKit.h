@@ -6,6 +6,6 @@
 //  Copyright 2011 Felix Morgner. All rights reserved.
 //
 
-#import "FlickrPhoto.h"
 #import "FlickrAPIResponse.h"
+#import "FlickrPhoto.h"
 #import "FlickrTag.h"
