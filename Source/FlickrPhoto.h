@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FlickrAPIResponse.h"
+#import "FlickrTag.h"
 
 typedef enum
 	{
@@ -26,6 +27,7 @@ typedef enum
 	{
 	NSImage* image;
 	NSString* title;
+	NSString* description;
 	NSInteger commentCount;
 	
 	NSDate* dateTaken;
@@ -56,6 +58,7 @@ typedef enum
 
 @property(nonatomic, retain) NSImage* image;
 @property(nonatomic, retain) NSString* title;
+@property(nonatomic, retain) NSString* description;
 @property(nonatomic, assign) NSInteger commentCount;
 
 @property(nonatomic, retain) NSDate* dateTaken;
