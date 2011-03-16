@@ -37,7 +37,7 @@ static FlickrPersonManager* sharedPersonManager = nil;
 		{
 		if (sharedPersonManager == nil)
 			{
-			sharedPersonManager = [[FlickrPersonManager alloc] init];
+			sharedPersonManager = [[super allocWithZone:NULL] init];
 			}
 		}
 	return sharedPersonManager;
@@ -47,7 +47,6 @@ static FlickrPersonManager* sharedPersonManager = nil;
 	{
   return [[self sharedManager] retain];
 	}
-
 
 - (id)copyWithZone:(NSZone *)zone
 	{
@@ -77,28 +76,38 @@ static FlickrPersonManager* sharedPersonManager = nil;
 
 - (FlickrPerson*)personForID:(NSString*)anID
 	{
-	return nil;
+	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"ID like %@", anID];
+	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
+	return [filterResult lastObject];
 	}
 	
 - (FlickrPerson*)personForUsername:(NSString*)anUserame
 	{
-	return nil;
+	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"username like %@", anUserame];
+	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
+	return [filterResult lastObject];
 	}
 	
 - (NSArray*)personsForName:(NSString*)aName
 	{
-	return nil;
+	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"name like %@", aName];
+	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
+	return filterResult;
 	}
 	
 - (NSArray*)personsForLocation:(NSString*)aLocation
 	{
-	return nil;
+	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"location like %@", aLocation];
+	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
+	return filterResult;
 	}
 
 #pragma mark - Person management methods
 
 - (BOOL)addPerson:(FlickrPerson*)aPerson
 	{
+	if(![self personForID:aPerson.ID])
+		[persons addObject:aPerson];
 	return YES;
 	}
 

@@ -15,6 +15,8 @@
 	NSMutableArray* persons;
 	}
 
++ (FlickrPersonManager*)sharedManager;
+
 - (FlickrPerson*)personForID:(NSString*)anID;
 - (FlickrPerson*)personForUsername:(NSString*)anUserame;
 - (NSArray*)personsForName:(NSString*)aName;
