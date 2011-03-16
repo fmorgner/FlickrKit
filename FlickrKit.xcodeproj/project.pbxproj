@@ -16,6 +16,8 @@
 		C7692557132FEEFB005F6AC3 /* FlickrKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C7692556132FEEFB005F6AC3 /* FlickrKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7C3AF57132FFC6900F8C083 /* FlickrTag.h in Headers */ = {isa = PBXBuildFile; fileRef = C7C3AF55132FFC6900F8C083 /* FlickrTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7C3AF58132FFC6900F8C083 /* FlickrTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C3AF56132FFC6900F8C083 /* FlickrTag.m */; };
+		C7E99E5F133142DE0027226A /* FlickrPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E99E5D133142DD0027226A /* FlickrPerson.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7E99E60133142DE0027226A /* FlickrPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E99E5E133142DD0027226A /* FlickrPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		C7692556132FEEFB005F6AC3 /* FlickrKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrKit.h; sourceTree = "<group>"; };
 		C7C3AF55132FFC6900F8C083 /* FlickrTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTag.h; sourceTree = "<group>"; };
 		C7C3AF56132FFC6900F8C083 /* FlickrTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTag.m; sourceTree = "<group>"; };
+		C7E99E5D133142DD0027226A /* FlickrPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPerson.h; sourceTree = "<group>"; };
+		C7E99E5E133142DD0027226A /* FlickrPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPerson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 				C7692547132FEDA9005F6AC3 /* FlickrPhoto.m */,
 				C7C3AF55132FFC6900F8C083 /* FlickrTag.h */,
 				C7C3AF56132FFC6900F8C083 /* FlickrTag.m */,
+				C7E99E5D133142DD0027226A /* FlickrPerson.h */,
+				C7E99E5E133142DD0027226A /* FlickrPerson.m */,
 				C7692539132FEC6D005F6AC3 /* Supporting Files */,
 			);
 			path = Source;
@@ -112,10 +118,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7692557132FEEFB005F6AC3 /* FlickrKit.h in Headers */,
 				C7692548132FEDA9005F6AC3 /* FlickrAPIResponse.h in Headers */,
+				C7E99E5F133142DE0027226A /* FlickrPerson.h in Headers */,
 				C769254A132FEDA9005F6AC3 /* FlickrPhoto.h in Headers */,
 				C7C3AF57132FFC6900F8C083 /* FlickrTag.h in Headers */,
-				C7692557132FEEFB005F6AC3 /* FlickrKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +191,7 @@
 				C7692549132FEDA9005F6AC3 /* FlickrAPIResponse.m in Sources */,
 				C769254B132FEDA9005F6AC3 /* FlickrPhoto.m in Sources */,
 				C7C3AF58132FFC6900F8C083 /* FlickrTag.m in Sources */,
+				C7E99E60133142DE0027226A /* FlickrPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
