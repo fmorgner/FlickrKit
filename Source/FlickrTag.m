@@ -20,10 +20,10 @@
 	{
 	if ((self = [super init]))
 		{
-		ID = nil;
-		author = nil;
-		rawName = nil;
-		name = nil;
+		self.ID = nil;
+		self.author = nil;
+		self.rawName = nil;
+		self.name = nil;
     }
 	return self;
 	}
@@ -32,15 +32,15 @@
 	{
 	if ((self = [super init]))
 		{
-		ID = [[anElement attributeForName:@"ID"] stringValue];
-		author = [[anElement attributeForName:@"author"] stringValue];
-		rawName = [[anElement attributeForName:@"raw"] stringValue];
-		name = [anElement stringValue];
+		self.ID = [[anElement attributeForName:@"id"] stringValue];
+		self.author = [[anElement attributeForName:@"author"] stringValue];
+		self.rawName = [[anElement attributeForName:@"raw"] stringValue];
+		self.name = [anElement stringValue];
     }
 	return self;
 	}
 
-- (FlickrTag*)tagWithXMLElement:(NSXMLElement*)anElement
++ (FlickrTag*)tagWithXMLElement:(NSXMLElement*)anElement
 	{
 	return [[[FlickrTag alloc] initWithXMLElement:anElement] autorelease];
 	}
