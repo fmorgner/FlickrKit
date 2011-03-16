@@ -18,6 +18,7 @@
 @synthesize comments;
 @synthesize commentCount;
 @synthesize title;
+@synthesize description;
 @synthesize favorites;
 @synthesize galleries;
 @synthesize ID;
@@ -67,10 +68,21 @@
 		self.ID = [[(NSXMLElement*)photoElement attributeForName:@"id"] stringValue];
 		self.license = [[[(NSXMLElement*)photoElement attributeForName:@"license"] stringValue] intValue];
 		self.title = [[[(NSXMLElement*)photoElement nodesForXPath:@"title" error:nil] lastObject] stringValue];
+		self.description = [[[(NSXMLElement*)photoElement nodesForXPath:@"description" error:nil] lastObject] stringValue];
+
+		NSXMLElement* datesElement = [[(NSXMLElement*)photoElement nodesForXPath:@"dates" error:nil] lastObject];
+		self.dateTaken = [NSDate dateWithNaturalLanguageString:[[datesElement attributeForName:@"taken"] stringValue]];
+		self.datePosted = [NSDate dateWithTimeIntervalSince1970:[[[datesElement attributeForName:@"posted"] stringValue] doubleValue]];
+		self.dateLastUpdate = [NSDate dateWithTimeIntervalSince1970:[[[datesElement attributeForName:@"lastupdate"] stringValue] doubleValue]];
 		
-		self.dateTaken = [NSDate dateWithNaturalLanguageString:[[[[(NSXMLElement*)photoElement nodesForXPath:@"dates" error:nil] lastObject] attributeForName:@"taken"] stringValue]];
-		self.datePosted = [NSDate dateWithTimeIntervalSince1970:[[[[[(NSXMLElement*)photoElement nodesForXPath:@"dates" error:nil] lastObject] attributeForName:@"posted"] stringValue] doubleValue]];
-		self.dateLastUpdate = [NSDate dateWithTimeIntervalSince1970:[[[[[(NSXMLElement*)photoElement nodesForXPath:@"dates" error:nil] lastObject] attributeForName:@"lastupdate"] stringValue] doubleValue]];
+		NSArray* tagsArray = [(NSXMLElement*)photoElement nodesForXPath:@"tags/tag" error:nil];
+		NSMutableArray* parsedTagsArray = [NSMutableArray arrayWithCapacity:[tagsArray count]];
+		[tagsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+			[parsedTagsArray addObject:[FlickrTag tagWithXMLElement:obj]];
+		}];
+		self.tags = (NSArray*)parsedTagsArray;
+		
+		self.commentCount = [[[[(NSXMLElement*)photoElement nodesForXPath:@"comments" error:nil] lastObject] stringValue] intValue];
 		}
 	return self;
 	}
