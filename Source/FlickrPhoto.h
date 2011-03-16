@@ -41,6 +41,8 @@ typedef enum
 	NSArray* comments;
 	NSArray* favorites;
 	NSArray* galleries;
+
+	NSDictionary* URLs;
 	
 	NSImage* image;
 	
@@ -57,9 +59,10 @@ typedef enum
 + (FlickrPhoto*)photoWithDictionary:(NSDictionary*)aDictionary  error:(NSError**)error;
 + (FlickrPhoto*)photoWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
 
-@property(nonatomic, retain) NSImage* image;
+@property(nonatomic, retain) NSString* ID;
 @property(nonatomic, retain) NSString* title;
 @property(nonatomic, retain) NSString* description;
+
 @property(nonatomic, assign) NSInteger commentCount;
 
 @property(nonatomic, retain) NSDate* dateTaken;
@@ -73,7 +76,9 @@ typedef enum
 @property(nonatomic, retain) NSArray* favorites;
 @property(nonatomic, retain) NSArray* galleries;
 
-@property(nonatomic, retain) NSString* ID;
+@property(nonatomic, retain) NSDictionary* URLs;
+
+@property(nonatomic, retain) NSImage* image;
 
 @property(nonatomic, assign) FlickrLicense license;
 
