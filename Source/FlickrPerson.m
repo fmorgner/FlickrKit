@@ -10,6 +10,7 @@
 
 
 @implementation FlickrPerson
+@synthesize ID;
 
 - (id)init
 	{

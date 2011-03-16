@@ -11,7 +11,9 @@
 
 @interface FlickrPerson : NSObject
 	{
-
+	NSString* ID;
 	}
+
+@property(nonatomic,retain) NSString* ID;
 
 @end
