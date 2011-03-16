@@ -29,19 +29,19 @@
 		{
 		NSError* xmlError = nil;
 
-		rawContent = theData;
+		rawContent = [theData retain];
 		xmlContent = [[NSXMLDocument alloc] initWithData:theData options:0 error:&xmlError];
 
 		if(xmlError != nil)
 			return nil;
 				
-		status = [[[[xmlContent nodesForXPath:@"rsp" error:&xmlError] lastObject] attributeForName:@"stat"] stringValue];
+		status = [[[[[xmlContent nodesForXPath:@"rsp" error:&xmlError] lastObject] attributeForName:@"stat"] stringValue] retain];
 		
 		if([status isEqualToString:@"fail"])
 			{
 			NSString* errorDescription = [[[[xmlContent nodesForXPath:@"rsp/err" error:&xmlError] objectAtIndex:0] attributeForName:@"msg"] stringValue];
 			NSInteger errorCode = [[[[[xmlContent nodesForXPath:@"rsp/err" error:&xmlError] objectAtIndex:0] attributeForName:@"code"] stringValue] intValue];
-			error = [NSError errorWithDomain:kFlickrErrorDomain code:errorCode userInfo:[NSDictionary dictionaryWithObject:errorDescription forKey:NSLocalizedDescriptionKey]];
+			error = [[NSError errorWithDomain:kFlickrErrorDomain code:errorCode userInfo:[NSDictionary dictionaryWithObject:errorDescription forKey:NSLocalizedDescriptionKey]] retain];
 			}
 		}
 	return self;
