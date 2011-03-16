@@ -25,9 +25,10 @@ typedef enum
 
 @interface FlickrPhoto : NSObject
 	{
-	NSImage* image;
+	NSString* ID;
 	NSString* title;
 	NSString* description;
+
 	NSInteger commentCount;
 	
 	NSDate* dateTaken;
@@ -41,7 +42,7 @@ typedef enum
 	NSArray* favorites;
 	NSArray* galleries;
 	
-	NSString* ID;
+	NSImage* image;
 	
 	FlickrLicense license;
 	}
