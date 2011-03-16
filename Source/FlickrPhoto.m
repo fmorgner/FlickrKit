@@ -37,7 +37,7 @@
 	return self;
 	}
 
-- (id)initWithXMLElement:(NSXMLElement*)anElement;
+- (id)initWithXMLElement:(NSXMLElement*)anElement error:(NSError**)error
 	{
 	if((self = [super init]))
 		{
@@ -45,7 +45,7 @@
 	return self;
 	}
 
-- (id)initWithDictionary:(NSDictionary*)aDictionary;
+- (id)initWithDictionary:(NSDictionary*)aDictionary error:(NSError**)error
 	{
 	if((self = [super init]))
 		{
