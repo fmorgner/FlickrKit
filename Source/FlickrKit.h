@@ -7,6 +7,7 @@
 //
 
 #import "FlickrAPIResponse.h"
+#import "FlickrKitResourceManager.h"
 #import "FlickrPhoto.h"
 #import "FlickrPerson.h"
 #import "FlickrPersonManager.h"
