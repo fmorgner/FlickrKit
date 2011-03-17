@@ -8,7 +8,7 @@
 
 typedef enum
 	{
-  kFlickrLicenseAllRightsReseved = 0,
+  kFlickrLicenseAllRightsReserved = 0,
   kFlickrLicenseCCByNcSa = 1,
 	kFlickrLicenseCCByNc = 2,
 	kFlickrLicenseCCByNcNd = 3,
