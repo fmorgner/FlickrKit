@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C72789FF1332894D008C4321 /* cr.large.png in Resources */ = {isa = PBXBuildFile; fileRef = C72789FD1332894D008C4321 /* cr.large.png */; };
 		C7692533132FEC6D005F6AC3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7692532132FEC6D005F6AC3 /* Cocoa.framework */; };
 		C769253D132FEC6D005F6AC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769253B132FEC6D005F6AC3 /* InfoPlist.strings */; };
 		C7692548132FEDA9005F6AC3 /* FlickrAPIResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = C7692544132FEDA9005F6AC3 /* FlickrAPIResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C72789FD1332894D008C4321 /* cr.large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cr.large.png; sourceTree = "<group>"; };
 		C769252F132FEC6D005F6AC3 /* FlickrKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlickrKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7692532132FEC6D005F6AC3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C7692537132FEC6D005F6AC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -148,6 +150,7 @@
 		C7990944133260900000B732 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C72789FD1332894D008C4321 /* cr.large.png */,
 				C7990945133262570000B732 /* by.large.png */,
 				C7990946133262570000B732 /* cc.large.png */,
 				C7990947133262570000B732 /* nc.large.png */,
@@ -232,6 +235,7 @@
 				C799094C133262570000B732 /* nc.large.png in Resources */,
 				C799094D133262570000B732 /* nd.large.png in Resources */,
 				C799094E133262570000B732 /* sa.large.png in Resources */,
+				C72789FF1332894D008C4321 /* cr.large.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
