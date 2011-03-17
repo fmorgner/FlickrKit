@@ -76,17 +76,45 @@ static FlickrKitResourceManager* sharedResourceManager = nil;
 
 - (NSArray*)imagesForLicense:(FlickrLicense)aLicense
 	{
-	NSArray* returnArray;
-	
-	switch (aLicense)
-		{
-  	case kFlickrLicenseCCBy:
-			returnArray = [NSArray arrayWithObjects:[[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"cc.large" ofType:@"png"]] autorelease],
-																							[[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"by.large" ofType:@"png"]] autorelease], nil];
-    	break;
+	NSArray* returnArray = nil;
 
-  	default:
-    	break;
+	if(aLicense == kFlickrLicenseCCBy || aLicense ==  kFlickrLicenseCCByNc || aLicense ==  kFlickrLicenseCCByNcNd || aLicense ==  kFlickrLicenseCCByNcSa || aLicense ==  kFlickrLicenseCCByNd || aLicense ==  kFlickrLicenseCCBySa)
+		{	
+		NSImage* ccImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"cc.large" ofType:@"png"]] autorelease];
+		NSImage* byImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"by.large" ofType:@"png"]] autorelease];
+		NSImage* ncImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"nc.large" ofType:@"png"]] autorelease];
+		NSImage* ndImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"nd.large" ofType:@"png"]] autorelease];
+		NSImage* saImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"sa.large" ofType:@"png"]] autorelease];
+
+		switch (aLicense)
+			{
+			case kFlickrLicenseCCBy:
+				returnArray = [NSArray arrayWithObjects:ccImage, byImage, nil];
+				break;
+				
+			case kFlickrLicenseCCByNc:
+				returnArray = [NSArray arrayWithObjects:ccImage, byImage, ncImage, nil];
+				break;
+				
+			case kFlickrLicenseCCByNcNd:
+				returnArray = [NSArray arrayWithObjects:ccImage, byImage, ncImage, ndImage, nil];
+				break;
+				
+			case kFlickrLicenseCCByNcSa:
+				returnArray = [NSArray arrayWithObjects:ccImage, byImage, ncImage, saImage, nil];
+				break;
+				
+			case kFlickrLicenseCCByNd:
+				returnArray = [NSArray arrayWithObjects:ccImage, byImage, ndImage, nil];
+				break;
+				
+			case kFlickrLicenseCCBySa:
+				returnArray = [NSArray arrayWithObjects:ccImage, byImage, saImage, nil];
+				break;
+				
+			default:
+				break;
+			}
 		}
 	
 	return returnArray;
