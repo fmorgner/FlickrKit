@@ -9,19 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FlickrAPIResponse.h"
 #import "FlickrTag.h"
-
-typedef enum
-	{
-  kFlickrLicenseAllRightsReseved = 0,
-  kFlickrLicenseCCByNcSa = 1,
-	kFlickrLicenseCCByNc = 2,
-	kFlickrLicenseCCByNcNd = 3,
-	kFlickrLicenseCCBy = 4,
-	kFlickrLicenseCCBySa = 5,
-	kFlickrLicenseCCByNd = 6,
-	kFlickrLicenseNoKnownRestrictions = 7,
-	kFlickrLicenseUSGovernmentWork = 8,
-	} FlickrLicense;
+#import "FlickrKitTypes.h"
 
 @interface FlickrPhoto : NSObject
 	{
