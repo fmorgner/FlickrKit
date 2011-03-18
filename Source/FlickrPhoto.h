@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FlickrAPIResponse.h"
 #import "FlickrTag.h"
-#import "FlickrKitTypes.h"
+#import "FlickrLicense.h"
 
 @interface FlickrPhoto : NSObject
 	{
@@ -34,7 +34,7 @@
 	
 	NSImage* image;
 	
-	FlickrLicense license;
+	FlickrLicense* license;
 	}
 
 
@@ -68,6 +68,6 @@
 
 @property(nonatomic, retain) NSImage* image;
 
-@property(nonatomic, assign) FlickrLicense license;
+@property(nonatomic, retain) FlickrLicense* license;
 
 @end

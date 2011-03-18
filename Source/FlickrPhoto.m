@@ -71,7 +71,7 @@
 		self.description = [[[(NSXMLElement*)photoElement nodesForXPath:@"description" error:nil] lastObject] stringValue];
 
 		self.commentCount = [[[[(NSXMLElement*)photoElement nodesForXPath:@"comments" error:nil] lastObject] stringValue] intValue];
-		self.license = [[[(NSXMLElement*)photoElement attributeForName:@"license"] stringValue] intValue];
+		self.license = [FlickrLicense licenseWithCode:[[[(NSXMLElement*)photoElement attributeForName:@"license"] stringValue] intValue]];
 
 		NSXMLElement* datesElement = [[(NSXMLElement*)photoElement nodesForXPath:@"dates" error:nil] lastObject];
 		self.dateTaken = [NSDate dateWithNaturalLanguageString:[[datesElement attributeForName:@"taken"] stringValue]];
