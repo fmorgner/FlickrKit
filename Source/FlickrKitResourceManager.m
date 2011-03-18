@@ -116,6 +116,11 @@ static FlickrKitResourceManager* sharedResourceManager = nil;
 				break;
 			}
 		}
+	else if(aLicense == kFlickrLicenseAllRightsReserved)
+		{
+		NSImage* crImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"cr.large" ofType:@"png"]] autorelease];
+		returnArray = [NSArray arrayWithObject:crImage];
+		}
 	
 	return returnArray;
 	}
