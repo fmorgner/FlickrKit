@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "FlickrPerson.h"
 
 @interface FlickrTag : NSObject
 	{
-	NSString* author;
+	FlickrPerson* author;
 	NSString* rawName;
 	NSString* name;
 	NSString* ID;
@@ -21,7 +21,7 @@
 + (FlickrTag*)tagWithXMLElement:(NSXMLElement*)anElement;
 
 
-@property(nonatomic,retain) NSString* author;
+@property(nonatomic,retain) FlickrPerson* author;
 @property(nonatomic,retain) NSString* rawName;
 @property(nonatomic,retain) NSString* name;
 @property(nonatomic,retain) NSString* ID;
