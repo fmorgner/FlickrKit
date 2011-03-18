@@ -74,11 +74,11 @@ static FlickrKitResourceManager* sharedResourceManager = nil;
 
 #pragma mark - Resource accessing methods
 
-- (NSArray*)imagesForLicense:(FlickrLicense)aLicense
+- (NSArray*)imagesForLicense:(FlickrLicense*)aLicense
 	{
 	NSArray* returnArray = nil;
 
-	if(aLicense == kFlickrLicenseCCBy || aLicense ==  kFlickrLicenseCCByNc || aLicense ==  kFlickrLicenseCCByNcNd || aLicense ==  kFlickrLicenseCCByNcSa || aLicense ==  kFlickrLicenseCCByNd || aLicense ==  kFlickrLicenseCCBySa)
+	if(aLicense.code == FlickrLicenseCCBy || aLicense.code ==  FlickrLicenseCCByNc || aLicense.code ==  FlickrLicenseCCByNcNd || aLicense.code ==  FlickrLicenseCCByNcSa || aLicense.code ==  FlickrLicenseCCByNd || aLicense.code ==  FlickrLicenseCCBySa)
 		{	
 		NSImage* ccImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"cc.large" ofType:@"png"]] autorelease];
 		NSImage* byImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"by.large" ofType:@"png"]] autorelease];
@@ -86,40 +86,61 @@ static FlickrKitResourceManager* sharedResourceManager = nil;
 		NSImage* ndImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"nd.large" ofType:@"png"]] autorelease];
 		NSImage* saImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"sa.large" ofType:@"png"]] autorelease];
 
-		switch (aLicense)
+		switch (aLicense.code)
 			{
-			case kFlickrLicenseCCBy:
+			case FlickrLicenseCCBy:
 				returnArray = [NSArray arrayWithObjects:ccImage, byImage, nil];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[aLicense name]];
+				}];
 				break;
 				
-			case kFlickrLicenseCCByNc:
+			case FlickrLicenseCCByNc:
 				returnArray = [NSArray arrayWithObjects:ccImage, byImage, ncImage, nil];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[aLicense name]];
+				}];
 				break;
 				
-			case kFlickrLicenseCCByNcNd:
+			case FlickrLicenseCCByNcNd:
 				returnArray = [NSArray arrayWithObjects:ccImage, byImage, ncImage, ndImage, nil];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[aLicense name]];
+				}];
 				break;
 				
-			case kFlickrLicenseCCByNcSa:
+			case FlickrLicenseCCByNcSa:
 				returnArray = [NSArray arrayWithObjects:ccImage, byImage, ncImage, saImage, nil];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[aLicense name]];
+				}];
 				break;
 				
-			case kFlickrLicenseCCByNd:
+			case FlickrLicenseCCByNd:
 				returnArray = [NSArray arrayWithObjects:ccImage, byImage, ndImage, nil];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[aLicense name]];
+				}];
 				break;
 				
-			case kFlickrLicenseCCBySa:
+			case FlickrLicenseCCBySa:
 				returnArray = [NSArray arrayWithObjects:ccImage, byImage, saImage, nil];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[aLicense name]];
+				}];
 				break;
 				
 			default:
 				break;
 			}
 		}
-	else if(aLicense == kFlickrLicenseAllRightsReserved)
+	else if(aLicense.code == FlickrLicenseAllRightsReserved)
 		{
 		NSImage* crImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"cr.large" ofType:@"png"]] autorelease];
 		returnArray = [NSArray arrayWithObject:crImage];
+		[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+			[(NSImage*)obj setName:[aLicense name]];
+		}];
 		}
 	
 	return returnArray;
