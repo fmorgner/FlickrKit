@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FlickrKitTypes.h"
+#import "FlickrLicense.h"
 
 @interface FlickrKitResourceManager : NSObject
 	{
@@ -17,6 +17,6 @@
 	
 + (FlickrKitResourceManager*)sharedManager;
 
-- (NSArray*)imagesForLicense:(FlickrLicense)aLicense;
+- (NSArray*)imagesForLicense:(FlickrLicense*)aLicense;
 
 @end
