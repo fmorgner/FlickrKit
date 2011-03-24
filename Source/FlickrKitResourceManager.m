@@ -146,4 +146,9 @@ static FlickrKitResourceManager* sharedResourceManager = nil;
 	return returnArray;
 	}
 
+- (NSString*)apiKey
+	{
+	return [[NSApp delegate] apiKey];
+	}
+
 @end
