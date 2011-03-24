@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FlickrPerson.h"
+#import "FlickrPersonManager.h"
 
 @interface FlickrTag : NSObject
 	{
@@ -15,6 +16,9 @@
 	NSString* rawName;
 	NSString* name;
 	NSString* ID;
+	
+	@protected
+	FlickrPersonManager* personManager;
 	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;

@@ -33,9 +33,21 @@
 	if ((self = [super init]))
 		{
 		self.ID = [[anElement attributeForName:@"id"] stringValue];
-		self.author = [[anElement attributeForName:@"author"] stringValue];
 		self.rawName = [[anElement attributeForName:@"raw"] stringValue];
 		self.name = [anElement stringValue];
+
+		personManager = [FlickrPersonManager sharedManager];
+		FlickrPerson* searchResult = [personManager personForID:ID];
+		
+		if (searchResult)
+			{
+			self.author = searchResult;
+  		}
+		else
+			{
+			self.author = [FlickrPerson personWithID:ID];
+			}
+		
     }
 	return self;
 	}
