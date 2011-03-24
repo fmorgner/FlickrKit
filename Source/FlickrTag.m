@@ -37,7 +37,7 @@
 		self.name = [anElement stringValue];
 
 		personManager = [FlickrPersonManager sharedManager];
-		FlickrPerson* searchResult = [personManager personForID:ID];
+		FlickrPerson* searchResult = [personManager personForID:[[anElement attributeForName:@"author"] stringValue]];
 		
 		if (searchResult)
 			{
@@ -45,7 +45,8 @@
   		}
 		else
 			{
-			self.author = [FlickrPerson personWithID:ID];
+			self.author = [FlickrPerson personWithID:[[anElement attributeForName:@"author"] stringValue]];
+			[personManager addPerson:self.author];
 			}
 		
     }
