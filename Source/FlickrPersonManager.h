@@ -19,8 +19,9 @@
 
 - (FlickrPerson*)personForID:(NSString*)anID;
 - (FlickrPerson*)personForUsername:(NSString*)anUserame;
-- (NSArray*)personsForName:(NSString*)aName;
-- (NSArray*)personsForLocation:(NSString*)aLocation;
+- (NSArray*)peopleForName:(NSString*)aName;
+- (NSArray*)peopleForLocation:(NSString*)aLocation;
+
 
 - (BOOL)addPerson:(FlickrPerson*)aPerson;
 - (BOOL)removePerson:(FlickrPerson*)aPerson;

@@ -88,14 +88,14 @@ static FlickrPersonManager* sharedPersonManager = nil;
 	return [filterResult lastObject];
 	}
 	
-- (NSArray*)personsForName:(NSString*)aName
+- (NSArray*)peopleForName:(NSString*)aName
 	{
 	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"name like %@", aName];
 	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
 	return filterResult;
 	}
 	
-- (NSArray*)personsForLocation:(NSString*)aLocation
+- (NSArray*)peopleForLocation:(NSString*)aLocation
 	{
 	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"location like %@", aLocation];
 	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
