@@ -67,6 +67,7 @@
 			returnName = @"United States Government Work";
 			break;
   	default:
+			returnName = @"";
     	break;
 		}
 	
@@ -107,6 +108,7 @@
     	returnURL = [NSURL URLWithString:@"http://www.usa.gov/copyright.shtml"];
 			break;
   	default:
+			returnURL = nil;
     	break;
 		}
 	
