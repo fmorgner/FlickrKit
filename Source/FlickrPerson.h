@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FlickrKitResourceManager.h"
 
 @interface FlickrPerson : NSObject
 	{
@@ -22,11 +23,18 @@
 	@protected
 	short iconServerID;
 	short iconFarmID;
+	BOOL isLoaded;
+	NSMutableData* receivedData;
 	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
 + (FlickrPerson*)personWithXMLElement:(NSXMLElement*)anElement;
 
+- (id)initWithID:(NSString*)anID;
++ (FlickrPerson*)personWithID:(NSString*)anID;
+
+- (void)fetchPersonInformation;
+- (void)loadPersonInformationFromXMLElement:(NSXMLElement*)anElement;
 
 @property(nonatomic,retain) NSString* ID;
 @property(nonatomic,retain) NSString* username;
