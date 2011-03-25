@@ -19,6 +19,7 @@
 @synthesize firstPhotoUploaded;
 @synthesize photoCount;
 @synthesize proStatus;
+@synthesize loaded;
 
 - (id)init
 	{
@@ -48,7 +49,7 @@
 	{
   if ((self = [super init]))
 		{
-		isLoaded = NO;
+		loaded = NO;
 		self.ID = anID;
 		receivedData = [[NSMutableData alloc] init];
 		[self fetchPersonInformation];
@@ -87,7 +88,7 @@
 	self.firstPhotoTaken = [NSDate dateWithString:[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue]];
 	self.firstPhotoUploaded = [NSDate dateWithTimeIntervalSince1970:[[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue] intValue]];
 	
-	isLoaded = YES;
+	loaded = YES;
 	}
 
 - (void)fetchPersonInformation

@@ -19,11 +19,11 @@
 	NSDate* firstPhotoUploaded;
 	NSUInteger photoCount;
 	BOOL proStatus;
+	BOOL loaded;
 	
 	@protected
 	short iconServerID;
 	short iconFarmID;
-	BOOL isLoaded;
 	NSMutableData* receivedData;
 	}
 
@@ -44,5 +44,6 @@
 @property(nonatomic,retain) NSDate* firstPhotoUploaded;
 @property(nonatomic,assign) NSUInteger photoCount;
 @property(nonatomic,assign,getter = hasProStatus) BOOL proStatus;
+@property(nonatomic,readonly,getter = isLoaded) BOOL loaded;
 
 @end
