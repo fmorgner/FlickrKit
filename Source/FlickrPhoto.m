@@ -27,6 +27,7 @@
 @synthesize datePosted;
 @synthesize dateLastUpdate;
 @synthesize URLs;
+@synthesize owner;
 
 #pragma mark - Object initialization
 
@@ -62,7 +63,7 @@
 	if(![[[aResponse.xmlContent rootElement] childAtIndex:0].name isEqualToString:@"photo"])
 		return nil;
 	
-	NSXMLNode* photoElement = [[aResponse.xmlContent rootElement] childAtIndex:0];
+	NSXMLElement* photoElement = (NSXMLElement*)[[aResponse.xmlContent rootElement] childAtIndex:0];
 	
 	if((self = [super init]))
 		{
@@ -73,7 +74,10 @@
 		self.commentCount = [[[[(NSXMLElement*)photoElement nodesForXPath:@"comments" error:nil] lastObject] stringValue] intValue];
 		self.license = [FlickrLicense licenseWithCode:[[[(NSXMLElement*)photoElement attributeForName:@"license"] stringValue] intValue]];
 
-		NSXMLElement* datesElement = [[(NSXMLElement*)photoElement nodesForXPath:@"dates" error:nil] lastObject];
+		NSXMLElement* ownerElement = [[photoElement nodesForXPath:@"owner" error:nil] lastObject];
+		self.owner = [FlickrPerson personWithXMLElement:ownerElement];
+
+		NSXMLElement* datesElement = [[photoElement nodesForXPath:@"dates" error:nil] lastObject];
 		self.dateTaken = [NSDate dateWithNaturalLanguageString:[[datesElement attributeForName:@"taken"] stringValue]];
 		self.datePosted = [NSDate dateWithTimeIntervalSince1970:[[[datesElement attributeForName:@"posted"] stringValue] doubleValue]];
 		self.dateLastUpdate = [NSDate dateWithTimeIntervalSince1970:[[[datesElement attributeForName:@"lastupdate"] stringValue] doubleValue]];
@@ -130,6 +134,7 @@
 	[favorites release];
 	[galleries release];
 	[URLs release];
+	[owner release];
 	[super dealloc];
 	}
 
