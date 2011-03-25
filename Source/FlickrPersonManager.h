@@ -12,7 +12,7 @@
 @interface FlickrPersonManager : NSObject
 	{
 	@private
-	NSMutableArray* persons;
+	NSMutableArray* people;
 	}
 
 + (FlickrPersonManager*)sharedManager;
@@ -23,7 +23,8 @@
 - (NSArray*)peopleForLocation:(NSString*)aLocation;
 - (NSArray*)peopleForProStatus:(BOOL)theStatus;
 
-
 - (BOOL)addPerson:(FlickrPerson*)aPerson;
 - (BOOL)removePerson:(FlickrPerson*)aPerson;
+
+- (NSArray*)people;
 @end

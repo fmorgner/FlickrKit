@@ -18,14 +18,14 @@ static FlickrPersonManager* sharedPersonManager = nil;
 	{
 	if((self = [super init]))
 		{
-		persons = [[NSMutableArray alloc] init];
+		people = [[NSMutableArray alloc] init];
 		}
 	return self;
 	}
 
 - (void)dealloc
 	{
-	[persons release];
+	[people release];
 	[super dealloc];
 	}
 
@@ -77,36 +77,41 @@ static FlickrPersonManager* sharedPersonManager = nil;
 - (FlickrPerson*)personForID:(NSString*)anID
 	{
 	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"ID like %@", anID];
-	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
+	NSArray* filterResult = [people filteredArrayUsingPredicate:filterPredicate];
 	return [filterResult lastObject];
 	}
 	
 - (FlickrPerson*)personForUsername:(NSString*)anUserame
 	{
 	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"username like %@", anUserame];
-	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
+	NSArray* filterResult = [people filteredArrayUsingPredicate:filterPredicate];
 	return [filterResult lastObject];
 	}
 	
 - (NSArray*)peopleForName:(NSString*)aName
 	{
 	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"name like %@", aName];
-	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
+	NSArray* filterResult = [people filteredArrayUsingPredicate:filterPredicate];
 	return filterResult;
 	}
 	
 - (NSArray*)peopleForLocation:(NSString*)aLocation
 	{
 	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"location like %@", aLocation];
-	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
+	NSArray* filterResult = [people filteredArrayUsingPredicate:filterPredicate];
 	return filterResult;
 	}
 
 - (NSArray*)peopleForProStatus:(BOOL)theStatus
 	{
 	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"proStatus == %@", [NSNumber numberWithBool:theStatus]];
-	NSArray* filterResult = [persons filteredArrayUsingPredicate:filterPredicate];
+	NSArray* filterResult = [people filteredArrayUsingPredicate:filterPredicate];
 	return filterResult;
+	}
+
+- (NSArray*)people
+	{
+	return (NSArray*)people;
 	}
 
 #pragma mark - Person management methods
@@ -114,7 +119,7 @@ static FlickrPersonManager* sharedPersonManager = nil;
 - (BOOL)addPerson:(FlickrPerson*)aPerson
 	{
 	if(![self personForID:aPerson.ID])
-		[persons addObject:aPerson];
+		[people addObject:aPerson];
 	return YES;
 	}
 
