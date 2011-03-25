@@ -39,7 +39,7 @@
 	
 	if(searchResult)
 		{
-		return searchResult;
+		return [searchResult retain];
 		}
 	
   if ((self = [super init]))
@@ -47,6 +47,7 @@
 		[self loadPersonInformationFromXMLElement:anElement];
     }
 
+	[[FlickrPersonManager sharedManager] addPerson:self];
 	return self;
 	}
 	
@@ -61,7 +62,7 @@
 	
 	if(searchResult)
 		{
-		return searchResult;
+		return [searchResult retain];
 		}
 	
   if ((self = [super init]))
@@ -70,7 +71,9 @@
 		self.ID = anID;
 		receivedData = [[NSMutableData alloc] init];
 		[self fetchPersonInformation];
-    }	
+    }
+	
+	[[FlickrPersonManager sharedManager] addPerson:self];
 	return self;
 	}
 
