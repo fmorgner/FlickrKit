@@ -7,7 +7,8 @@
 //
 
 #import "FlickrPerson.h"
-
+#import "FlickrPersonManager.h"
+#import "FlickrKitResourceManager.h"
 
 @implementation FlickrPerson
 
@@ -32,6 +33,15 @@
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement
 	{
+	NSString* NSID = [[anElement attributeForName:@"nsid"] stringValue];
+	
+	FlickrPerson* searchResult = [[FlickrPersonManager sharedManager] personForID:NSID];
+	
+	if(searchResult)
+		{
+		return searchResult;
+		}
+	
   if ((self = [super init]))
 		{
 		[self loadPersonInformationFromXMLElement:anElement];
@@ -47,6 +57,13 @@
 
 - (id)initWithID:(NSString*)anID
 	{
+	FlickrPerson* searchResult = [[FlickrPersonManager sharedManager] personForID:anID];
+	
+	if(searchResult)
+		{
+		return searchResult;
+		}
+	
   if ((self = [super init]))
 		{
 		loaded = NO;
@@ -76,7 +93,7 @@
 
 - (void)loadPersonInformationFromXMLElement:(NSXMLElement*)anElement
 	{
-	self.ID =  [[anElement attributeForName:@"nsid"] stringValue];
+	self.ID = [[anElement attributeForName:@"nsid"] stringValue];
 	self.proStatus = [[[anElement attributeForName:@"ispro"] stringValue] boolValue];
 	iconServerID = [[[anElement attributeForName:@"iconserver"] stringValue] intValue];
 	iconFarmID = [[[anElement attributeForName:@"iconfarm"] stringValue] intValue];
