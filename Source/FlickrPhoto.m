@@ -75,7 +75,7 @@
 		self.license = [FlickrLicense licenseWithCode:[[[(NSXMLElement*)photoElement attributeForName:@"license"] stringValue] intValue]];
 
 		NSXMLElement* ownerElement = [[photoElement nodesForXPath:@"owner" error:nil] lastObject];
-		self.owner = [FlickrPerson personWithXMLElement:ownerElement];
+		self.owner = [FlickrPerson personWithID:[[ownerElement attributeForName:@"nsid"] stringValue]];
 
 		NSXMLElement* datesElement = [[photoElement nodesForXPath:@"dates" error:nil] lastObject];
 		self.dateTaken = [NSDate dateWithNaturalLanguageString:[[datesElement attributeForName:@"taken"] stringValue]];
