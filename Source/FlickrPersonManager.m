@@ -137,12 +137,18 @@ static FlickrPersonManager* sharedPersonManager = nil;
 
 - (BOOL)addPerson:(FlickrPerson*)aPerson
 	{
+	
 	if(![self personForID:aPerson.ID])
 		{
-		NSMutableArray* newPeople = [NSMutableArray arrayWithArray:people];
-		[newPeople addObject:aPerson];
-		[self setPeople:newPeople];
+		[[self mutableArrayValueForKey:@"people"] addObject:aPerson];
 		}
+	
+//	if(![self personForID:aPerson.ID])
+//		{
+//		NSMutableArray* newPeople = [NSMutableArray arrayWithArray:people];
+//		[newPeople addObject:aPerson];
+//		[self setPeople:newPeople];
+//		}
 	return YES;
 	}
 
