@@ -25,7 +25,7 @@
 		raw = [[[[anElement elementsForName:@"raw"] lastObject] stringValue] copy];
 		clean = [[[[anElement elementsForName:@"clean"] lastObject] stringValue] copy];
 		
-		(clean) ? (self.value = clean) : (self.value = raw);
+		(clean) ? (value = clean) : (value = raw);
     }
 
   return self;
