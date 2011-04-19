@@ -14,3 +14,5 @@
 #import "FlickrPerson.h"
 #import "FlickrPersonManager.h"
 #import "FlickrTag.h"
+#import "FlickrComment.h"
+#import "FlickrEXIFTag.h"
