@@ -17,7 +17,7 @@
 		C769254A132FEDA9005F6AC3 /* FlickrPhoto.h in Headers */ = {isa = PBXBuildFile; fileRef = C7692546132FEDA9005F6AC3 /* FlickrPhoto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C769254B132FEDA9005F6AC3 /* FlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = C7692547132FEDA9005F6AC3 /* FlickrPhoto.m */; };
 		C7692557132FEEFB005F6AC3 /* FlickrKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C7692556132FEEFB005F6AC3 /* FlickrKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C77A6609133F62950026C24B /* FlickrComment.h in Headers */ = {isa = PBXBuildFile; fileRef = C77A6607133F62950026C24B /* FlickrComment.h */; };
+		C77A6609133F62950026C24B /* FlickrComment.h in Headers */ = {isa = PBXBuildFile; fileRef = C77A6607133F62950026C24B /* FlickrComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C77A660A133F62950026C24B /* FlickrComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C77A6608133F62950026C24B /* FlickrComment.m */; };
 		C799094A133262570000B732 /* by.large.png in Resources */ = {isa = PBXBuildFile; fileRef = C7990945133262570000B732 /* by.large.png */; };
 		C799094B133262570000B732 /* cc.large.png in Resources */ = {isa = PBXBuildFile; fileRef = C7990946133262570000B732 /* cc.large.png */; };
@@ -28,7 +28,7 @@
 		C79909521332673E0000B732 /* FlickrKitResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C79909501332673E0000B732 /* FlickrKitResourceManager.m */; };
 		C7C3AF57132FFC6900F8C083 /* FlickrTag.h in Headers */ = {isa = PBXBuildFile; fileRef = C7C3AF55132FFC6900F8C083 /* FlickrTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7C3AF58132FFC6900F8C083 /* FlickrTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C3AF56132FFC6900F8C083 /* FlickrTag.m */; };
-		C7D25BF5135DE373003FF694 /* FlickrEXIFTag.h in Headers */ = {isa = PBXBuildFile; fileRef = C7D25BF3135DE373003FF694 /* FlickrEXIFTag.h */; };
+		C7D25BF5135DE373003FF694 /* FlickrEXIFTag.h in Headers */ = {isa = PBXBuildFile; fileRef = C7D25BF3135DE373003FF694 /* FlickrEXIFTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7D25BF6135DE373003FF694 /* FlickrEXIFTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D25BF4135DE373003FF694 /* FlickrEXIFTag.m */; };
 		C7DF0BC3133B62D6001BE05B /* FlickrKitConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = C7DF0BC2133B62D6001BE05B /* FlickrKitConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7E99E5F133142DE0027226A /* FlickrPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E99E5D133142DD0027226A /* FlickrPerson.h */; settings = {ATTRIBUTES = (Public, ); }; };
