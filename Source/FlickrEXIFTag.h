@@ -30,7 +30,7 @@
 @property(readonly) NSString* clean;
 @property(readonly) NSString* tagspace;
 
-@property(assign) short tagspaceID;
-@property(assign) short tag;
+@property(readonly) short tagspaceID;
+@property(readonly) short tag;
 
 @end
