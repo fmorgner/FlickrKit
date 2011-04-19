@@ -15,7 +15,7 @@
 	{
   if ((self = [super init]))
 		{
-		receivedData = [NSMutableData data];
+		receivedData = [NSMutableData new];
     }
     
   return self;
