@@ -7,7 +7,9 @@
 //
 
 #import "FlickrPhoto.h"
-
+#import "FlickrAsynchronousFetcher.h"
+#import "FlickrKitConstants.h"
+#import "FlickrEXIFTag.h"
 
 @implementation FlickrPhoto
 
@@ -21,6 +23,7 @@
 @synthesize description;
 @synthesize favorites;
 @synthesize galleries;
+@synthesize exifTags;
 @synthesize ID;
 @synthesize license;
 @synthesize dateTaken;
@@ -119,6 +122,30 @@
 + (FlickrPhoto*)photoWithAPIResponse:(FlickrAPIResponse*)aResponse error:(NSError**)error
 	{
 	return [[[FlickrPhoto alloc] initWithAPIResponse:aResponse error:(NSError**)error] autorelease];
+	}
+
+#pragma mark - Instance Methods
+	
+- (void)fetchEXIFInformation
+	{
+	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
+	NSString* methodString = [NSString stringWithFormat:FlickrAPIMethodPhotosGetEXIF, ID];
+	NSString* urlString = [NSString stringWithFormat:FlickrAPIBaseURL, methodString, [[NSApp delegate] apiKey]];
+	NSURL* exifURL = [NSURL URLWithString:urlString];
+	[dataFetcher fetchDataAtURL:exifURL withCompletionHandler:^(NSData *fetchedData) {
+		FlickrAPIResponse* response = [FlickrAPIResponse responseWithData:fetchedData];
+		if([response.status isEqualToString:@"ok"])
+			{
+			NSXMLDocument* xmlDocument = [response xmlContent];
+			NSArray* nodes = [xmlDocument nodesForXPath:@"rsp/photo/exif" error:nil];
+			NSMutableArray* fetchedExifTags = [NSMutableArray arrayWithCapacity:[nodes count]];
+			for(NSXMLElement* element in nodes)
+				{
+				[fetchedExifTags addObject:[FlickrEXIFTag exifTagWithXMLElement:element]];
+				}
+			self.exifTags = fetchedExifTags;
+			}
+	}];
 	}
 
 #pragma mark - Object deallocation

@@ -30,6 +30,7 @@
 	NSArray* comments;
 	NSArray* favorites;
 	NSArray* galleries;
+	NSArray* exifTags;
 
 	NSDictionary* URLs;
 	
@@ -49,6 +50,8 @@
 + (FlickrPhoto*)photoWithDictionary:(NSDictionary*)aDictionary  error:(NSError**)error;
 + (FlickrPhoto*)photoWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
 
+- (void)fetchEXIFInformation;
+
 @property(nonatomic, retain) NSString* ID;
 @property(nonatomic, retain) NSString* title;
 @property(nonatomic, retain) NSString* description;
@@ -65,6 +68,7 @@
 @property(nonatomic, retain) NSArray* comments;
 @property(nonatomic, retain) NSArray* favorites;
 @property(nonatomic, retain) NSArray* galleries;
+@property(nonatomic, retain) NSArray* exifTags;
 
 @property(nonatomic, retain) NSDictionary* URLs;
 
