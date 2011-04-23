@@ -8,7 +8,10 @@
 
 #import "FlickrPhoto.h"
 #import "FlickrAsynchronousFetcher.h"
-#import "FlickrKitConstants.h"
+#import "FlickrAPIResponse.h"
+#import "FlickrTag.h"
+#import "FlickrLicense.h"
+#import "FlickrPerson.h"
 #import "FlickrEXIFTag.h"
 
 @implementation FlickrPhoto
@@ -124,13 +127,13 @@
 	return [[[FlickrPhoto alloc] initWithAPIResponse:aResponse error:(NSError**)error] autorelease];
 	}
 
-#pragma mark - Instance Methods
+#pragma mark - Information Fetching
 	
 - (void)fetchEXIFInformation
 	{
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	NSString* methodString = [NSString stringWithFormat:FlickrAPIMethodPhotosGetEXIF, ID];
-	NSString* urlString = [NSString stringWithFormat:FlickrAPIBaseURL, methodString, [[NSApp delegate] apiKey]];
+	NSString* urlString = [NSString stringWithFormat:FlickrAPIBaseURL, methodString, APIKey];
 	NSURL* exifURL = [NSURL URLWithString:urlString];
 	[dataFetcher fetchDataAtURL:exifURL withCompletionHandler:^(NSData *fetchedData) {
 		FlickrAPIResponse* response = [FlickrAPIResponse responseWithData:fetchedData];
@@ -147,6 +150,23 @@
 			}
 	}];
 	}
+
+- (void)fetchImageOfSize:(FlickrImageSize)aSize
+	{
+	}
+	
+- (void)fetchContexts
+	{
+	}
+	
+- (void)fetchComments
+	{
+	}
+
+- (void)fetchFavorites
+	{
+	}
+
 
 #pragma mark - Object deallocation
 

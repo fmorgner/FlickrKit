@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FlickrAPIResponse.h"
-#import "FlickrTag.h"
-#import "FlickrLicense.h"
-#import "FlickrPerson.h"
+#import "FlickrKitConstants.h"
+
+@class FlickrPerson;
+@class FlickrLicense;
+@class FlickrAPIResponse;
 
 @interface FlickrPhoto : NSObject
 	{
@@ -51,6 +52,10 @@
 + (FlickrPhoto*)photoWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
 
 - (void)fetchEXIFInformation;
+- (void)fetchImageOfSize:(FlickrImageSize)aSize;
+- (void)fetchContexts;
+- (void)fetchComments;
+- (void)fetchFavorites;
 
 @property(nonatomic, retain) NSString* ID;
 @property(nonatomic, retain) NSString* title;
