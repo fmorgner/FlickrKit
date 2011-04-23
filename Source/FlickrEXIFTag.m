@@ -41,7 +41,6 @@
 	[tagspace release];
 	[clean release];
 	[label release];
-	[value release];
 	[raw release];
 	
 	tagspaceID = 0;
