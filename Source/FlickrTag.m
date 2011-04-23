@@ -16,18 +16,6 @@
 @synthesize rawName;
 @synthesize name;
 
-- (id)init
-	{
-	if ((self = [super init]))
-		{
-		self.ID = nil;
-		self.author = nil;
-		self.rawName = nil;
-		self.name = nil;
-    }
-	return self;
-	}
-
 - (id)initWithXMLElement:(NSXMLElement*)anElement
 	{
 	if ((self = [super init]))
