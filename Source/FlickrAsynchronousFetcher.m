@@ -59,7 +59,8 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 	{
-	completionHandler(receivedData);
+	FlickrAPIResponse* response = [[FlickrAPIResponse alloc] initWithData:receivedData];
+	completionHandler(response);
 	}
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
