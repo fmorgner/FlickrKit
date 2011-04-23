@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-
+#ifdef __MAC_10_7
+@interface FlickrAsynchronousFetcher : NSObject <NSURLConnectionDelegate>
+#else
 @interface FlickrAsynchronousFetcher : NSObject
+#endif
 	{
 	@private
     void (^completionHandler)(id);
