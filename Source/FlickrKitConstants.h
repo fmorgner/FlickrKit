@@ -23,11 +23,13 @@ static NSString* FlickrAPIMethodPeopleGetInfo = @"flickr.people.getInfo&photo_id
 
 typedef enum _FlickrImageSize
 	{
-  FlickrImageSizeSquare,
-	FlickrImageSizeThumbnail,
-	FlickrImageSizeSmall,
-	FlickrImageSizeMedium,
-	FlickrImageSizeMedium640,
-	FlickrImageSizeLarge,
-	FlickrImageSizeOriginal,
+  FlickrImageSizeSquare = 1,
+	FlickrImageSizeThumbnail = 2,
+	FlickrImageSizeSmall = 4,
+	FlickrImageSizeMedium = 8,
+	FlickrImageSizeMedium640 = 16,
+	FlickrImageSizeLarge = 32,
+	FlickrImageSizeOriginal = 64,
 	} FlickrImageSize;
+
+extern NSString* flickrImageSizeString(FlickrImageSize size);
