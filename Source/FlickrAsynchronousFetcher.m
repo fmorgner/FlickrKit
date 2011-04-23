@@ -7,7 +7,7 @@
 //
 
 #import "FlickrAsynchronousFetcher.h"
-
+#import "FlickrAPIResponse.h"
 
 @implementation FlickrAsynchronousFetcher
 
@@ -28,7 +28,7 @@
   [super dealloc];
 	}
 
-- (void)fetchDataAtURL:(NSURL*)theURL withCompletionHandler:(void (^)(NSData* fetchedData))block
+- (void)fetchDataAtURL:(NSURL*)theURL withCompletionHandler:(void (^)(id fetchResult))block
 	{
 	[receivedData setLength:0];
 	
@@ -60,6 +60,11 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 	{
 	completionHandler(receivedData);
+	}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+	{
+	completionHandler(error);
 	}
 
 @end

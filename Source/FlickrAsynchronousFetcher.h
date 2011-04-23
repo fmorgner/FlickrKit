@@ -20,6 +20,6 @@
 		NSMutableData* receivedData;
 	}
 
-- (void)fetchDataAtURL:(NSURL*)theURL withCompletionHandler:(void (^)(NSData* fetchedData))block;
+- (void)fetchDataAtURL:(NSURL*)theURL withCompletionHandler:(void (^)(id fetchResult))block;
 
 @end
