@@ -9,6 +9,8 @@
 #import "FlickrPerson.h"
 #import "FlickrPersonManager.h"
 #import "FlickrKitConstants.h"
+#import "FlickrAsynchronousFetcher.h"
+#import "FlickrAPIResponse.h"
 
 @implementation FlickrPerson
 
@@ -113,23 +115,26 @@
 
 - (void)fetchPersonInformation
 	{
-	[receivedData setLength:0];
-
 	NSString* escapedUserID = [ID stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=%@&user_id=%@", APIKey, escapedUserID]];
-	[NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0] delegate:self];
+	NSString* methodString = [NSString stringWithFormat:FlickrAPIMethodPeopleGetInfo, escapedUserID];
+	NSString* urlString = [NSString stringWithFormat:FlickrAPIBaseURL, methodString, APIKey];
+	
+	NSURL* informationURL = [NSURL URLWithString:urlString];
+	
+	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
+	[dataFetcher fetchDataAtURL:informationURL withCompletionHandler:^(id fetchResult) {
+			if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+				{
+				NSError* error;
+				NSXMLDocument* xmlDocument = [fetchResult xmlContent];
+				NSXMLElement* personElement = [[xmlDocument nodesForXPath:@"rsp/person" error:&error] lastObject];
+				
+				if(error)
+					return; // TODO: add more sophisticated error handling
+					
+				[self loadPersonInformationFromXMLElement:personElement];
+				}
+	}];
 	}
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-	{
-	[receivedData appendData:data];
-	}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-	{
-	NSError* error;
-	NSXMLDocument* xmlDocument = [[[NSXMLDocument alloc] initWithData:receivedData options:0 error:&error] autorelease];
-	NSXMLElement* personElement = [[xmlDocument nodesForXPath:@"rsp/person" error:&error] lastObject];
-	[self loadPersonInformationFromXMLElement:personElement];
-	}
 @end
