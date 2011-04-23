@@ -8,7 +8,7 @@
 
 #import "FlickrPerson.h"
 #import "FlickrPersonManager.h"
-#import "FlickrKitResourceManager.h"
+#import "FlickrKitConstants.h"
 
 @implementation FlickrPerson
 
@@ -116,8 +116,7 @@
 	[receivedData setLength:0];
 
 	NSString* escapedUserID = [ID stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSString* apiKey = [[FlickrKitResourceManager sharedManager] valueForKey:@"apiKey"];
-	NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=%@&user_id=%@", apiKey, escapedUserID]];
+	NSURL* requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=%@&user_id=%@", APIKey, escapedUserID]];
 	[NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0] delegate:self];
 	}
 
