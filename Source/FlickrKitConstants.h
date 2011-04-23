@@ -17,7 +17,7 @@ static NSString* FlickrAPIMethodPhotosGetFavorites = @"flickr.photos.getFavorite
 static NSString* FlickrAPIMethodPhotosGetSizes = @"flickr.photos.getSizes&photo_id=%@";
 static NSString* FlickrAPIMethodGalleriesGetListForPhoto = @"flickr.galleries.getListForPhoto&photo_id=%@";
 static NSString* FlickrAPIMethodPhotosGetEXIF = @"flickr.photos.getExif&photo_id=%@";
-static NSString* FlickrAPIMethodPeopleGetInfo = @"flickr.people.getInfo&photo_id=%@";
+static NSString* FlickrAPIMethodPeopleGetInfo = @"flickr.people.getInfo&user_id=%@";
 
 // FlickrImageSize enumeration: represents the sizes of images you can fetch from flickr.
 
