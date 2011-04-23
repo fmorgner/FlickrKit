@@ -7,7 +7,7 @@
 //
 
 #import "FlickrKitResourceManager.h"
-
+#import "FlickrKitConstants.h"
 
 @implementation FlickrKitResourceManager
 
@@ -145,10 +145,4 @@ static FlickrKitResourceManager* sharedResourceManager = nil;
 	
 	return returnArray;
 	}
-
-- (NSString*)apiKey
-	{
-	return [[NSApp delegate] apiKey];
-	}
-
 @end

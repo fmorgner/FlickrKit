@@ -18,6 +18,5 @@
 + (FlickrKitResourceManager*)sharedManager;
 
 - (NSArray*)imagesForLicense:(FlickrLicense*)aLicense;
-- (NSString*)apiKey;
 
 @end
