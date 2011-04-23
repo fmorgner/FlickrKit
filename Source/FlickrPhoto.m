@@ -131,15 +131,17 @@
 	
 - (void)fetchEXIFInformation
 	{
-	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	NSString* methodString = [NSString stringWithFormat:FlickrAPIMethodPhotosGetEXIF, ID];
 	NSString* urlString = [NSString stringWithFormat:FlickrAPIBaseURL, methodString, APIKey];
+	
 	NSURL* exifURL = [NSURL URLWithString:urlString];
-	[dataFetcher fetchDataAtURL:exifURL withCompletionHandler:^(NSData *fetchedData) {
-		FlickrAPIResponse* response = [FlickrAPIResponse responseWithData:fetchedData];
-		if([response.status isEqualToString:@"ok"])
+
+	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
+	
+	[dataFetcher fetchDataAtURL:exifURL withCompletionHandler:^(id fetchResult) {
+		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
 			{
-			NSXMLDocument* xmlDocument = [response xmlContent];
+			NSXMLDocument* xmlDocument = [(FlickrAPIResponse*)fetchResult xmlContent];
 			NSArray* nodes = [xmlDocument nodesForXPath:@"rsp/photo/exif" error:nil];
 			NSMutableArray* fetchedExifTags = [NSMutableArray arrayWithCapacity:[nodes count]];
 			for(NSXMLElement* element in nodes)
@@ -153,6 +155,31 @@
 
 - (void)fetchImageOfSize:(FlickrImageSize)aSize
 	{
+	NSString* methodString = [NSString stringWithFormat:FlickrAPIMethodPhotosGetSizes, ID];
+	NSString* urlString = [NSString stringWithFormat:FlickrAPIBaseURL, methodString, APIKey];
+	
+	NSURL* sizeURL = [NSURL URLWithString:urlString];
+
+	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
+	
+	[dataFetcher fetchDataAtURL:sizeURL withCompletionHandler:^(id fetchResult) {
+		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+			{
+			NSError* error;
+			NSXMLDocument* xmlDocument = [(FlickrAPIResponse*)fetchResult xmlContent];
+			NSArray* nodes = [xmlDocument nodesForXPath:[NSString stringWithFormat:@"rsp/sizes/size[@label='%@']", flickrImageSizeString(aSize)] error:&error];
+			
+			if(error)
+				return; // TODO: add more sophisticated error handling
+			
+			NSURL* imageURL = [NSURL URLWithString:[[[nodes lastObject] attributeForName:@"source"] stringValue]];
+			
+			[dataFetcher fetchDataAtURL:imageURL withCompletionHandler:^(id fetchResult) {
+				if(![fetchResult isKindOfClass:[NSError class]])
+					self.image = [[[NSImage alloc] initWithData:fetchResult] autorelease];
+			}];
+			}
+	}];
 	}
 	
 - (void)fetchContexts
