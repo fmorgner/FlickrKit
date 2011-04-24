@@ -149,6 +149,8 @@
 				C7278A031333F0B3008C4321 /* FlickrLicense.m */,
 				C7692546132FEDA9005F6AC3 /* FlickrPhoto.h */,
 				C7692547132FEDA9005F6AC3 /* FlickrPhoto.m */,
+				C763877F136376D100362B2F /* FlickrSet.h */,
+				C7638780136376D100362B2F /* FlickrSet.m */,
 				C7C3AF55132FFC6900F8C083 /* FlickrTag.h */,
 				C7C3AF56132FFC6900F8C083 /* FlickrTag.m */,
 				C7E99E5D133142DD0027226A /* FlickrPerson.h */,
@@ -156,8 +158,6 @@
 				C7E99E621331457E0027226A /* FlickrPersonManager.h */,
 				C7E99E631331457E0027226A /* FlickrPersonManager.m */,
 				C7692539132FEC6D005F6AC3 /* Supporting Files */,
-				C763877F136376D100362B2F /* FlickrSet.h */,
-				C7638780136376D100362B2F /* FlickrSet.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";

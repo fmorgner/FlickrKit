@@ -60,11 +60,12 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 	{
 	FlickrAPIResponse* response = [[FlickrAPIResponse alloc] initWithData:receivedData];
-	
+	dispatch_queue_t dispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
 	if(response.status)
-		completionHandler(response);
+		dispatch_async(dispatchQueue, ^{ completionHandler(response); });
 	else
-		completionHandler(receivedData);
+		dispatch_async(dispatchQueue, ^{ completionHandler(receivedData); });
 	}
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
