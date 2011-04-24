@@ -30,8 +30,6 @@
 
 - (void)fetchDataAtURL:(NSURL*)theURL withCompletionHandler:(void (^)(id fetchResult))block
 	{
-	[receivedData setLength:0];
-	
 	if(!block)
 		{
 		NSException* exception = [NSException exceptionWithName:@"FlickrKitCompletionHandlerNilException" reason:@"The completion handler must not be NULL" userInfo:nil];
@@ -66,6 +64,8 @@
 		dispatch_async(dispatchQueue, ^{ completionHandler(response); });
 	else
 		dispatch_async(dispatchQueue, ^{ completionHandler(receivedData); });
+
+	[receivedData setLength:0];
 	}
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
