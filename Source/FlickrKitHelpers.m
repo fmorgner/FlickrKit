@@ -44,7 +44,7 @@ NSString* flickrImageSizeString(FlickrImageSize size)
 	return returnString;
 	}
 
-extern NSString* flickrImageSizeLocalizedString(FlickrImageSize size)
+NSString* flickrImageSizeLocalizedString(FlickrImageSize size)
 	{
 	NSString* returnString = nil;
 	NSBundle* kitBundle = [NSBundle bundleWithIdentifier:@"ch.felixmorgner.FlickrKit"];
