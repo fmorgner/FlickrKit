@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FlickrKitConstants.h"
+#import "FlickrKitResourceManager.h"
 
 NSString* flickrImageSizeString(FlickrImageSize size)
 	{
@@ -45,5 +46,35 @@ NSString* flickrImageSizeString(FlickrImageSize size)
 
 extern NSString* flickrImageSizeLocalizedString(FlickrImageSize size)
 	{
-	return nil;
+	NSString* returnString = nil;
+	NSBundle* kitBundle = [NSBundle bundleWithIdentifier:@"ch.felixmorgner.FlickrKit"];
+	
+	switch (size)
+		{
+  case FlickrImageSizeSquare:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSquare", @"FlickrImageSize", kitBundle, @"The square size");
+    break;
+  case FlickrImageSizeThumbnail:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeThumbnail", @"FlickrImageSize", kitBundle, @"The thumbnail size");    
+    break;
+  case FlickrImageSizeSmall:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSmall", @"FlickrImageSize", kitBundle, @"The small size");    
+    break;
+  case FlickrImageSizeMedium:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium", @"FlickrImageSize", kitBundle, @"The medium size");    
+    break;
+  case FlickrImageSizeMedium640:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium640", @"FlickrImageSize", kitBundle, @"The medium 640 size");    
+    break;
+  case FlickrImageSizeLarge:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeLarge", @"FlickrImageSize", kitBundle, @"The large size");    
+    break;
+  case FlickrImageSizeOriginal:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeOriginal", @"FlickrImageSize", kitBundle, @"The original size");    
+    break;
+  default:
+    break;
+		}
+	
+	return returnString;
 	}
