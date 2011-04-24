@@ -18,7 +18,6 @@
 	NSDate* firstPhotoUploaded;
 	NSUInteger photoCount;
 	BOOL proStatus;
-	BOOL loaded;
 	
 	@protected
 	short iconServerID;

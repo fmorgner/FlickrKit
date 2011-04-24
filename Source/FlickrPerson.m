@@ -69,7 +69,6 @@
 	
   if ((self = [super init]))
 		{
-		loaded = NO;
 		self.ID = anID;
 		receivedData = [[NSMutableData alloc] init];
 		[self fetchPersonInformation];
@@ -110,7 +109,7 @@
 	self.firstPhotoTaken = [NSDate dateWithString:[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue]];
 	self.firstPhotoUploaded = [NSDate dateWithTimeIntervalSince1970:[[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue] intValue]];
 	
-	loaded = YES;
+	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPersonLoadingDidFinishNotification object:self];
 	}
 
 - (void)fetchPersonInformation
