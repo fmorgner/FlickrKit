@@ -141,8 +141,7 @@
 	[dataFetcher fetchDataAtURL:exifURL withCompletionHandler:^(id fetchResult) {
 		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
 			{
-			NSXMLDocument* xmlDocument = [(FlickrAPIResponse*)fetchResult xmlContent];
-			NSArray* nodes = [xmlDocument nodesForXPath:@"rsp/photo/exif" error:nil];
+			NSArray* nodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/photo/exif" error:nil];
 			NSMutableArray* fetchedExifTags = [NSMutableArray arrayWithCapacity:[nodes count]];
 			for(NSXMLElement* element in nodes)
 				{
@@ -166,8 +165,7 @@
 		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
 			{
 			NSError* error;
-			NSXMLDocument* xmlDocument = [(FlickrAPIResponse*)fetchResult xmlContent];
-			NSArray* nodes = [xmlDocument nodesForXPath:[NSString stringWithFormat:@"rsp/sizes/size[@label='%@']", flickrImageSizeString(aSize)] error:&error];
+			NSArray* nodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:[NSString stringWithFormat:@"rsp/sizes/size[@label='%@']", flickrImageSizeString(aSize)] error:&error];
 			
 			if(error)
 				return; // TODO: add more sophisticated error handling
