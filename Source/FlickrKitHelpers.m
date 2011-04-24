@@ -42,3 +42,8 @@ NSString* flickrImageSizeString(FlickrImageSize size)
 	
 	return returnString;
 	}
+
+extern NSString* flickrImageSizeLocalizedString(FlickrImageSize size)
+	{
+	return nil;
+	}

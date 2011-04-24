@@ -83,3 +83,6 @@ typedef enum _FlickrImageSize
 // This can be very useful to formulate and xpath query.
 
 extern NSString* flickrImageSizeString(FlickrImageSize size);
+
+// Returns an NSString object containing the localized name of the given FlickrImageSize.
+extern NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
