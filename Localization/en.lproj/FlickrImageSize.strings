@@ -5,3 +5,11 @@
   Created by Felix Morgner on 24.04.11.
   Copyright 2011 Felix Morgner. All rights reserved.
 */
+
+"FlickrImageSizeSquare"    = "Square";
+"FlickrImageSizeThumbnail" = "Thumbnail";
+"FlickrImageSizeSmall"     = "Small";
+"FlickrImageSizeMedium"    = "Medium";
+"FlickrImageSizeMedium640" = "Medium (640)";
+"FlickrImageSizeLarge"     = "Large";
+"FlickrImageSizeOriginal"  = "Original";

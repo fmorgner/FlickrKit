@@ -6,22 +6,10 @@
   Copyright 2011 Felix Morgner. All rights reserved.
 */
 
-/*
-
-  FlickrImageSizeSquare = 1,
-	FlickrImageSizeThumbnail = 2,
-	FlickrImageSizeSmall = 4,
-	FlickrImageSizeMedium = 8,
-	FlickrImageSizeMedium640 = 16,
-	FlickrImageSizeLarge = 32,
-	FlickrImageSizeOriginal = 64,
-
-*/
-
-"FlickrImageSizeSquare"    = "Square";
-"FlickrImageSizeThumbnail" = "Thumbnail";
-"FlickrImageSizeSmall"     = "Small";
-"FlickrImageSizeMedium"    = "Medium";
-"FlickrImageSizeMedium640" = "Medium (640)";
-"FlickrImageSizeLarge"     = "Large";
-"FlickrImageSizeOriginal"  = "Original";
+"FlickrImageSizeSquare"    = "Quadratisch";
+"FlickrImageSizeThumbnail" = "Vorschaubild";
+"FlickrImageSizeSmall"     = "Klein";
+"FlickrImageSizeMedium"    = "Mittel";
+"FlickrImageSizeMedium640" = "Mittel (640)";
+"FlickrImageSizeLarge"     = "Gross";
+"FlickrImageSizeOriginal"  = "Originalgrösse";
