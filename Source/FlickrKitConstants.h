@@ -86,3 +86,7 @@ extern NSString* flickrImageSizeString(FlickrImageSize size);
 
 // Returns an NSString object containing the localized name of the given FlickrImageSize.
 extern NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
+
+// ---- Notifications ---- //
+
+static NSString* FlickrPersonLoadingDidFinishNotification = @"FlickrPersonLoadingDidFinishNotification";
