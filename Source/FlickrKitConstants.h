@@ -65,6 +65,11 @@ static NSString* FlickrAPIMethodGalleriesGetListForPhoto = @"flickr.galleries.ge
 // This method is used to gather some information about a person.
 static NSString* FlickrAPIMethodPeopleGetInfo = @"flickr.people.getInfo";
 
+// - flickr.photoset.* methods
+
+// This method is used to gather some information about a photoset
+static NSString* FlickrAPIMethodPhotosetGetInfo = @"flickr.photosets.getInfo";
+
 // - Helper functions
 
 // This function returns an NSURL object for a given method which is either singed or not signed
