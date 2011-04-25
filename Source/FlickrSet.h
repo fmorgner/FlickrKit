@@ -16,11 +16,11 @@
 	NSString* ID;
 	NSString* title;
 	NSString* desc;
+	NSString* primary;
 	
 	NSUInteger photoCount;
 	
 	FlickrPerson* owner;
-	FlickrPhoto* primary;
 	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
@@ -36,7 +36,7 @@
 @property(nonatomic, assign) NSUInteger photoCount;
 	
 @property(nonatomic, retain) FlickrPerson* owner;
-@property(nonatomic, retain) FlickrPhoto* primary;
+@property(nonatomic, retain) NSString* primary;
 
 
 @end
