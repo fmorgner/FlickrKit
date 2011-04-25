@@ -24,18 +24,7 @@
 		{
 		self.ID = [[anElement attributeForName:@"id"] stringValue];
 		self.title = [[[anElement elementsForName:@"title"] lastObject] stringValue];
-
-		FlickrPerson* searchResult = [[FlickrPersonManager sharedManager] personForID:[[anElement attributeForName:@"owner"] stringValue]];
-		
-		if (searchResult)
-			{
-			self.owner = searchResult;
-  		}
-		else
-			{
-			self.owner = [FlickrPerson personWithID:[[anElement attributeForName:@"author"] stringValue]];
-			[[FlickrPersonManager sharedManager] addPerson:self.owner];
-			}
+		self.owner = [FlickrPerson personWithID:[[anElement attributeForName:@"author"] stringValue]];
     }
 	return self;
 	}
@@ -47,6 +36,8 @@
 		self.ID = anID;
 		self.title = aTitle;
 		}
+	
+	
 	
 	return self;
 	}
