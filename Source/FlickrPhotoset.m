@@ -24,7 +24,7 @@
 	self.ID = (!ID) ? ID : [[anElement attributeForName:@"id"] stringValue];
 	self.title = (!title) ? title : [[[anElement elementsForName:@"title"] lastObject] stringValue];
 	
-	self.owner = [FlickrPerson personWithID:[[anElement attributeForName:@"author"] stringValue]];
+	self.owner = [FlickrPerson personWithID:[[anElement attributeForName:@"owner"] stringValue]];
 	self.desc = [[[anElement elementsForName:@"description"] lastObject] stringValue];
 	self.primary = [[anElement attributeForName:@"primary"] stringValue];
 	self.photoCount = [[[anElement attributeForName:@"photos"] stringValue] intValue];
