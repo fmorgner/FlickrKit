@@ -45,8 +45,10 @@
 - (id)initWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;
 - (id)initWithDictionary:(NSDictionary*)aDictionary  error:(NSError**)error;
 - (id)initWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
+- (id)initWithID:(NSString*)anID;
 
 + (FlickrPhoto*)photo;
++ (FlickrPhoto*)photoWithID:(NSString*)anID;
 + (FlickrPhoto*)photoWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;
 + (FlickrPhoto*)photoWithDictionary:(NSDictionary*)aDictionary  error:(NSError**)error;
 + (FlickrPhoto*)photoWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
