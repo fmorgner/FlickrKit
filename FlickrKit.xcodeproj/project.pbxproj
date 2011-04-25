@@ -37,6 +37,8 @@
 		C7D25BFA135DE887003FF694 /* FlickrAsynchronousFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = C7D25BF8135DE887003FF694 /* FlickrAsynchronousFetcher.h */; };
 		C7D25BFB135DE887003FF694 /* FlickrAsynchronousFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D25BF9135DE887003FF694 /* FlickrAsynchronousFetcher.m */; };
 		C7DF0BC3133B62D6001BE05B /* FlickrKitConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = C7DF0BC2133B62D6001BE05B /* FlickrKitConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7E7A08B1365AF7D00BA33AD /* NSString+MD5Hash.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E7A0891365AF7D00BA33AD /* NSString+MD5Hash.h */; };
+		C7E7A08C1365AF7D00BA33AD /* NSString+MD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E7A08A1365AF7D00BA33AD /* NSString+MD5Hash.m */; };
 		C7E99E5F133142DE0027226A /* FlickrPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E99E5D133142DD0027226A /* FlickrPerson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7E99E60133142DE0027226A /* FlickrPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E99E5E133142DD0027226A /* FlickrPerson.m */; };
 		C7E99E641331457E0027226A /* FlickrPersonManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E99E621331457E0027226A /* FlickrPersonManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,6 +81,8 @@
 		C7D25BF8135DE887003FF694 /* FlickrAsynchronousFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAsynchronousFetcher.h; sourceTree = "<group>"; };
 		C7D25BF9135DE887003FF694 /* FlickrAsynchronousFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrAsynchronousFetcher.m; sourceTree = "<group>"; };
 		C7DF0BC2133B62D6001BE05B /* FlickrKitConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrKitConstants.h; sourceTree = "<group>"; };
+		C7E7A0891365AF7D00BA33AD /* NSString+MD5Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Hash.h"; sourceTree = "<group>"; };
+		C7E7A08A1365AF7D00BA33AD /* NSString+MD5Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Hash.m"; sourceTree = "<group>"; };
 		C7E99E5D133142DD0027226A /* FlickrPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPerson.h; sourceTree = "<group>"; };
 		C7E99E5E133142DD0027226A /* FlickrPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPerson.m; sourceTree = "<group>"; };
 		C7E99E621331457E0027226A /* FlickrPersonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPersonManager.h; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 				C7E99E5E133142DD0027226A /* FlickrPerson.m */,
 				C7E99E621331457E0027226A /* FlickrPersonManager.h */,
 				C7E99E631331457E0027226A /* FlickrPersonManager.m */,
+				C7E7A0891365AF7D00BA33AD /* NSString+MD5Hash.h */,
+				C7E7A08A1365AF7D00BA33AD /* NSString+MD5Hash.m */,
 				C7692539132FEC6D005F6AC3 /* Supporting Files */,
 			);
 			path = Source;
@@ -225,6 +231,7 @@
 				C7D25BF5135DE373003FF694 /* FlickrEXIFTag.h in Headers */,
 				C7D25BFA135DE887003FF694 /* FlickrAsynchronousFetcher.h in Headers */,
 				C7638781136376D100362B2F /* FlickrSet.h in Headers */,
+				C7E7A08B1365AF7D00BA33AD /* NSString+MD5Hash.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +317,7 @@
 				C7D25BFB135DE887003FF694 /* FlickrAsynchronousFetcher.m in Sources */,
 				C7AE251D1363650400C3D48D /* FlickrKitHelpers.m in Sources */,
 				C7638782136376D100362B2F /* FlickrSet.m in Sources */,
+				C7E7A08C1365AF7D00BA33AD /* NSString+MD5Hash.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
