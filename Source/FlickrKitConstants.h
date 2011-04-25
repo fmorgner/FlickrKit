@@ -38,32 +38,32 @@ static NSString* FlickrAPIBaseURL = @"http://api.flickr.com/services/rest/?metho
 // - flickr.photos.* methods
 
 // This method is used to gather some basic information about a photo.
-static NSString* FlickrAPIMethodPhotosGetInfo = @"flickr.photos.getInfo&photo_id=%@";
+static NSString* FlickrAPIMethodPhotosGetInfo = @"flickr.photos.getInfo";
 
 // This method is used to gather all visible pools and sets a photo belongs to.
-static NSString* FlickrAPIMethodPhotosGetAllContexts = @"flickr.photos.getAllContexts&photo_id=%@";
+static NSString* FlickrAPIMethodPhotosGetAllContexts = @"flickr.photos.getAllContexts";
 
 // This method is used to gather all comments on a photo.
-static NSString* FlickrAPIMethodPhotosCommentsGetList = @"flickr.photos.comments.getList&photo_id=%@";
+static NSString* FlickrAPIMethodPhotosCommentsGetList = @"flickr.photos.comments.getList";
 
 // This method is used to gather a list of people who favorited a photo.
-static NSString* FlickrAPIMethodPhotosGetFavorites = @"flickr.photos.getFavorites&photo_id=%@";
+static NSString* FlickrAPIMethodPhotosGetFavorites = @"flickr.photos.getFavorites";
 
 // This method is used to gather a list of URLs for available sizes of a photo.
-static NSString* FlickrAPIMethodPhotosGetSizes = @"flickr.photos.getSizes&photo_id=%@";
+static NSString* FlickrAPIMethodPhotosGetSizes = @"flickr.photos.getSizes";
 
 // This method is used to gather the EXIF information of a photo.
-static NSString* FlickrAPIMethodPhotosGetEXIF = @"flickr.photos.getExif&photo_id=%@";
+static NSString* FlickrAPIMethodPhotosGetEXIF = @"flickr.photos.getExif";
 
 // - flickr.galleries.* methods
 
 // This method is used to gather a list of galleries a photo appears in.
-static NSString* FlickrAPIMethodGalleriesGetListForPhoto = @"flickr.galleries.getListForPhoto&photo_id=%@";
+static NSString* FlickrAPIMethodGalleriesGetListForPhoto = @"flickr.galleries.getListForPhoto";
 
 // - flickr.people.* methods
 
 // This method is used to gather some information about a person.
-static NSString* FlickrAPIMethodPeopleGetInfo = @"flickr.people.getInfo&user_id=%@";
+static NSString* FlickrAPIMethodPeopleGetInfo = @"flickr.people.getInfo";
 
 // - Helper functions
 
