@@ -47,7 +47,7 @@
 	completionHandler = [block copy];
 	
 	NSURLRequest* request = [NSURLRequest requestWithURL:url];
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	[NSURLConnection connectionWithRequest:request delegate:self];
 	}
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -58,12 +58,11 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 	{
 	FlickrAPIResponse* response = [[FlickrAPIResponse alloc] initWithData:receivedData];
-	dispatch_queue_t dispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 
 	if(response.status)
-		dispatch_async(dispatchQueue, ^{ completionHandler(response); });
+		completionHandler(response);
 	else
-		dispatch_async(dispatchQueue, ^{ completionHandler(receivedData); });
+		completionHandler(receivedData);
 
 	[receivedData setLength:0];
 	}
