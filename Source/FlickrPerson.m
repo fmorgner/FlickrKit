@@ -22,7 +22,6 @@
 @synthesize firstPhotoUploaded;
 @synthesize photoCount;
 @synthesize proStatus;
-@synthesize loaded;
 
 - (id)init
 	{
@@ -131,6 +130,7 @@
 				[self loadPersonInformationFromXMLElement:personElement];
 				}
 	}];
+	[dataFetcher release];
 	}
 
 @end
