@@ -13,7 +13,7 @@
 #import "FlickrLicense.h"
 #import "FlickrPerson.h"
 #import "FlickrEXIFTag.h"
-#import "FlickrSet.h"
+#import "FlickrPhotoset.h"
 
 @implementation FlickrPhoto
 
@@ -205,7 +205,7 @@
 			NSMutableArray* setArray = [NSMutableArray arrayWithCapacity:[setNodes count]];
 			for(NSXMLElement* element in setNodes)
 				{
-				[setArray addObject:[FlickrSet setWithID:[[element attributeForName:@"id"] stringValue] title:[[element attributeForName:@"title"] stringValue]]];
+				[setArray addObject:[FlickrPhotoset setWithID:[[element attributeForName:@"id"] stringValue] title:[[element attributeForName:@"title"] stringValue]]];
 				}
 			self.sets = setArray;
 
