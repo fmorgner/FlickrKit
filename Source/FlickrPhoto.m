@@ -20,7 +20,7 @@
 @synthesize image;
 @synthesize pools;
 @synthesize tags;
-@synthesize sets;
+@synthesize photosets;
 @synthesize comments;
 @synthesize commentCount;
 @synthesize title;
@@ -207,7 +207,7 @@
 				{
 				[setArray addObject:[FlickrPhotoset setWithID:[[element attributeForName:@"id"] stringValue] title:[[element attributeForName:@"title"] stringValue]]];
 				}
-			self.sets = setArray;
+			self.photosets = setArray;
 
 			NSArray* poolNodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/pool" error:nil];
 
@@ -263,7 +263,7 @@
 	[tags release];
 	[image release];
 	[pools release];
-	[sets release];
+	[photosets release];
 	[comments release];
 	[title release];
 	[favorites release];

@@ -25,7 +25,7 @@
 	NSDate* datePosted;
 	NSDate* dateLastUpdate;
 	
-	NSArray* sets;
+	NSArray* photosets;
 	NSArray* pools;
 	NSArray* tags;
 	NSArray* comments;
@@ -69,7 +69,7 @@
 @property(nonatomic, retain) NSDate* datePosted;
 @property(nonatomic, retain) NSDate* dateLastUpdate;
 
-@property(nonatomic, retain) NSArray* sets;
+@property(nonatomic, retain) NSArray* photosets;
 @property(nonatomic, retain) NSArray* pools;
 @property(nonatomic, retain) NSArray* tags;
 @property(nonatomic, retain) NSArray* comments;
