@@ -146,7 +146,7 @@
 	
 - (void)fetchEXIFInformation
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetEXIF, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);;
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetEXIF, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
 
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
@@ -166,7 +166,7 @@
 
 - (void)fetchImageOfSize:(FlickrImageSize)aSize
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetSizes, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);;
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetSizes, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
 
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
