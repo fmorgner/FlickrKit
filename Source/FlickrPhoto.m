@@ -131,13 +131,9 @@
 	
 - (void)fetchEXIFInformation
 	{
-	NSString* methodString = [NSString stringWithFormat:FlickrAPIMethodPhotosGetEXIF, ID];
-	NSString* urlString = [NSString stringWithFormat:FlickrAPIBaseURL, methodString, APIKey];
-	
-	NSURL* exifURL = [NSURL URLWithString:urlString];
+	NSURL* exifURL = flickrMethodURL(FlickrAPIMethodPhotosGetEXIF, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);;
 
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	
 	[dataFetcher fetchDataAtURL:exifURL withCompletionHandler:^(id fetchResult) {
 		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
 			{
@@ -154,13 +150,9 @@
 
 - (void)fetchImageOfSize:(FlickrImageSize)aSize
 	{
-	NSString* methodString = [NSString stringWithFormat:FlickrAPIMethodPhotosGetSizes, ID];
-	NSString* urlString = [NSString stringWithFormat:FlickrAPIBaseURL, methodString, APIKey];
-	
-	NSURL* sizeURL = [NSURL URLWithString:urlString];
+	NSURL* sizeURL = flickrMethodURL(FlickrAPIMethodPhotosGetSizes, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
 
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	
 	[dataFetcher fetchDataAtURL:sizeURL withCompletionHandler:^(id fetchResult) {
 		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
 			{
