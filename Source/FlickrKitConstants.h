@@ -9,6 +9,7 @@
 // This macro allows us to easily retrieve the API key in any place of the framework
 
 #define APIKey [(NSObject*)[NSApp delegate] valueForKey:@"apiKey"]
+#define APISecret [(NSObject*)[NSApp delegate] valueForKey:@"apiSecret"]
 
 // ---- API call URL stuff ---- //
 
@@ -63,6 +64,18 @@ static NSString* FlickrAPIMethodGalleriesGetListForPhoto = @"flickr.galleries.ge
 
 // This method is used to gather some information about a person.
 static NSString* FlickrAPIMethodPeopleGetInfo = @"flickr.people.getInfo&user_id=%@";
+
+// - Helper functions
+
+// This function returns an NSURL object for a given method which is either singed or not signed
+// with a user token. This NSURL object can then be used to call API methods.
+//
+// This function takes three arguments:
+// method: the method to call
+// arguments: the arguments for the method
+// sign: whether or no to sing the call with a user token
+
+extern NSURL* flickrMethodURL(NSString* method, NSDictionary* arguments, BOOL sign);
 
 // ---- Image size stuff ---- //
 
