@@ -82,7 +82,7 @@ static FlickrPersonManager* sharedPersonManager = nil;
   return UINT_MAX;
 	}
  
-- (void)release
+- (oneway void)release
 	{
 	}
  
