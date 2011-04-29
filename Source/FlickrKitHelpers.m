@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "FlickrKitConstants.h"
 #import "FlickrPhoto.h"
-#import "FlickrKitResourceManager.h"
 #import "NSString+MD5Hash.h"
 
 NSURL* flickrMethodURL(NSString* method, NSDictionary* arguments, BOOL sign)
