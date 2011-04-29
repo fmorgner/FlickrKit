@@ -8,6 +8,7 @@
 
 #import "FlickrAsynchronousFetcher.h"
 #import "FlickrAPIResponse.h"
+#import "FlickrKitConstants.h"
 
 @implementation FlickrAsynchronousFetcher
 
@@ -48,6 +49,20 @@
 	
 	NSURLRequest* request = [NSURLRequest requestWithURL:url];
 	[NSURLConnection connectionWithRequest:request delegate:self];
+	}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+	{
+	if(((NSHTTPURLResponse*)response).statusCode >= 400)
+		{
+		NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+		
+		[userInfo setObject:url forKey:FlickrURLKey];
+		[userInfo setObject:[NSNumber numberWithInteger:((NSHTTPURLResponse*)response).statusCode] forKey:FlickrHTTPStatusKey];
+		[userInfo setObject:[NSHTTPURLResponse localizedStringForStatusCode:((NSHTTPURLResponse*)response).statusCode] forKey:FlickrDescriptionKey];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAsynchronousFetcherConnectionDidFailNotification object:self userInfo:(NSDictionary*)userInfo];
+		}
 	}
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
