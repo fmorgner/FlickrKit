@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "FlickrKitConstants.h"
 
+#define kFlickrPhotoInformationEXIF 1
+#define kFlickrPhotoInformationContexts 2
+#define kFlickrPhotoInformationComments 4
+#define kFlickrPhotoInformationFavorites 8
+
+#define kFlickrPhotoInformationAll 15
+
 @class FlickrPerson;
 @class FlickrLicense;
 @class FlickrAPIResponse;
@@ -52,6 +59,8 @@
 + (FlickrPhoto*)photoWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;
 + (FlickrPhoto*)photoWithDictionary:(NSDictionary*)aDictionary  error:(NSError**)error;
 + (FlickrPhoto*)photoWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
+
+- (void)fetchInformation:(unsigned int)anInformationMask;
 
 - (void)fetchEXIFInformation;
 - (void)fetchImageOfSize:(FlickrImageSize)aSize;

@@ -143,7 +143,22 @@
 	}
 
 #pragma mark - Information Fetching
-	
+
+- (void)fetchInformation:(unsigned int)anInformationMask
+	{
+	if(anInformationMask & kFlickrPhotoInformationEXIF)
+		[self fetchEXIFInformation];
+		
+	if(anInformationMask & kFlickrPhotoInformationContexts)
+		[self fetchContexts];
+		
+	if(anInformationMask & kFlickrPhotoInformationComments)
+		[self fetchComments];
+
+	if(anInformationMask & kFlickrPhotoInformationFavorites)
+		[self fetchFavorites];
+	}	
+
 - (void)fetchEXIFInformation
 	{
 	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetEXIF, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
