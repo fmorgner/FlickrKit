@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-enum
+typedef enum _FlickrLicenseCode
 	{
-  FlickrLicenseAllRightsReserved = 0,
-  FlickrLicenseCCByNcSa = 1,
-	FlickrLicenseCCByNc = 2,
-	FlickrLicenseCCByNcNd = 3,
-	FlickrLicenseCCBy = 4,
-	FlickrLicenseCCBySa = 5,
-	FlickrLicenseCCByNd = 6,
-	FlickrLicenseNoKnownRestrictions = 7,
-	FlickrLicenseUSGovernmentWork = 8
-	};
+  kFlickrLicenseAllRightsReserved = 0,
+  kFlickrLicenseCCByNcSa = 1,
+	kFlickrLicenseCCByNc = 2,
+	kFlickrLicenseCCByNcNd = 3,
+	kFlickrLicenseCCBy = 4,
+	kFlickrLicenseCCBySa = 5,
+	kFlickrLicenseCCByNd = 6,
+	kFlickrLicenseNoKnownRestrictions = 7,
+	kFlickrLicenseUSGovernmentWork = 8
+	} FlickrLicenseCode;
 
 @interface FlickrLicense : NSObject
 	{
@@ -27,11 +27,12 @@ enum
   NSInteger code;
 	}
 
-- (id)initWithCode:(NSInteger)aCode;
-+ (id)licenseWithCode:(NSInteger)aCode;
+- (id)initWithCode:(FlickrLicenseCode)aCode;
++ (id)licenseWithCode:(FlickrLicenseCode)aCode;
 
 - (NSString*)name;
 - (NSURL*)URL;
+- (NSArray*)icons;
 
 @property(nonatomic, assign) NSInteger code;
 
