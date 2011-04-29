@@ -20,13 +20,13 @@
 
 typedef enum _FlickrImageSize
 	{
-  FlickrImageSizeSquare = 1,
-	FlickrImageSizeThumbnail = 2,
-	FlickrImageSizeSmall = 4,
-	FlickrImageSizeMedium = 8,
-	FlickrImageSizeMedium640 = 16,
-	FlickrImageSizeLarge = 32,
-	FlickrImageSizeOriginal = 64,
+  kFlickrImageSizeSquare = 1,
+	kFlickrImageSizeThumbnail = 2,
+	kFlickrImageSizeSmall = 4,
+	kFlickrImageSizeMedium = 8,
+	kFlickrImageSizeMedium640 = 16,
+	kFlickrImageSizeLarge = 32,
+	kFlickrImageSizeOriginal = 64,
 	} FlickrImageSize;
 	
 // Returns an NSString object representing the name of the given FlickrImageSize.
