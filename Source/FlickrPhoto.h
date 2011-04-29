@@ -16,6 +16,28 @@
 
 #define kFlickrPhotoInformationAll 15
 
+// FlickrImageSize enumeration: represents the sizes of images you can fetch from flickr.
+
+typedef enum _FlickrImageSize
+	{
+  FlickrImageSizeSquare = 1,
+	FlickrImageSizeThumbnail = 2,
+	FlickrImageSizeSmall = 4,
+	FlickrImageSizeMedium = 8,
+	FlickrImageSizeMedium640 = 16,
+	FlickrImageSizeLarge = 32,
+	FlickrImageSizeOriginal = 64,
+	} FlickrImageSize;
+	
+// Returns an NSString object representing the name of the given FlickrImageSize.
+// This can be very useful to formulate and xpath query.
+
+NSString* flickrImageSizeString(FlickrImageSize size);
+
+// Returns an NSString object containing the localized name of the given FlickrImageSize.
+NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
+
+
 @class FlickrPerson;
 @class FlickrLicense;
 @class FlickrAPIResponse;

@@ -6,7 +6,6 @@
 //  Copyright 2011 Felix Morgner. All rights reserved.
 //
 
-
 // ---- API call URL stuff ---- //
 
 /* 
@@ -79,27 +78,6 @@ static NSString* FlickrAPIMethodPhotosetGetInfo = @"flickr.photosets.getInfo";
 extern NSURL* flickrMethodURL(NSString* method, NSDictionary* arguments, BOOL sign);
 
 // ---- Image size stuff ---- //
-
-// FlickrImageSize enumeration: represents the sizes of images you can fetch from flickr.
-
-typedef enum _FlickrImageSize
-	{
-  FlickrImageSizeSquare = 1,
-	FlickrImageSizeThumbnail = 2,
-	FlickrImageSizeSmall = 4,
-	FlickrImageSizeMedium = 8,
-	FlickrImageSizeMedium640 = 16,
-	FlickrImageSizeLarge = 32,
-	FlickrImageSizeOriginal = 64,
-	} FlickrImageSize;
-	
-// Returns an NSString object representing the name of the given FlickrImageSize.
-// This can be very useful to formulate and xpath query.
-
-extern NSString* flickrImageSizeString(FlickrImageSize size);
-
-// Returns an NSString object containing the localized name of the given FlickrImageSize.
-extern NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
 
 // ---- Notifications ---- //
 
