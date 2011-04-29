@@ -5,3 +5,8 @@
 #ifdef __OBJC__
 	#import <Cocoa/Cocoa.h>
 #endif
+
+// These macros allow us to easily retrieve the API key and API secret at any place of the framework
+
+#define APIKey [(NSObject*)[NSApp delegate] valueForKey:@"apiKey"]
+#define APISecret [(NSObject*)[NSApp delegate] valueForKey:@"apiSecret"]

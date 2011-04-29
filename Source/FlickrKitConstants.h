@@ -6,10 +6,6 @@
 //  Copyright 2011 Felix Morgner. All rights reserved.
 //
 
-// This macro allows us to easily retrieve the API key in any place of the framework
-
-#define APIKey [(NSObject*)[NSApp delegate] valueForKey:@"apiKey"]
-#define APISecret [(NSObject*)[NSApp delegate] valueForKey:@"apiSecret"]
 
 // ---- API call URL stuff ---- //
 
