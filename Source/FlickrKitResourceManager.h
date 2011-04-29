@@ -11,8 +11,6 @@
 
 @interface FlickrKitResourceManager : NSObject
 	{
-	@private
-	NSBundle* kitBundle;
 	}
 	
 + (FlickrKitResourceManager*)sharedManager;

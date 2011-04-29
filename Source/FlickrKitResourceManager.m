@@ -19,7 +19,7 @@ static FlickrKitResourceManager* sharedResourceManager = nil;
 	{
 	if((self = [super init]))
 		{
-		kitBundle = [NSBundle bundleWithIdentifier:@"ch.felixmorgner.FlickrKit"];
+
 		}
 	return self;
 	}
@@ -80,11 +80,11 @@ static FlickrKitResourceManager* sharedResourceManager = nil;
 
 	if(aLicense.code == FlickrLicenseCCBy || aLicense.code ==  FlickrLicenseCCByNc || aLicense.code ==  FlickrLicenseCCByNcNd || aLicense.code ==  FlickrLicenseCCByNcSa || aLicense.code ==  FlickrLicenseCCByNd || aLicense.code ==  FlickrLicenseCCBySa)
 		{	
-		NSImage* ccImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"cc.large" ofType:@"png"]] autorelease];
-		NSImage* byImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"by.large" ofType:@"png"]] autorelease];
-		NSImage* ncImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"nc.large" ofType:@"png"]] autorelease];
-		NSImage* ndImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"nd.large" ofType:@"png"]] autorelease];
-		NSImage* saImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"sa.large" ofType:@"png"]] autorelease];
+		NSImage* ccImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"cc.large" ofType:@"png"]] autorelease];
+		NSImage* byImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"by.large" ofType:@"png"]] autorelease];
+		NSImage* ncImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"nc.large" ofType:@"png"]] autorelease];
+		NSImage* ndImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"nd.large" ofType:@"png"]] autorelease];
+		NSImage* saImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"sa.large" ofType:@"png"]] autorelease];
 
 		switch (aLicense.code)
 			{
@@ -136,7 +136,7 @@ static FlickrKitResourceManager* sharedResourceManager = nil;
 		}
 	else if(aLicense.code == FlickrLicenseAllRightsReserved)
 		{
-		NSImage* crImage = [[[NSImage alloc] initWithContentsOfFile:[kitBundle pathForResource:@"cr.large" ofType:@"png"]] autorelease];
+		NSImage* crImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"cr.large" ofType:@"png"]] autorelease];
 		returnArray = [NSArray arrayWithObject:crImage];
 		[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 			[(NSImage*)obj setName:[aLicense name]];
