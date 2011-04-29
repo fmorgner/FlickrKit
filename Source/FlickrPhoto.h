@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "FlickrKitConstants.h"
 
-#define kFlickrPhotoInformationEXIF 1
-#define kFlickrPhotoInformationContexts 2
-#define kFlickrPhotoInformationComments 4
-#define kFlickrPhotoInformationFavorites 8
-
-#define kFlickrPhotoInformationAll 15
+typedef enum _FlickrPhotoInformation
+	{
+	kFlickrPhotoInformationEXIF = 1,
+	kFlickrPhotoInformationContexts = 2,
+	kFlickrPhotoInformationComments = 4,
+	kFlickrPhotoInformationFavorites = 8,
+	kFlickrPhotoInformationGeneral = 16,
+	kFlickrPhotoInformationAll = 31
+	} FlickrPhotoInformation;
 
 // FlickrImageSize enumeration: represents the sizes of images you can fetch from flickr.
 
@@ -86,6 +89,7 @@ NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
 - (void)fetchContexts;
 - (void)fetchComments;
 - (void)fetchFavorites;
+- (void)fetchGeneralInformation;
 
 @property(nonatomic, retain) NSString* ID;
 @property(nonatomic, retain) NSString* title;

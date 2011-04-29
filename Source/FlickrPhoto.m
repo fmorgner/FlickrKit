@@ -15,6 +15,52 @@
 #import "FlickrEXIFTag.h"
 #import "FlickrPhotoset.h"
 
+@interface FlickrPhoto(Private)
+
+- (void)loadInformationFromXMLElement:(NSXMLElement*)anElement;
+
+@end
+
+@implementation FlickrPhoto(Private)
+
+- (void)loadInformationFromXMLElement:(NSXMLElement*)anElement
+	{
+	if(!anElement)
+		return;
+	
+	self.ID = [[(NSXMLElement*)anElement attributeForName:@"id"] stringValue];
+	self.title = [[[(NSXMLElement*)anElement nodesForXPath:@"title" error:nil] lastObject] stringValue];
+	self.description = [[[(NSXMLElement*)anElement nodesForXPath:@"description" error:nil] lastObject] stringValue];
+
+	self.commentCount = [[[[(NSXMLElement*)anElement nodesForXPath:@"comments" error:nil] lastObject] stringValue] intValue];
+	self.license = [FlickrLicense licenseWithCode:[[[(NSXMLElement*)anElement attributeForName:@"license"] stringValue] intValue]];
+
+	NSXMLElement* ownerElement = [[anElement nodesForXPath:@"owner" error:nil] lastObject];
+	self.owner = [FlickrPerson personWithID:[[ownerElement attributeForName:@"nsid"] stringValue]];
+
+	NSXMLElement* datesElement = [[anElement nodesForXPath:@"dates" error:nil] lastObject];
+	self.dateTaken = [NSDate dateWithNaturalLanguageString:[[datesElement attributeForName:@"taken"] stringValue]];
+	self.datePosted = [NSDate dateWithTimeIntervalSince1970:[[[datesElement attributeForName:@"posted"] stringValue] doubleValue]];
+	self.dateLastUpdate = [NSDate dateWithTimeIntervalSince1970:[[[datesElement attributeForName:@"lastupdate"] stringValue] doubleValue]];
+	
+	NSArray* tagsArray = [(NSXMLElement*)anElement nodesForXPath:@"tags/tag" error:nil];
+	NSMutableArray* parsedTagsArray = [NSMutableArray arrayWithCapacity:[tagsArray count]];
+	[tagsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		[parsedTagsArray addObject:[FlickrTag tagWithXMLElement:obj]];
+	}];
+	self.tags = (NSArray*)parsedTagsArray;
+	
+	NSArray* urlsArray = [(NSXMLElement*)anElement nodesForXPath:@"urls/url" error:nil];
+	NSMutableDictionary* urlsDictionary = [NSMutableDictionary dictionaryWithCapacity:[urlsArray count]];
+	[urlsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		[urlsDictionary setObject:[NSURL URLWithString:[obj stringValue]] forKey:[[obj attributeForName:@"type"] stringValue]];
+	}];
+	self.URLs = (NSDictionary*)urlsDictionary;
+	}
+
+@end
+
+
 @implementation FlickrPhoto
 
 @synthesize image;
@@ -75,35 +121,9 @@
 	
 	if((self = [super init]))
 		{
-		self.ID = [[(NSXMLElement*)photoElement attributeForName:@"id"] stringValue];
-		self.title = [[[(NSXMLElement*)photoElement nodesForXPath:@"title" error:nil] lastObject] stringValue];
-		self.description = [[[(NSXMLElement*)photoElement nodesForXPath:@"description" error:nil] lastObject] stringValue];
-
-		self.commentCount = [[[[(NSXMLElement*)photoElement nodesForXPath:@"comments" error:nil] lastObject] stringValue] intValue];
-		self.license = [FlickrLicense licenseWithCode:[[[(NSXMLElement*)photoElement attributeForName:@"license"] stringValue] intValue]];
-
-		NSXMLElement* ownerElement = [[photoElement nodesForXPath:@"owner" error:nil] lastObject];
-		self.owner = [FlickrPerson personWithID:[[ownerElement attributeForName:@"nsid"] stringValue]];
-
-		NSXMLElement* datesElement = [[photoElement nodesForXPath:@"dates" error:nil] lastObject];
-		self.dateTaken = [NSDate dateWithNaturalLanguageString:[[datesElement attributeForName:@"taken"] stringValue]];
-		self.datePosted = [NSDate dateWithTimeIntervalSince1970:[[[datesElement attributeForName:@"posted"] stringValue] doubleValue]];
-		self.dateLastUpdate = [NSDate dateWithTimeIntervalSince1970:[[[datesElement attributeForName:@"lastupdate"] stringValue] doubleValue]];
-		
-		NSArray* tagsArray = [(NSXMLElement*)photoElement nodesForXPath:@"tags/tag" error:nil];
-		NSMutableArray* parsedTagsArray = [NSMutableArray arrayWithCapacity:[tagsArray count]];
-		[tagsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-			[parsedTagsArray addObject:[FlickrTag tagWithXMLElement:obj]];
-		}];
-		self.tags = (NSArray*)parsedTagsArray;
-		
-		NSArray* urlsArray = [(NSXMLElement*)photoElement nodesForXPath:@"urls/url" error:nil];
-		NSMutableDictionary* urlsDictionary = [NSMutableDictionary dictionaryWithCapacity:[urlsArray count]];
-		[urlsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-			[urlsDictionary setObject:[NSURL URLWithString:[obj stringValue]] forKey:[[obj attributeForName:@"type"] stringValue]];
-		}];
-		self.URLs = (NSDictionary*)urlsDictionary;
+		[self loadInformationFromXMLElement:photoElement];
 		}
+	
 	return self;
 	}
 
@@ -144,6 +164,9 @@
 
 	if(anInformationMask & kFlickrPhotoInformationFavorites)
 		[self fetchFavorites];
+		
+	if(anInformationMask & kFlickrPhotoInformationGeneral)
+		[self fetchGeneralInformation];
 	}	
 
 - (void)fetchEXIFInformation
@@ -257,6 +280,21 @@
 	[dataFetcher release];
 	}
 
+- (void)fetchGeneralInformation
+	{
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetInfo, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
+	
+	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
+	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
+		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+			{
+			NSXMLElement* photoElement = (NSXMLElement*)[[[(FlickrAPIResponse*)fetchResult xmlContent] rootElement] childAtIndex:0];
+
+			[self loadInformationFromXMLElement:photoElement];
+			}
+	}];
+	[dataFetcher release];
+	}
 
 #pragma mark - Object deallocation
 
