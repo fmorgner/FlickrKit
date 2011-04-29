@@ -17,13 +17,13 @@
 
 @interface FlickrPhoto(Private)
 
-- (void)loadInformationFromXMLElement:(NSXMLElement*)anElement;
+- (void)parseXMLElement:(NSXMLElement*)anElement;
 
 @end
 
 @implementation FlickrPhoto(Private)
 
-- (void)loadInformationFromXMLElement:(NSXMLElement*)anElement
+- (void)parseXMLElement:(NSXMLElement*)anElement
 	{
 	if(!anElement)
 		return;
@@ -121,7 +121,7 @@
 	
 	if((self = [super init]))
 		{
-		[self loadInformationFromXMLElement:photoElement];
+		[self parseXMLElement:photoElement];
 		}
 	
 	return self;
@@ -290,7 +290,7 @@
 			{
 			NSXMLElement* photoElement = (NSXMLElement*)[[[(FlickrAPIResponse*)fetchResult xmlContent] rootElement] childAtIndex:0];
 
-			[self loadInformationFromXMLElement:photoElement];
+			[self parseXMLElement:photoElement];
 			}
 	}];
 	[dataFetcher release];
