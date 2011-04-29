@@ -56,19 +56,19 @@
 		{
 		self.ID = anID;
 		self.title = aTitle;
+		NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosetGetInfo, [NSDictionary dictionaryWithObject:ID forKey:@"photoset_id"], NO);
+		FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
+		[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
+			if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+				{
+				NSError* error;
+				NSXMLElement* photosetElement = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/photoset" error:&error] lastObject];
+				[self loadSetInformationFromXMLElement:photosetElement];
+				}
+
+		}];
+		[dataFetcher release];
 		}
-
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosetGetInfo, [NSDictionary dictionaryWithObject:ID forKey:@"photoset_id"], NO);
-	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSError* error;
-			NSXMLElement* photosetElement = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/photoset" error:&error] lastObject];
-			[self loadSetInformationFromXMLElement:photosetElement];
-			}
-
-	}];
 
 	return self;
 	}
