@@ -63,14 +63,6 @@
 	return self;
 	}
 
-- (id)initWithDictionary:(NSDictionary*)aDictionary error:(NSError**)error
-	{
-	if((self = [super init]))
-		{
-		}
-	return self;
-	}
-
 - (id)initWithAPIResponse:(FlickrAPIResponse*)aResponse error:(NSError**)error
 	{
 	if(!aResponse || [aResponse.status isEqualToString:@"fail"])

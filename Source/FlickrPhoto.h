@@ -70,16 +70,13 @@ NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
 	FlickrPerson* owner;
 	}
 
-
-- (id)initWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;
-- (id)initWithDictionary:(NSDictionary*)aDictionary  error:(NSError**)error;
-- (id)initWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
 - (id)initWithID:(NSString*)anID;
+- (id)initWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;
+- (id)initWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
 
 + (FlickrPhoto*)photo;
 + (FlickrPhoto*)photoWithID:(NSString*)anID;
 + (FlickrPhoto*)photoWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;
-+ (FlickrPhoto*)photoWithDictionary:(NSDictionary*)aDictionary  error:(NSError**)error;
 + (FlickrPhoto*)photoWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
 
 - (void)fetchInformation:(unsigned int)anInformationMask;
