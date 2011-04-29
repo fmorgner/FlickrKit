@@ -49,30 +49,29 @@ NSString* flickrImageSizeString(FlickrImageSize size)
 NSString* flickrImageSizeLocalizedString(FlickrImageSize size)
 	{
 	NSString* returnString = nil;
-	NSBundle* kitBundle = [NSBundle bundleWithIdentifier:@"ch.felixmorgner.FlickrKit"];
 	
 	switch (size)
 		{
   case FlickrImageSizeSquare:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSquare", @"FlickrImageSize", kitBundle, @"The square size");
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSquare", @"FlickrImageSize", KitBundle, @"The square size");
     break;
   case FlickrImageSizeThumbnail:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeThumbnail", @"FlickrImageSize", kitBundle, @"The thumbnail size");    
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeThumbnail", @"FlickrImageSize", KitBundle, @"The thumbnail size");    
     break;
   case FlickrImageSizeSmall:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSmall", @"FlickrImageSize", kitBundle, @"The small size");    
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSmall", @"FlickrImageSize", KitBundle, @"The small size");    
     break;
   case FlickrImageSizeMedium:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium", @"FlickrImageSize", kitBundle, @"The medium size");    
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium", @"FlickrImageSize", KitBundle, @"The medium size");    
     break;
   case FlickrImageSizeMedium640:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium640", @"FlickrImageSize", kitBundle, @"The medium 640 size");    
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium640", @"FlickrImageSize", KitBundle, @"The medium 640 size");    
     break;
   case FlickrImageSizeLarge:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeLarge", @"FlickrImageSize", kitBundle, @"The large size");    
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeLarge", @"FlickrImageSize", KitBundle, @"The large size");    
     break;
   case FlickrImageSizeOriginal:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeOriginal", @"FlickrImageSize", kitBundle, @"The original size");    
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeOriginal", @"FlickrImageSize", KitBundle, @"The original size");    
     break;
   default:
     break;

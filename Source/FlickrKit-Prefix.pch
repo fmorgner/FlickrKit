@@ -10,3 +10,7 @@
 
 #define APIKey [(NSObject*)[NSApp delegate] valueForKey:@"apiKey"]
 #define APISecret [(NSObject*)[NSApp delegate] valueForKey:@"apiSecret"]
+
+// This macro retrieves the framework bundle
+
+#define KitBundle [NSBundle bundleWithIdentifier:@"ch.felixmorgner.FlickrKit"]
