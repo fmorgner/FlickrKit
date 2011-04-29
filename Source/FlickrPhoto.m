@@ -119,11 +119,6 @@
 	return [[[FlickrPhoto alloc] initWithXMLElement:anElement error:(NSError**)error] autorelease];
 	}
 
-+ (FlickrPhoto*)photoWithDictionary:(NSDictionary*)aDictionary error:(NSError**)error
-	{
-	return [[[FlickrPhoto alloc] initWithDictionary:aDictionary error:(NSError**)error] autorelease];
-	}
-
 + (FlickrPhoto*)photoWithAPIResponse:(FlickrAPIResponse*)aResponse error:(NSError**)error
 	{
 	return [[[FlickrPhoto alloc] initWithAPIResponse:aResponse error:(NSError**)error] autorelease];
