@@ -77,8 +77,6 @@ static NSString* FlickrAPIMethodPhotosetGetInfo = @"flickr.photosets.getInfo";
 
 extern NSURL* flickrMethodURL(NSString* method, NSDictionary* arguments, BOOL sign);
 
-// ---- Image size stuff ---- //
-
 // ---- Notifications ---- //
 
 static NSString* FlickrPersonLoadingDidFinishNotification = @"FlickrPersonLoadingDidFinishNotification";
