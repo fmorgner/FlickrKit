@@ -21,7 +21,7 @@
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
 
-- (FlickrComment*)commentWithXMLElement:(NSXMLElement*)anElement;
++ (FlickrComment*)commentWithXMLElement:(NSXMLElement*)anElement;
 
 
 @property(copy) NSString* ID;

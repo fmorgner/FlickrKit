@@ -44,7 +44,7 @@
 	return self;
 	}
 
-- (FlickrComment*)commentWithXMLElement:(NSXMLElement*)anElement
++ (FlickrComment*)commentWithXMLElement:(NSXMLElement*)anElement
 	{
 	return [[[FlickrComment alloc] initWithXMLElement:anElement] autorelease];
 	}
