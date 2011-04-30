@@ -56,6 +56,8 @@
 		[urlsDictionary setObject:[NSURL URLWithString:[obj stringValue]] forKey:[[obj attributeForName:@"type"] stringValue]];
 	}];
 	self.URLs = (NSDictionary*)urlsDictionary;
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPhotoDidFinishLoadingNotification object:self];
 	}
 
 @end
