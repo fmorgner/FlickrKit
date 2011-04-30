@@ -84,6 +84,11 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 	{
+	NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+	[userInfo setObject:url forKey:FlickrURLKey];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAsynchronousFetcherConnectionDidFailNotification object:self userInfo:(NSDictionary*)userInfo];
+
 	completionHandler(error);
 	}
 
