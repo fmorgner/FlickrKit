@@ -14,6 +14,7 @@
 #import "FlickrPerson.h"
 #import "FlickrEXIFTag.h"
 #import "FlickrPhotoset.h"
+#import "FlickrComment.h"
 
 @interface FlickrPhoto(Private)
 
@@ -251,6 +252,22 @@
 	
 - (void)fetchComments
 	{
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosCommentsGetList, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
+
+	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
+	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
+		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+			{
+			NSArray* nodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/comments/comment" error:nil];
+			NSMutableArray* commentsArray = [NSMutableArray arrayWithCapacity:[nodes count]];
+			for(NSXMLElement* element in nodes)
+				{
+				[commentsArray addObject:[FlickrComment commentWithXMLElement:element]];
+				}
+			self.comments = commentsArray;
+			}
+	}];
+	[dataFetcher release];
 	}
 
 - (void)fetchFavorites
