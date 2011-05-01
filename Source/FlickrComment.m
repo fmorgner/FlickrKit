@@ -41,7 +41,7 @@
 		
 		self.strippedText = stripped;
 #else
-		self.stripped = [anElement stringValue];
+		self.strippedText = [anElement stringValue];
 #endif
 
 		}
