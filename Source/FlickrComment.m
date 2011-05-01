@@ -32,13 +32,18 @@
 		self.url = [NSURL URLWithString:[[anElement attributeForName:@"permalink"] stringValue]];
 		self.dateCreated = [NSDate dateWithTimeIntervalSince1970:[[[anElement attributeForName:@"datecreate"] stringValue] integerValue]];
 		self.rawText = [anElement stringValue];
-		
+
+#ifdef  __MAC_10_7		
 		NSRange r;
-		NSString* stripped = [[rawText copy] autorelease];
+		NSString* stripped = [[[anElement stringValue] copy] autorelease];
 		while ((r = [stripped rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
     		stripped = [stripped stringByReplacingCharactersInRange:r withString:@""];
 		
 		self.strippedText = stripped;
+#else
+		self.stripped = [anElement stringValue]
+#endif
+
 		}
     
 	return self;
