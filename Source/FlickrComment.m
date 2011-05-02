@@ -33,17 +33,29 @@
 		self.dateCreated = [NSDate dateWithTimeIntervalSince1970:[[[anElement attributeForName:@"datecreate"] stringValue] integerValue]];
 		self.rawText = [anElement stringValue];
 
-#ifdef  __MAC_10_7		
-		NSRange r;
-		NSString* stripped = [[[anElement stringValue] copy] autorelease];
-		while ((r = [stripped rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
-    		stripped = [stripped stringByReplacingCharactersInRange:r withString:@""];
 		
-		self.strippedText = stripped;
-#else
-		self.strippedText = [anElement stringValue];
-#endif
+	
+		NSMutableString *html = [NSMutableString stringWithCapacity:[rawText length]];
 
+		NSScanner *scanner = [NSScanner scannerWithString:rawText];
+		NSString *tempText = nil;
+
+		while (![scanner isAtEnd])
+			{
+			[scanner scanUpToString:@"<" intoString:&tempText];
+
+			if (tempText != nil)
+			[html appendString:tempText];
+
+			[scanner scanUpToString:@">" intoString:NULL];
+
+			if (![scanner isAtEnd])
+			[scanner setScanLocation:[scanner scanLocation] + 1];
+
+			tempText = nil;
+			}
+
+		self.strippedText = (NSString*)html;
 		}
     
 	return self;
