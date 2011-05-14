@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FlickrPerson : NSObject
+@interface FlickrPerson : NSObject <NSCoding>
 	{
 	NSString* ID;
 	NSString* username;
@@ -22,7 +22,6 @@
 	@protected
 	short iconServerID;
 	short iconFarmID;
-	NSMutableData* receivedData;
 	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
