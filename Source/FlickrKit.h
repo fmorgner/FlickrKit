@@ -7,11 +7,12 @@
 //
 
 #import "FlickrAPIResponse.h"
+#import "FlickrComment.h"
+#import "FlickrEXIFTag.h"
 #import "FlickrKitConstants.h"
 #import "FlickrLicense.h"
 #import "FlickrPhoto.h"
 #import "FlickrPerson.h"
 #import "FlickrPersonManager.h"
 #import "FlickrTag.h"
-#import "FlickrComment.h"
-#import "FlickrEXIFTag.h"
+#import "FlickrUser.h"
