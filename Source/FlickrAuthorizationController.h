@@ -8,10 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@interface FlickrAuthorizationController : NSObject
+	{
+	@protected
+	NSString* frob;
+	NSString* permission;
+	
+	@public
+	NSURL* authorizationURL;
+	}
 
-@interface FlickrAuthorizationController : NSObject {
-@private
-    
-}
+- (void)generateAuthorizationURLForPermission:(NSString*)aPermission;
+- (void)authorizeForPermission:(NSString*)aPermission;
 
+@property(readonly) NSURL* authorizationURL;
 @end
