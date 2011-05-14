@@ -33,12 +33,12 @@
 - (void)fetchPersonInformation;
 - (void)loadPersonInformationFromXMLElement:(NSXMLElement*)anElement;
 
-@property(nonatomic,retain) NSString* ID;
-@property(nonatomic,retain) NSString* username;
-@property(nonatomic,retain) NSString* name;
-@property(nonatomic,retain) NSString* location;
-@property(nonatomic,retain) NSDate* firstPhotoTaken;
-@property(nonatomic,retain) NSDate* firstPhotoUploaded;
+@property(nonatomic,copy) NSString* ID;
+@property(nonatomic,copy) NSString* username;
+@property(nonatomic,copy) NSString* name;
+@property(nonatomic,copy) NSString* location;
+@property(nonatomic,copy) NSDate* firstPhotoTaken;
+@property(nonatomic,copy) NSDate* firstPhotoUploaded;
 @property(nonatomic,assign) NSUInteger photoCount;
 @property(nonatomic,assign,getter = hasProStatus) BOOL proStatus;
 
