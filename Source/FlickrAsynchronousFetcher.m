@@ -61,7 +61,7 @@
 		[userInfo setObject:[NSNumber numberWithInteger:((NSHTTPURLResponse*)response).statusCode] forKey:FlickrHTTPStatusKey];
 		[userInfo setObject:[NSHTTPURLResponse localizedStringForStatusCode:((NSHTTPURLResponse*)response).statusCode] forKey:FlickrDescriptionKey];
 		
-		[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAsynchronousFetcherConnectionDidFailNotification object:self userInfo:(NSDictionary*)userInfo];
+		[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAsynchronousFetcherDidFailNotification object:self userInfo:(NSDictionary*)userInfo];
 		}
 	}
 
@@ -87,7 +87,7 @@
 	NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
 	[userInfo setObject:url forKey:FlickrURLKey];
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAsynchronousFetcherConnectionDidFailNotification object:self userInfo:(NSDictionary*)userInfo];
+	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAsynchronousFetcherDidFailNotification object:self userInfo:(NSDictionary*)userInfo];
 
 	completionHandler(error);
 	}

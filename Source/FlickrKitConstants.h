@@ -80,8 +80,9 @@ extern NSURL* flickrMethodURL(NSString* method, NSDictionary* arguments, BOOL si
 // ---- Notifications ---- //
 
 static NSString* FlickrPersonLoadingDidFinishNotification = @"FlickrPersonLoadingDidFinishNotification";
-static NSString* FlickrAsynchronousFetcherConnectionDidFailNotification = @"FlickrAsynchronousFetcherConnectionDidFailNotification";
-static NSString* FlickrPhotoDidFinishLoadingNotification = @"FlickrPhotoDidFinishLoadingNotification";
+static NSString* FlickrAsynchronousFetcherDidFailNotification = @"FlickrAsynchronousFetcherDidFailNotification";
+static NSString* FlickrPhotoDidChangeNotification = @"FlickrPhotoDidChangeNotification";
+static NSString* FlickrAuthorizationURLDidChangeNotification = @"FlickrAuthorizationURLDidChange";
 
 // ---- Notification userInfo keys ---- //
 static NSString* FlickrURLKey = @"url";

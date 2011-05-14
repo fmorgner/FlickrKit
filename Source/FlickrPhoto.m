@@ -58,7 +58,7 @@
 	}];
 	self.URLs = (NSDictionary*)urlsDictionary;
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPhotoDidFinishLoadingNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPhotoDidChangeNotification object:self];
 	}
 
 @end
