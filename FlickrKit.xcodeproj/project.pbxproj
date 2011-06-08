@@ -23,7 +23,7 @@
 		C77A660A133F62950026C24B /* FlickrComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C77A6608133F62950026C24B /* FlickrComment.m */; };
 		C78C078B137EBCA40048209E /* FlickrUser.h in Headers */ = {isa = PBXBuildFile; fileRef = C78C0789137EBCA40048209E /* FlickrUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78C078C137EBCA40048209E /* FlickrUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C078A137EBCA40048209E /* FlickrUser.m */; };
-		C78C0794137EC13C0048209E /* FlickrAuthorizationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C78C0792137EC13B0048209E /* FlickrAuthorizationController.h */; };
+		C78C0794137EC13C0048209E /* FlickrAuthorizationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C78C0792137EC13B0048209E /* FlickrAuthorizationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78C0795137EC13C0048209E /* FlickrAuthorizationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C0793137EC13C0048209E /* FlickrAuthorizationController.m */; };
 		C78C0798137EC37A0048209E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C0796137EC35A0048209E /* WebKit.framework */; };
 		C78EA6F7136443450037BD27 /* FlickrImageSize.strings in Resources */ = {isa = PBXBuildFile; fileRef = C78EA6F5136441140037BD27 /* FlickrImageSize.strings */; };
@@ -222,6 +222,7 @@
 			files = (
 				C78C078B137EBCA40048209E /* FlickrUser.h in Headers */,
 				C7692557132FEEFB005F6AC3 /* FlickrKit.h in Headers */,
+				C78C0794137EC13C0048209E /* FlickrAuthorizationController.h in Headers */,
 				C7DF0BC3133B62D6001BE05B /* FlickrKitConstants.h in Headers */,
 				C75A8B9A1333F32C00716282 /* FlickrAPIResponse.h in Headers */,
 				C7278A041333F0B4008C4321 /* FlickrLicense.h in Headers */,
@@ -234,7 +235,6 @@
 				C7D25BF5135DE373003FF694 /* FlickrEXIFTag.h in Headers */,
 				C7D25BFA135DE887003FF694 /* FlickrAsynchronousFetcher.h in Headers */,
 				C7E7A08B1365AF7D00BA33AD /* NSString+MD5Hash.h in Headers */,
-				C78C0794137EC13C0048209E /* FlickrAuthorizationController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

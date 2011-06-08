@@ -7,6 +7,7 @@
 //
 
 #import "FlickrAPIResponse.h"
+#import "FlickrAuthorizationController.h"
 #import "FlickrComment.h"
 #import "FlickrEXIFTag.h"
 #import "FlickrKitConstants.h"

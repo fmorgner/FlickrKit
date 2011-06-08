@@ -22,4 +22,5 @@
 - (void)authorizeForPermission:(NSString*)aPermission;
 
 @property(readonly) NSURL* authorizationURL;
+@property(readonly) NSString* frob;
 @end
