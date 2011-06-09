@@ -30,6 +30,10 @@
 
 static NSString* FlickrAPIBaseURL = @"http://api.flickr.com/services/rest/?method=%@&api_key=%@";
 
+// This is the authorization URL. It is used to authorize an application for
+// certain permissions on a user account.
+static NSString* FlickrAuthURL = @"http://flickr.com/services/auth/?api_key=%@&perms=%@&frob=%@";
+
 // - flickr.photos.* methods
 
 // This method is used to gather some basic information about a photo.

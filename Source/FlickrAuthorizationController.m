@@ -10,6 +10,7 @@
 #import "FlickrKitConstants.h"
 #import "FlickrAsynchronousFetcher.h"
 #import "FlickrAPIResponse.h"
+#import "NSString+MD5Hash.h"
 
 @interface FlickrAuthorizationController(Private)
 
@@ -65,6 +66,22 @@
 - (void)authorizeForPermission:(NSString*)aPermission
 	{
 	
+	}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+	{
+	if([keyPath isEqualToString:@"frob"])
+		{
+		if(!![frob length])
+			{
+			NSMutableString* urlString = [NSMutableString stringWithFormat:FlickrAuthURL, APIKey, permission, frob];
+			NSString* signatureBaseString = [NSMutableString stringWithFormat:@"%@api_key%@frob%@perms%@", APISecret, APIKey, frob, permission];
+			NSString* signature = [[signatureBaseString MD5Hash] lowercaseString];
+			[urlString appendFormat:@"&api_sig=%@", signature];
+			
+			authorizationURL = [[NSURL URLWithString:urlString] copy];
+			}
+		}
 	}
 
 @end
