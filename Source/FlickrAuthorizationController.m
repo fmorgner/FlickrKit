@@ -7,6 +7,7 @@
 //
 
 #import "FlickrAuthorizationController.h"
+#import "FlickrAuthorizationSheetController.h"
 #import "FlickrKitConstants.h"
 #import "FlickrAsynchronousFetcher.h"
 #import "FlickrAPIResponse.h"
@@ -15,6 +16,7 @@
 @interface FlickrAuthorizationController(Private)
 
 - (void)requestFrob;
+- (void)authSheetDidClose;
 
 @end
 
@@ -27,9 +29,22 @@
 		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
 			{
 			NSXMLNode* frobNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/frob" error:nil] lastObject];
-			frob = [[frobNode stringValue] copy];
+			self.frob = [frobNode stringValue];
 			}
 	}];
+	[frobFetcher release];
+	}
+
+- (void)authSheetDidClose
+	{
+	FlickrAsynchronousFetcher* tokenFetcher = [FlickrAsynchronousFetcher new];
+	[tokenFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getToken", [NSDictionary dictionaryWithObject:frob forKey:@"frob"], NO) withCompletionHandler:^(id fetchResult) {
+		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+			{
+			NSXMLNode* frobNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/auth" error:nil] lastObject];
+			}
+	}];
+	[tokenFetcher release];
 	}
 
 @end
@@ -65,7 +80,8 @@
 	
 - (void)authorizeForPermission:(NSString*)aPermission
 	{
-	
+	[self addObserver:self forKeyPath:@"authorizationURL" options:NSKeyValueObservingOptionNew context:NULL];
+	[self generateAuthorizationURLForPermission:aPermission];
 	}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -79,9 +95,14 @@
 			NSString* signature = [[signatureBaseString MD5Hash] lowercaseString];
 			[urlString appendFormat:@"&api_sig=%@", signature];
 			
-			authorizationURL = [[NSURL URLWithString:urlString] copy];
+			self.authorizationURL = [NSURL URLWithString:urlString];
 			}
 		}
+	else if([keyPath isEqualToString:@"authorizationURL"])
+		{
+		FlickrAuthorizationSheetController* authSheetController = [[FlickrAuthorizationSheetController alloc] initWithWindowNibName:@"FlickrAuthorizationSheetController" authURL:authorizationURL];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authSheetDidClose) name:FlickrAuthorizationSheetDidClose object:nil];
+		[authSheetController presentSheet];
+		}
 	}
-
 @end

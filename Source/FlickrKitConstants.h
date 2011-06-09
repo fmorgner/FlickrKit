@@ -87,6 +87,7 @@ static NSString* FlickrPersonLoadingDidFinishNotification = @"FlickrPersonLoadin
 static NSString* FlickrAsynchronousFetcherDidFailNotification = @"FlickrAsynchronousFetcherDidFailNotification";
 static NSString* FlickrPhotoDidChangeNotification = @"FlickrPhotoDidChangeNotification";
 static NSString* FlickrAuthorizationURLDidChangeNotification = @"FlickrAuthorizationURLDidChange";
+static NSString* FlickrAuthorizationSheetDidClose = @"FlickrAuthorizationSheedDidClose";
 
 // ---- Notification userInfo keys ---- //
 static NSString* FlickrURLKey = @"url";

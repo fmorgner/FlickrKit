@@ -21,6 +21,6 @@
 - (void)generateAuthorizationURLForPermission:(NSString*)aPermission;
 - (void)authorizeForPermission:(NSString*)aPermission;
 
-@property(readonly) NSURL* authorizationURL;
-@property(readonly) NSString* frob;
+@property(copy) NSURL* authorizationURL;
+@property(copy) NSString* frob;
 @end
