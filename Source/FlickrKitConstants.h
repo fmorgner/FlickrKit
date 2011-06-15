@@ -88,9 +88,10 @@ static NSString* FlickrAsynchronousFetcherDidFailNotification = @"FlickrAsynchro
 static NSString* FlickrPhotoDidChangeNotification = @"FlickrPhotoDidChangeNotification";
 static NSString* FlickrAuthorizationURLDidChangeNotification = @"FlickrAuthorizationURLDidChange";
 static NSString* FlickrAuthorizationSheetDidClose = @"FlickrAuthorizationSheedDidClose";
+static NSString* FlickrAuthorizationControllerDidReceiveToken = @"FlickrAuthorizationControllerDidReceiveToken";
 
 // ---- Notification userInfo keys ---- //
 static NSString* FlickrURLKey = @"url";
 static NSString* FlickrHTTPStatusKey = @"HTTPStatus";
 static NSString* FlickrDescriptionKey = @"description";
-
+static NSString* FlickrTokenKey = @"token";

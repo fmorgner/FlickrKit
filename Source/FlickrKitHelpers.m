@@ -11,6 +11,10 @@
 #import "FlickrPhoto.h"
 #import "NSString+MD5Hash.h"
 
+// Prototypes for 'private' functions
+
+NSString* generateArgumentString(NSDictionary* arguments);
+
 NSString* generateArgumentString(NSDictionary* arguments)
 	{
 	NSMutableString* argumentString = [NSMutableString string];

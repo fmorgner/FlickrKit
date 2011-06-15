@@ -11,6 +11,7 @@
 #import "FlickrKitConstants.h"
 #import "FlickrAsynchronousFetcher.h"
 #import "FlickrAPIResponse.h"
+#import "FlickrToken.h"
 #import "NSString+MD5Hash.h"
 
 @interface FlickrAuthorizationController(Private)
@@ -41,7 +42,10 @@
 	[tokenFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getToken", [NSDictionary dictionaryWithObject:frob forKey:@"frob"], NO) withCompletionHandler:^(id fetchResult) {
 		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
 			{
-			NSXMLNode* frobNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/auth" error:nil] lastObject];
+			NSXMLNode* tokenNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/auth" error:nil] lastObject];
+			FlickrToken* token = [[FlickrToken alloc] initWithXMLElement:(NSXMLElement*)tokenNode];
+			[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAuthorizationControllerDidReceiveToken object:self userInfo:[NSDictionary dictionaryWithObject:[token copy] forKey:FlickrTokenKey]];
+			[token release];
 			}
 	}];
 	[tokenFetcher release];
