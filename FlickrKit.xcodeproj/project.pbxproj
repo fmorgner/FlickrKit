@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB1647C613A281C700E64DEF /* FlickrToken.h in Headers */ = {isa = PBXBuildFile; fileRef = BB1647C413A281C700E64DEF /* FlickrToken.h */; };
+		BB1647C713A281C700E64DEF /* FlickrToken.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1647C513A281C700E64DEF /* FlickrToken.m */; };
 		C72789FF1332894D008C4321 /* cr.large.png in Resources */ = {isa = PBXBuildFile; fileRef = C72789FD1332894D008C4321 /* cr.large.png */; };
 		C7278A041333F0B4008C4321 /* FlickrLicense.h in Headers */ = {isa = PBXBuildFile; fileRef = C7278A021333F0B3008C4321 /* FlickrLicense.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7278A051333F0B4008C4321 /* FlickrLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = C7278A031333F0B3008C4321 /* FlickrLicense.m */; };
@@ -24,8 +26,6 @@
 		C7692557132FEEFB005F6AC3 /* FlickrKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C7692556132FEEFB005F6AC3 /* FlickrKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C77A6609133F62950026C24B /* FlickrComment.h in Headers */ = {isa = PBXBuildFile; fileRef = C77A6607133F62950026C24B /* FlickrComment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C77A660A133F62950026C24B /* FlickrComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C77A6608133F62950026C24B /* FlickrComment.m */; };
-		C78C078B137EBCA40048209E /* FlickrUser.h in Headers */ = {isa = PBXBuildFile; fileRef = C78C0789137EBCA40048209E /* FlickrUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C78C078C137EBCA40048209E /* FlickrUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C078A137EBCA40048209E /* FlickrUser.m */; };
 		C78C0794137EC13C0048209E /* FlickrAuthorizationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C78C0792137EC13B0048209E /* FlickrAuthorizationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C78C0795137EC13C0048209E /* FlickrAuthorizationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C0793137EC13C0048209E /* FlickrAuthorizationController.m */; };
 		C78C0798137EC37A0048209E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C0796137EC35A0048209E /* WebKit.framework */; };
@@ -52,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB1647C413A281C700E64DEF /* FlickrToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrToken.h; sourceTree = "<group>"; };
+		BB1647C513A281C700E64DEF /* FlickrToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrToken.m; sourceTree = "<group>"; };
 		C72789FD1332894D008C4321 /* cr.large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cr.large.png; sourceTree = "<group>"; };
 		C7278A021333F0B3008C4321 /* FlickrLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrLicense.h; sourceTree = "<group>"; };
 		C7278A031333F0B3008C4321 /* FlickrLicense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrLicense.m; sourceTree = "<group>"; };
@@ -73,8 +75,6 @@
 		C7692556132FEEFB005F6AC3 /* FlickrKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrKit.h; sourceTree = "<group>"; };
 		C77A6607133F62950026C24B /* FlickrComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrComment.h; sourceTree = "<group>"; };
 		C77A6608133F62950026C24B /* FlickrComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrComment.m; sourceTree = "<group>"; };
-		C78C0789137EBCA40048209E /* FlickrUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrUser.h; sourceTree = "<group>"; };
-		C78C078A137EBCA40048209E /* FlickrUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrUser.m; sourceTree = "<group>"; };
 		C78C0792137EC13B0048209E /* FlickrAuthorizationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAuthorizationController.h; sourceTree = "<group>"; };
 		C78C0793137EC13C0048209E /* FlickrAuthorizationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrAuthorizationController.m; sourceTree = "<group>"; };
 		C78C0796137EC35A0048209E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -176,12 +176,12 @@
 				C7638780136376D100362B2F /* FlickrPhotoset.m */,
 				C7C3AF55132FFC6900F8C083 /* FlickrTag.h */,
 				C7C3AF56132FFC6900F8C083 /* FlickrTag.m */,
+				BB1647C413A281C700E64DEF /* FlickrToken.h */,
+				BB1647C513A281C700E64DEF /* FlickrToken.m */,
 				C7E99E5D133142DD0027226A /* FlickrPerson.h */,
 				C7E99E5E133142DD0027226A /* FlickrPerson.m */,
 				C7E99E621331457E0027226A /* FlickrPersonManager.h */,
 				C7E99E631331457E0027226A /* FlickrPersonManager.m */,
-				C78C0789137EBCA40048209E /* FlickrUser.h */,
-				C78C078A137EBCA40048209E /* FlickrUser.m */,
 				C7E7A0891365AF7D00BA33AD /* NSString+MD5Hash.h */,
 				C7E7A08A1365AF7D00BA33AD /* NSString+MD5Hash.m */,
 				C7692539132FEC6D005F6AC3 /* Supporting Files */,
@@ -237,7 +237,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C78C078B137EBCA40048209E /* FlickrUser.h in Headers */,
 				C7692557132FEEFB005F6AC3 /* FlickrKit.h in Headers */,
 				C78C0794137EC13C0048209E /* FlickrAuthorizationController.h in Headers */,
 				C7DF0BC3133B62D6001BE05B /* FlickrKitConstants.h in Headers */,
@@ -253,6 +252,7 @@
 				C7D25BFA135DE887003FF694 /* FlickrAsynchronousFetcher.h in Headers */,
 				C7E7A08B1365AF7D00BA33AD /* NSString+MD5Hash.h in Headers */,
 				C757798A13A1422E00060713 /* FlickrAuthorizationSheetController.h in Headers */,
+				BB1647C613A281C700E64DEF /* FlickrToken.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +283,7 @@
 		C7692525132FEC6D005F6AC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Felix Morgner";
 			};
 			buildConfigurationList = C7692528132FEC6D005F6AC3 /* Build configuration list for PBXProject "FlickrKit" */;
@@ -339,9 +340,9 @@
 				C7AE251D1363650400C3D48D /* FlickrKitHelpers.m in Sources */,
 				C7638782136376D100362B2F /* FlickrPhotoset.m in Sources */,
 				C7E7A08C1365AF7D00BA33AD /* NSString+MD5Hash.m in Sources */,
-				C78C078C137EBCA40048209E /* FlickrUser.m in Sources */,
 				C78C0795137EC13C0048209E /* FlickrAuthorizationController.m in Sources */,
 				C757798B13A1422E00060713 /* FlickrAuthorizationSheetController.m in Sources */,
+				BB1647C713A281C700E64DEF /* FlickrToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +379,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "";
@@ -395,6 +397,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "";
