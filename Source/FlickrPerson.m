@@ -170,6 +170,7 @@
 	NSXMLElement* photosElement = [[anElement elementsForName:@"photos"] lastObject];
 	self.firstPhotoTaken = [NSDate dateWithString:[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue]];
 	self.firstPhotoUploaded = [NSDate dateWithTimeIntervalSince1970:[[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue] intValue]];
+	self.photoCount = [[[[photosElement elementsForName:@"count"] lastObject] stringValue] integerValue];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPersonLoadingDidFinishNotification object:self];
 	}
