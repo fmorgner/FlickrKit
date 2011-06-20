@@ -8,7 +8,6 @@
 
 #import "FlickrToken.h"
 #import "FlickrPerson.h"
-#import "FlickrPersonManager.h"
 
 @implementation FlickrToken
 
@@ -20,7 +19,7 @@
 		{
 		self.tokenString = [[[anElement elementsForName:@"token"] lastObject] stringValue];
 		self.permissions = [[[anElement elementsForName:@"perms"]	lastObject] stringValue];
-		self.user = [[FlickrPersonManager sharedManager] personForID:[[[[anElement elementsForName:@"user"] lastObject] attributeForName:@"nsid"] stringValue]];
+		self.user = [FlickrPerson personWithID:[[[[anElement elementsForName:@"user"] lastObject] attributeForName:@"nsid"] stringValue]];
     }
     
   return self;
