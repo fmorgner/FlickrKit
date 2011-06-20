@@ -39,4 +39,41 @@
 	return copy;
 	}
 
+- (void)encodeWithCoder:(NSCoder *)aCoder
+	{
+	if([aCoder allowsKeyedCoding])
+		{
+		[aCoder encodeObject:tokenString forKey:@"tokenString"];
+		[aCoder encodeObject:permissions forKey:@"permissions"];
+		[aCoder encodeObject:user.ID forKey:@"user.ID"];
+		}
+	else
+		{
+		[aCoder encodeObject:tokenString];
+		[aCoder encodeObject:permissions];
+		[aCoder encodeObject:user.ID];
+		}
+	}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+	{
+  if ((self = [super init]))
+		{
+		if([aDecoder allowsKeyedCoding])
+			{
+			self.tokenString = [aDecoder decodeObjectForKey:@"tokenString"];
+			self.permissions = [aDecoder decodeObjectForKey:@"permissions"];
+			self.user = [FlickrPerson personWithID:[aDecoder decodeObjectForKey:@"user.ID"]];
+			}
+		else
+			{
+			self.tokenString = [aDecoder decodeObject];
+			self.permissions = [aDecoder decodeObject];
+			self.user = [FlickrPerson personWithID:[aDecoder decodeObject]];
+			}
+		}
+		
+	return self;
+	}
+
 @end

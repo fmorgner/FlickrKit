@@ -10,7 +10,7 @@
 
 @class FlickrPerson;
 
-@interface FlickrToken : NSObject <NSCopying>
+@interface FlickrToken : NSObject <NSCopying,NSCoding>
 	{
 	NSString* tokenString;
 	NSString* permissions;
