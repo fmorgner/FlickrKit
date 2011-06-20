@@ -16,4 +16,5 @@
 #import "FlickrPerson.h"
 #import "FlickrPersonManager.h"
 #import "FlickrTag.h"
-#import "FlickrUser.h"
+#import "FlickrToken.h"
+#import "FlickrAuthorizationSheetController.h"
