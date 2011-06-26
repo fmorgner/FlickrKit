@@ -14,6 +14,8 @@
 	@protected
 	WebView *flickrWebView;
 	NSURL* authURL;
+	IBOutlet NSView* loadingOverlay;
+	IBOutlet NSProgressIndicator* loadingIndicator;
 	}
 
 - (void)presentSheet;

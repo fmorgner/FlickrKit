@@ -26,6 +26,15 @@
 	{
 	[flickrWebView setMainFrameURL:[authURL absoluteString]];
 	[flickrWebView setMaintainsBackForwardList:NO];
+	
+	
+	CGColorRef blackColor = CGColorCreateGenericGray(0.0f, 0.8f);
+	[loadingOverlay setWantsLayer:YES];
+	[loadingOverlay.layer setCornerRadius:5.0f];
+	[loadingOverlay.layer setBackgroundColor:blackColor];
+	[loadingOverlay bind:@"hidden" toObject:flickrWebView withKeyPath:@"isLoading" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName forKey:NSValueTransformerNameBindingOption]];
+	[loadingIndicator becomeFirstResponder];
+	[loadingIndicator bind:@"animate" toObject:flickrWebView withKeyPath:@"isLoading" options:nil];
 	}
 
 - (void)windowDidLoad
