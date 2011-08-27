@@ -8,6 +8,7 @@
 
 #import "FlickrAuthorizationSheetController.h"
 #import "FlickrKitConstants.h"
+#import "NSColor+CGColor.h"
 
 @implementation FlickrAuthorizationSheetController
 @synthesize flickrWebView;
@@ -28,10 +29,9 @@
 	[flickrWebView setMaintainsBackForwardList:NO];
 	
 	
-	CGColorRef blackColor = CGColorCreateGenericGray(0.0f, 0.8f);
 	[loadingOverlay setWantsLayer:YES];
 	[loadingOverlay.layer setCornerRadius:5.0f];
-	[loadingOverlay.layer setBackgroundColor:blackColor];
+	[loadingOverlay.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
 	[loadingOverlay bind:@"hidden" toObject:flickrWebView withKeyPath:@"isLoading" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName forKey:NSValueTransformerNameBindingOption]];
 	[loadingIndicator becomeFirstResponder];
 	[loadingIndicator bind:@"animate" toObject:flickrWebView withKeyPath:@"isLoading" options:nil];
