@@ -73,6 +73,7 @@
 	[frob release];
 	[permission release];
 	[authorizationURL release];
+	[authorizationSheetController release];
   [super dealloc];
 	}
 
@@ -104,9 +105,9 @@
 		}
 	else if([keyPath isEqualToString:@"authorizationURL"])
 		{
-		FlickrAuthorizationSheetController* authSheetController = [[FlickrAuthorizationSheetController alloc] initWithWindowNibName:@"FlickrAuthorizationSheetController" authURL:authorizationURL];
+		authorizationSheetController = [[FlickrAuthorizationSheetController alloc] initWithWindowNibName:@"FlickrAuthorizationSheetController" authURL:authorizationURL];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authSheetDidClose) name:FlickrAuthorizationSheetDidClose object:nil];
-		[authSheetController presentSheet];
+		[authorizationSheetController presentSheet];
 		}
 	}
 @end
