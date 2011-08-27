@@ -12,10 +12,10 @@
 @interface FlickrAuthorizationSheetController : NSWindowController
 	{
 	@protected
-	WebView *flickrWebView;
-	NSURL* authURL;
-	IBOutlet NSView* loadingOverlay;
-	IBOutlet NSProgressIndicator* loadingIndicator;
+		WebView *flickrWebView;
+		NSURL* authURL;
+		IBOutlet NSView* loadingOverlay;
+		IBOutlet NSProgressIndicator* loadingIndicator;
 	}
 
 - (void)presentSheet;
