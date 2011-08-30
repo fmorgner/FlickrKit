@@ -100,9 +100,9 @@ static FlickrPersonManager* sharedPersonManager = nil;
 	return [filterResult lastObject];
 	}
 	
-- (FlickrPerson*)personForUsername:(NSString*)anUserame
+- (FlickrPerson*)personForUsername:(NSString*)anUsername
 	{
-	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"username like %@", anUserame];
+	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"username like %@", anUsername];
 	NSArray* filterResult = [people filteredArrayUsingPredicate:filterPredicate];
 	return [filterResult lastObject];
 	}
