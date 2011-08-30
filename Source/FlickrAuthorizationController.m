@@ -55,7 +55,7 @@
 
 @implementation FlickrAuthorizationController
 
-@synthesize authorizationURL, frob;
+@synthesize authorizationURL, frob, authorizationSheetController;
 
 - (id)init
 	{
@@ -105,7 +105,7 @@
 		}
 	else if([keyPath isEqualToString:@"authorizationURL"])
 		{
-		authorizationSheetController = [[FlickrAuthorizationSheetController alloc] initWithWindowNibName:@"FlickrAuthorizationSheetController" authURL:authorizationURL];
+		self.authorizationSheetController = [FlickrAuthorizationSheetController authorizationSheetControllerWithURL:authorizationURL];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authSheetDidClose) name:FlickrAuthorizationSheetDidClose object:nil];
 		[authorizationSheetController presentSheet];
 		}

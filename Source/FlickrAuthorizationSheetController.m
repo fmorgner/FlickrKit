@@ -23,6 +23,11 @@
 	return self;
 	}
 
++ (FlickrAuthorizationSheetController*)authorizationSheetControllerWithURL:(NSURL*)anAuthorizationURL
+	{
+	return [[[FlickrAuthorizationSheetController alloc]initWithWindowNibName:@"FlickrAuthorizationSheetController" authURL:anAuthorizationURL] autorelease];
+	}
+
 - (void)awakeFromNib
 	{
 	[flickrWebView setMainFrameURL:[authURL absoluteString]];

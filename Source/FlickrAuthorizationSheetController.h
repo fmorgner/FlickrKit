@@ -20,7 +20,9 @@
 
 - (void)presentSheet;
 - (IBAction)closeSheet:(id)sender;
+
 - (id)initWithWindowNibName:(NSString *)windowNibName authURL:(NSURL*)anAuthURL;
++ (FlickrAuthorizationSheetController*)authorizationSheetControllerWithURL:(NSURL*)anAuthorizationURL;
 
 @property (assign) IBOutlet WebView *flickrWebView;
 
