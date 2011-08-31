@@ -6,6 +6,16 @@
 //  Copyright 2011 Felix Morgner. All rights reserved.
 //
 
+/*!
+ * \class FlickrPerson FlickrPerson.h FlickrPerson
+ * \author Felix Morgner http://www.felixmorgner.ch
+ *
+ * A class that represents a person on the flickr.com website. A person is basically a user
+ * with attributes like username, name and ID. A FlickrPerson also contains information about
+ * the location and the dates the first photo was uploaded and the first photo was taken aswell
+ * as the absoloute count of photos this person has updloaded to flickr.com.
+ */
+
 #import <Foundation/Foundation.h>
 
 @interface FlickrPerson : NSObject <NSCoding>
