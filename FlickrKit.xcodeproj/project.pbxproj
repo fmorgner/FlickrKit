@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		BB1647C613A281C700E64DEF /* FlickrToken.h in Headers */ = {isa = PBXBuildFile; fileRef = BB1647C413A281C700E64DEF /* FlickrToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB1647C713A281C700E64DEF /* FlickrToken.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1647C513A281C700E64DEF /* FlickrToken.m */; };
+		BB61E74D141CF4E900839347 /* common.css in Resources */ = {isa = PBXBuildFile; fileRef = BB61E746141CF4E900839347 /* common.css */; };
+		BB61E74E141CF4E900839347 /* print.css in Resources */ = {isa = PBXBuildFile; fileRef = BB61E747141CF4E900839347 /* print.css */; };
+		BB61E74F141CF4E900839347 /* screen.css in Resources */ = {isa = PBXBuildFile; fileRef = BB61E748141CF4E900839347 /* screen.css */; };
+		BB61E750141CF4E900839347 /* doxyclean.py in Resources */ = {isa = PBXBuildFile; fileRef = BB61E749141CF4E900839347 /* doxyclean.py */; };
+		BB61E751141CF4E900839347 /* index2html.xslt in Resources */ = {isa = PBXBuildFile; fileRef = BB61E74A141CF4E900839347 /* index2html.xslt */; };
+		BB61E752141CF4E900839347 /* object.xslt in Resources */ = {isa = PBXBuildFile; fileRef = BB61E74B141CF4E900839347 /* object.xslt */; };
+		BB61E753141CF4E900839347 /* object2html.xslt in Resources */ = {isa = PBXBuildFile; fileRef = BB61E74C141CF4E900839347 /* object2html.xslt */; };
 		C72789FF1332894D008C4321 /* cr.large.png in Resources */ = {isa = PBXBuildFile; fileRef = C72789FD1332894D008C4321 /* cr.large.png */; };
 		C7278A041333F0B4008C4321 /* FlickrLicense.h in Headers */ = {isa = PBXBuildFile; fileRef = C7278A021333F0B3008C4321 /* FlickrLicense.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7278A051333F0B4008C4321 /* FlickrLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = C7278A031333F0B3008C4321 /* FlickrLicense.m */; };
@@ -88,6 +95,13 @@
 /* Begin PBXFileReference section */
 		BB1647C413A281C700E64DEF /* FlickrToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrToken.h; sourceTree = "<group>"; };
 		BB1647C513A281C700E64DEF /* FlickrToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrToken.m; sourceTree = "<group>"; };
+		BB61E746141CF4E900839347 /* common.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = common.css; sourceTree = "<group>"; };
+		BB61E747141CF4E900839347 /* print.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = print.css; sourceTree = "<group>"; };
+		BB61E748141CF4E900839347 /* screen.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = screen.css; sourceTree = "<group>"; };
+		BB61E749141CF4E900839347 /* doxyclean.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = doxyclean.py; sourceTree = "<group>"; };
+		BB61E74A141CF4E900839347 /* index2html.xslt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = index2html.xslt; sourceTree = "<group>"; };
+		BB61E74B141CF4E900839347 /* object.xslt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = object.xslt; sourceTree = "<group>"; };
+		BB61E74C141CF4E900839347 /* object2html.xslt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = object2html.xslt; sourceTree = "<group>"; };
 		C72789FD1332894D008C4321 /* cr.large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cr.large.png; sourceTree = "<group>"; };
 		C7278A021333F0B3008C4321 /* FlickrLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrLicense.h; sourceTree = "<group>"; };
 		C7278A031333F0B3008C4321 /* FlickrLicense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrLicense.m; sourceTree = "<group>"; };
@@ -152,6 +166,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB61E743141CF4E900839347 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				BB61E744141CF4E900839347 /* doxyclean */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		BB61E744141CF4E900839347 /* doxyclean */ = {
+			isa = PBXGroup;
+			children = (
+				BB61E745141CF4E900839347 /* css */,
+				BB61E749141CF4E900839347 /* doxyclean.py */,
+				BB61E74A141CF4E900839347 /* index2html.xslt */,
+				BB61E74B141CF4E900839347 /* object.xslt */,
+				BB61E74C141CF4E900839347 /* object2html.xslt */,
+			);
+			path = doxyclean;
+			sourceTree = "<group>";
+		};
+		BB61E745141CF4E900839347 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				BB61E746141CF4E900839347 /* common.css */,
+				BB61E747141CF4E900839347 /* print.css */,
+				BB61E748141CF4E900839347 /* screen.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
 		C73977AE140929C6005C8562 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				C73977AD140929C6005C8562 /* OAuthKit.xcodeproj */,
+				BB61E743141CF4E900839347 /* Documentation */,
 				C7990943133260890000B732 /* Resources */,
 				C7692538132FEC6D005F6AC3 /* Source */,
 				C7692531132FEC6D005F6AC3 /* Frameworks */,
@@ -386,6 +431,13 @@
 				C799094E133262570000B732 /* sa.large.png in Resources */,
 				C72789FF1332894D008C4321 /* cr.large.png in Resources */,
 				C757798E13A1434F00060713 /* FlickrAuthorizationSheetController.xib in Resources */,
+				BB61E74D141CF4E900839347 /* common.css in Resources */,
+				BB61E74E141CF4E900839347 /* print.css in Resources */,
+				BB61E74F141CF4E900839347 /* screen.css in Resources */,
+				BB61E750141CF4E900839347 /* doxyclean.py in Resources */,
+				BB61E751141CF4E900839347 /* index2html.xslt in Resources */,
+				BB61E752141CF4E900839347 /* object.xslt in Resources */,
+				BB61E753141CF4E900839347 /* object2html.xslt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
