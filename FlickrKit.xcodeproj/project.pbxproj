@@ -9,18 +9,12 @@
 /* Begin PBXBuildFile section */
 		BB1647C613A281C700E64DEF /* FlickrToken.h in Headers */ = {isa = PBXBuildFile; fileRef = BB1647C413A281C700E64DEF /* FlickrToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB1647C713A281C700E64DEF /* FlickrToken.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1647C513A281C700E64DEF /* FlickrToken.m */; };
-		BB61E74D141CF4E900839347 /* common.css in Resources */ = {isa = PBXBuildFile; fileRef = BB61E746141CF4E900839347 /* common.css */; };
-		BB61E74E141CF4E900839347 /* print.css in Resources */ = {isa = PBXBuildFile; fileRef = BB61E747141CF4E900839347 /* print.css */; };
-		BB61E74F141CF4E900839347 /* screen.css in Resources */ = {isa = PBXBuildFile; fileRef = BB61E748141CF4E900839347 /* screen.css */; };
-		BB61E750141CF4E900839347 /* doxyclean.py in Resources */ = {isa = PBXBuildFile; fileRef = BB61E749141CF4E900839347 /* doxyclean.py */; };
-		BB61E751141CF4E900839347 /* index2html.xslt in Resources */ = {isa = PBXBuildFile; fileRef = BB61E74A141CF4E900839347 /* index2html.xslt */; };
-		BB61E752141CF4E900839347 /* object.xslt in Resources */ = {isa = PBXBuildFile; fileRef = BB61E74B141CF4E900839347 /* object.xslt */; };
-		BB61E753141CF4E900839347 /* object2html.xslt in Resources */ = {isa = PBXBuildFile; fileRef = BB61E74C141CF4E900839347 /* object2html.xslt */; };
 		C72789FF1332894D008C4321 /* cr.large.png in Resources */ = {isa = PBXBuildFile; fileRef = C72789FD1332894D008C4321 /* cr.large.png */; };
 		C7278A041333F0B4008C4321 /* FlickrLicense.h in Headers */ = {isa = PBXBuildFile; fileRef = C7278A021333F0B3008C4321 /* FlickrLicense.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7278A051333F0B4008C4321 /* FlickrLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = C7278A031333F0B3008C4321 /* FlickrLicense.m */; };
+		C72E5489141CF845007280F3 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = C72E5472141CF845007280F3 /* Makefile */; };
 		C73977B9140929D6005C8562 /* OAuthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73977B5140929C6005C8562 /* OAuthKit.framework */; };
-		C73977BB140929F1005C8562 /* OAuthKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C73977B5140929C6005C8562 /* OAuthKit.framework */; };
+		C73977BB140929F1005C8562 /* OAuthKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C73977B5140929C6005C8562 /* OAuthKit.framework */; };
 		C73977CA14092BEF005C8562 /* NSColor+CGColor.h in Headers */ = {isa = PBXBuildFile; fileRef = C73977C814092BEF005C8562 /* NSColor+CGColor.h */; };
 		C73977CB14092BEF005C8562 /* NSColor+CGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C73977C914092BEF005C8562 /* NSColor+CGColor.m */; };
 		C757798A13A1422E00060713 /* FlickrAuthorizationSheetController.h in Headers */ = {isa = PBXBuildFile; fileRef = C757798813A1422E00060713 /* FlickrAuthorizationSheetController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -80,14 +74,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C73977BA140929E8005C8562 /* CopyFiles */ = {
+		C73977BA140929E8005C8562 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C73977BB140929F1005C8562 /* OAuthKit.framework in CopyFiles */,
+				C73977BB140929F1005C8562 /* OAuthKit.framework in Copy Frameworks */,
 			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -105,6 +100,29 @@
 		C72789FD1332894D008C4321 /* cr.large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cr.large.png; sourceTree = "<group>"; };
 		C7278A021333F0B3008C4321 /* FlickrLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrLicense.h; sourceTree = "<group>"; };
 		C7278A031333F0B3008C4321 /* FlickrLicense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrLicense.m; sourceTree = "<group>"; };
+		C72E545D141CF845007280F3 /* annotated.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = annotated.tex; sourceTree = "<group>"; };
+		C72E545E141CF845007280F3 /* class_n_s_string.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = class_n_s_string.tex; sourceTree = "<group>"; };
+		C72E545F141CF845007280F3 /* doxygen.sty */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = doxygen.sty; sourceTree = "<group>"; };
+		C72E5460141CF845007280F3 /* interface_flickr_a_p_i_response.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_a_p_i_response.tex; sourceTree = "<group>"; };
+		C72E5461141CF845007280F3 /* interface_flickr_asynchronous_fetcher.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_asynchronous_fetcher.tex; sourceTree = "<group>"; };
+		C72E5462141CF845007280F3 /* interface_flickr_authorization_controller.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_authorization_controller.tex; sourceTree = "<group>"; };
+		C72E5463141CF845007280F3 /* interface_flickr_authorization_controller_07_private_08.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_authorization_controller_07_private_08.tex; sourceTree = "<group>"; };
+		C72E5464141CF845007280F3 /* interface_flickr_authorization_sheet_controller.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_authorization_sheet_controller.tex; sourceTree = "<group>"; };
+		C72E5465141CF845007280F3 /* interface_flickr_comment.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_comment.tex; sourceTree = "<group>"; };
+		C72E5466141CF845007280F3 /* interface_flickr_e_x_i_f_tag.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_e_x_i_f_tag.tex; sourceTree = "<group>"; };
+		C72E5467141CF845007280F3 /* interface_flickr_license.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_license.tex; sourceTree = "<group>"; };
+		C72E5468141CF845007280F3 /* interface_flickr_person.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_person.tex; sourceTree = "<group>"; };
+		C72E5469141CF845007280F3 /* interface_flickr_person_manager.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_person_manager.tex; sourceTree = "<group>"; };
+		C72E546A141CF845007280F3 /* interface_flickr_person_manager_07_private_08.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_person_manager_07_private_08.tex; sourceTree = "<group>"; };
+		C72E546B141CF845007280F3 /* interface_flickr_photo.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_photo.tex; sourceTree = "<group>"; };
+		C72E546C141CF845007280F3 /* interface_flickr_photo_07_private_08.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_photo_07_private_08.tex; sourceTree = "<group>"; };
+		C72E546D141CF845007280F3 /* interface_flickr_photoset.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_photoset.tex; sourceTree = "<group>"; };
+		C72E546E141CF845007280F3 /* interface_flickr_photoset_07_private_08.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_photoset_07_private_08.tex; sourceTree = "<group>"; };
+		C72E546F141CF845007280F3 /* interface_flickr_tag.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_tag.tex; sourceTree = "<group>"; };
+		C72E5470141CF845007280F3 /* interface_flickr_token.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_flickr_token.tex; sourceTree = "<group>"; };
+		C72E5471141CF845007280F3 /* interface_n_s_color_07_c_g_color_08.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = interface_n_s_color_07_c_g_color_08.tex; sourceTree = "<group>"; };
+		C72E5472141CF845007280F3 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		C72E5473141CF845007280F3 /* refman.tex */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = refman.tex; sourceTree = "<group>"; };
 		C73977AD140929C6005C8562 /* OAuthKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthKit.xcodeproj; path = ../OAuthKit/OAuthKit.xcodeproj; sourceTree = "<group>"; };
 		C73977C814092BEF005C8562 /* NSColor+CGColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+CGColor.h"; sourceTree = "<group>"; };
 		C73977C914092BEF005C8562 /* NSColor+CGColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+CGColor.m"; sourceTree = "<group>"; };
@@ -114,6 +132,73 @@
 		C75A8B991333F32C00716282 /* FlickrAPIResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIResponse.h; sourceTree = "<group>"; };
 		C763877F136376D100362B2F /* FlickrPhotoset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoset.h; sourceTree = "<group>"; };
 		C7638780136376D100362B2F /* FlickrPhotoset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoset.m; sourceTree = "<group>"; };
+		C7679719141CF7810097A5C2 /* FlickrPerson.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html.documentation; path = FlickrPerson.html; sourceTree = "<group>"; };
+		C767971A141CF7810097A5C2 /* FlickrPersonManager.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html.documentation; path = FlickrPersonManager.html; sourceTree = "<group>"; };
+		C767971C141CF7810097A5C2 /* common.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = common.css; sourceTree = "<group>"; };
+		C767971D141CF7810097A5C2 /* print.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = print.css; sourceTree = "<group>"; };
+		C767971E141CF7810097A5C2 /* screen.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = screen.css; sourceTree = "<group>"; };
+		C767971F141CF7810097A5C2 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html.documentation; path = index.html; sourceTree = "<group>"; };
+		C7679722141CF7810097A5C2 /* FlickrPerson.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FlickrPerson.xml; sourceTree = "<group>"; };
+		C7679723141CF7810097A5C2 /* FlickrPersonManager.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FlickrPersonManager.xml; sourceTree = "<group>"; };
+		C7679724141CF7810097A5C2 /* index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = index.xml; sourceTree = "<group>"; };
+		C7679726141CF7810097A5C2 /* _flickr_a_p_i_response_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_a_p_i_response_8h.xml; sourceTree = "<group>"; };
+		C7679727141CF7810097A5C2 /* _flickr_a_p_i_response_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_a_p_i_response_8m.xml; sourceTree = "<group>"; };
+		C7679728141CF7810097A5C2 /* _flickr_asynchronous_fetcher_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_asynchronous_fetcher_8h.xml; sourceTree = "<group>"; };
+		C7679729141CF7810097A5C2 /* _flickr_asynchronous_fetcher_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_asynchronous_fetcher_8m.xml; sourceTree = "<group>"; };
+		C767972A141CF7810097A5C2 /* _flickr_authorization_controller_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_authorization_controller_8h.xml; sourceTree = "<group>"; };
+		C767972B141CF7810097A5C2 /* _flickr_authorization_controller_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_authorization_controller_8m.xml; sourceTree = "<group>"; };
+		C767972C141CF7810097A5C2 /* _flickr_authorization_sheet_controller_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_authorization_sheet_controller_8h.xml; sourceTree = "<group>"; };
+		C767972D141CF7810097A5C2 /* _flickr_authorization_sheet_controller_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_authorization_sheet_controller_8m.xml; sourceTree = "<group>"; };
+		C767972E141CF7810097A5C2 /* _flickr_comment_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_comment_8h.xml; sourceTree = "<group>"; };
+		C767972F141CF7810097A5C2 /* _flickr_comment_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_comment_8m.xml; sourceTree = "<group>"; };
+		C7679730141CF7810097A5C2 /* _flickr_e_x_i_f_tag_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_e_x_i_f_tag_8h.xml; sourceTree = "<group>"; };
+		C7679731141CF7810097A5C2 /* _flickr_e_x_i_f_tag_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_e_x_i_f_tag_8m.xml; sourceTree = "<group>"; };
+		C7679732141CF7810097A5C2 /* _flickr_kit_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_kit_8h.xml; sourceTree = "<group>"; };
+		C7679733141CF7810097A5C2 /* _flickr_kit_constants_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_kit_constants_8h.xml; sourceTree = "<group>"; };
+		C7679734141CF7810097A5C2 /* _flickr_kit_helpers_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_kit_helpers_8m.xml; sourceTree = "<group>"; };
+		C7679735141CF7810097A5C2 /* _flickr_license_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_license_8h.xml; sourceTree = "<group>"; };
+		C7679736141CF7810097A5C2 /* _flickr_license_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_license_8m.xml; sourceTree = "<group>"; };
+		C7679737141CF7810097A5C2 /* _flickr_person_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_person_8h.xml; sourceTree = "<group>"; };
+		C7679738141CF7810097A5C2 /* _flickr_person_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_person_8m.xml; sourceTree = "<group>"; };
+		C7679739141CF7810097A5C2 /* _flickr_person_manager_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_person_manager_8h.xml; sourceTree = "<group>"; };
+		C767973A141CF7810097A5C2 /* _flickr_person_manager_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_person_manager_8m.xml; sourceTree = "<group>"; };
+		C767973B141CF7810097A5C2 /* _flickr_photo_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_photo_8h.xml; sourceTree = "<group>"; };
+		C767973C141CF7810097A5C2 /* _flickr_photo_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_photo_8m.xml; sourceTree = "<group>"; };
+		C767973D141CF7810097A5C2 /* _flickr_photoset_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_photoset_8h.xml; sourceTree = "<group>"; };
+		C767973E141CF7810097A5C2 /* _flickr_photoset_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_photoset_8m.xml; sourceTree = "<group>"; };
+		C767973F141CF7810097A5C2 /* _flickr_tag_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_tag_8h.xml; sourceTree = "<group>"; };
+		C7679740141CF7810097A5C2 /* _flickr_tag_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_tag_8m.xml; sourceTree = "<group>"; };
+		C7679741141CF7810097A5C2 /* _flickr_token_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_token_8h.xml; sourceTree = "<group>"; };
+		C7679742141CF7810097A5C2 /* _flickr_token_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _flickr_token_8m.xml; sourceTree = "<group>"; };
+		C7679743141CF7810097A5C2 /* _n_s_color_09_c_g_color_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _n_s_color_09_c_g_color_8h.xml; sourceTree = "<group>"; };
+		C7679744141CF7810097A5C2 /* _n_s_color_09_c_g_color_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _n_s_color_09_c_g_color_8m.xml; sourceTree = "<group>"; };
+		C7679745141CF7810097A5C2 /* _n_s_string_09_m_d5_hash_8h.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _n_s_string_09_m_d5_hash_8h.xml; sourceTree = "<group>"; };
+		C7679746141CF7810097A5C2 /* _n_s_string_09_m_d5_hash_8m.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = _n_s_string_09_m_d5_hash_8m.xml; sourceTree = "<group>"; };
+		C7679747141CF7810097A5C2 /* class_n_s_string.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = class_n_s_string.xml; sourceTree = "<group>"; };
+		C7679748141CF7810097A5C2 /* combine.xslt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = combine.xslt; sourceTree = "<group>"; };
+		C7679749141CF7810097A5C2 /* compound.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = compound.xsd; sourceTree = "<group>"; };
+		C767974A141CF7810097A5C2 /* dir_88c961e27ea574c115ec55c306fdb1d8.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = dir_88c961e27ea574c115ec55c306fdb1d8.xml; sourceTree = "<group>"; };
+		C767974B141CF7810097A5C2 /* index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = index.xml; sourceTree = "<group>"; };
+		C767974C141CF7810097A5C2 /* index.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = index.xsd; sourceTree = "<group>"; };
+		C767974D141CF7810097A5C2 /* interface_flickr_a_p_i_response.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_a_p_i_response.xml; sourceTree = "<group>"; };
+		C767974E141CF7810097A5C2 /* interface_flickr_asynchronous_fetcher.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_asynchronous_fetcher.xml; sourceTree = "<group>"; };
+		C767974F141CF7810097A5C2 /* interface_flickr_authorization_controller.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_authorization_controller.xml; sourceTree = "<group>"; };
+		C7679750141CF7810097A5C2 /* interface_flickr_authorization_controller_07_private_08.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_authorization_controller_07_private_08.xml; sourceTree = "<group>"; };
+		C7679751141CF7810097A5C2 /* interface_flickr_authorization_sheet_controller.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_authorization_sheet_controller.xml; sourceTree = "<group>"; };
+		C7679752141CF7810097A5C2 /* interface_flickr_comment.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_comment.xml; sourceTree = "<group>"; };
+		C7679753141CF7810097A5C2 /* interface_flickr_e_x_i_f_tag.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_e_x_i_f_tag.xml; sourceTree = "<group>"; };
+		C7679754141CF7810097A5C2 /* interface_flickr_license.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_license.xml; sourceTree = "<group>"; };
+		C7679755141CF7810097A5C2 /* interface_flickr_person.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_person.xml; sourceTree = "<group>"; };
+		C7679756141CF7810097A5C2 /* interface_flickr_person_manager.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_person_manager.xml; sourceTree = "<group>"; };
+		C7679757141CF7810097A5C2 /* interface_flickr_person_manager_07_private_08.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_person_manager_07_private_08.xml; sourceTree = "<group>"; };
+		C7679758141CF7810097A5C2 /* interface_flickr_photo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_photo.xml; sourceTree = "<group>"; };
+		C7679759141CF7810097A5C2 /* interface_flickr_photo_07_private_08.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_photo_07_private_08.xml; sourceTree = "<group>"; };
+		C767975A141CF7810097A5C2 /* interface_flickr_photoset.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_photoset.xml; sourceTree = "<group>"; };
+		C767975B141CF7810097A5C2 /* interface_flickr_photoset_07_private_08.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_photoset_07_private_08.xml; sourceTree = "<group>"; };
+		C767975C141CF7810097A5C2 /* interface_flickr_tag.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_tag.xml; sourceTree = "<group>"; };
+		C767975D141CF7810097A5C2 /* interface_flickr_token.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_flickr_token.xml; sourceTree = "<group>"; };
+		C767975E141CF7810097A5C2 /* interface_n_s_color_07_c_g_color_08.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_n_s_color_07_c_g_color_08.xml; sourceTree = "<group>"; };
+		C767975F141CF7810097A5C2 /* interface_n_s_string_07_m_d5_hash_08.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = interface_n_s_string_07_m_d5_hash_08.xml; sourceTree = "<group>"; };
 		C769252F132FEC6D005F6AC3 /* FlickrKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlickrKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7692532132FEC6D005F6AC3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C7692537132FEC6D005F6AC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -169,6 +254,9 @@
 		BB61E743141CF4E900839347 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
+				C72E545C141CF845007280F3 /* latex */,
+				C7679716141CF7810097A5C2 /* apple */,
+				C7679725141CF7810097A5C2 /* xml */,
 				BB61E744141CF4E900839347 /* doxyclean */,
 			);
 			path = Documentation;
@@ -196,6 +284,36 @@
 			path = css;
 			sourceTree = "<group>";
 		};
+		C72E545C141CF845007280F3 /* latex */ = {
+			isa = PBXGroup;
+			children = (
+				C72E545D141CF845007280F3 /* annotated.tex */,
+				C72E545E141CF845007280F3 /* class_n_s_string.tex */,
+				C72E545F141CF845007280F3 /* doxygen.sty */,
+				C72E5460141CF845007280F3 /* interface_flickr_a_p_i_response.tex */,
+				C72E5461141CF845007280F3 /* interface_flickr_asynchronous_fetcher.tex */,
+				C72E5462141CF845007280F3 /* interface_flickr_authorization_controller.tex */,
+				C72E5463141CF845007280F3 /* interface_flickr_authorization_controller_07_private_08.tex */,
+				C72E5464141CF845007280F3 /* interface_flickr_authorization_sheet_controller.tex */,
+				C72E5465141CF845007280F3 /* interface_flickr_comment.tex */,
+				C72E5466141CF845007280F3 /* interface_flickr_e_x_i_f_tag.tex */,
+				C72E5467141CF845007280F3 /* interface_flickr_license.tex */,
+				C72E5468141CF845007280F3 /* interface_flickr_person.tex */,
+				C72E5469141CF845007280F3 /* interface_flickr_person_manager.tex */,
+				C72E546A141CF845007280F3 /* interface_flickr_person_manager_07_private_08.tex */,
+				C72E546B141CF845007280F3 /* interface_flickr_photo.tex */,
+				C72E546C141CF845007280F3 /* interface_flickr_photo_07_private_08.tex */,
+				C72E546D141CF845007280F3 /* interface_flickr_photoset.tex */,
+				C72E546E141CF845007280F3 /* interface_flickr_photoset_07_private_08.tex */,
+				C72E546F141CF845007280F3 /* interface_flickr_tag.tex */,
+				C72E5470141CF845007280F3 /* interface_flickr_token.tex */,
+				C72E5471141CF845007280F3 /* interface_n_s_color_07_c_g_color_08.tex */,
+				C72E5472141CF845007280F3 /* Makefile */,
+				C72E5473141CF845007280F3 /* refman.tex */,
+			);
+			path = latex;
+			sourceTree = "<group>";
+		};
 		C73977AE140929C6005C8562 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +328,127 @@
 				C757798D13A1434F00060713 /* FlickrAuthorizationSheetController.xib */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		C7679716141CF7810097A5C2 /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				C7679717141CF7810097A5C2 /* html */,
+				C7679720141CF7810097A5C2 /* xml */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		C7679717141CF7810097A5C2 /* html */ = {
+			isa = PBXGroup;
+			children = (
+				C7679718141CF7810097A5C2 /* Classes */,
+				C767971B141CF7810097A5C2 /* css */,
+				C767971F141CF7810097A5C2 /* index.html */,
+			);
+			path = html;
+			sourceTree = "<group>";
+		};
+		C7679718141CF7810097A5C2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C7679719141CF7810097A5C2 /* FlickrPerson.html */,
+				C767971A141CF7810097A5C2 /* FlickrPersonManager.html */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C767971B141CF7810097A5C2 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				C767971C141CF7810097A5C2 /* common.css */,
+				C767971D141CF7810097A5C2 /* print.css */,
+				C767971E141CF7810097A5C2 /* screen.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		C7679720141CF7810097A5C2 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				C7679721141CF7810097A5C2 /* Classes */,
+				C7679724141CF7810097A5C2 /* index.xml */,
+			);
+			path = xml;
+			sourceTree = "<group>";
+		};
+		C7679721141CF7810097A5C2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C7679722141CF7810097A5C2 /* FlickrPerson.xml */,
+				C7679723141CF7810097A5C2 /* FlickrPersonManager.xml */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C7679725141CF7810097A5C2 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				C7679726141CF7810097A5C2 /* _flickr_a_p_i_response_8h.xml */,
+				C7679727141CF7810097A5C2 /* _flickr_a_p_i_response_8m.xml */,
+				C7679728141CF7810097A5C2 /* _flickr_asynchronous_fetcher_8h.xml */,
+				C7679729141CF7810097A5C2 /* _flickr_asynchronous_fetcher_8m.xml */,
+				C767972A141CF7810097A5C2 /* _flickr_authorization_controller_8h.xml */,
+				C767972B141CF7810097A5C2 /* _flickr_authorization_controller_8m.xml */,
+				C767972C141CF7810097A5C2 /* _flickr_authorization_sheet_controller_8h.xml */,
+				C767972D141CF7810097A5C2 /* _flickr_authorization_sheet_controller_8m.xml */,
+				C767972E141CF7810097A5C2 /* _flickr_comment_8h.xml */,
+				C767972F141CF7810097A5C2 /* _flickr_comment_8m.xml */,
+				C7679730141CF7810097A5C2 /* _flickr_e_x_i_f_tag_8h.xml */,
+				C7679731141CF7810097A5C2 /* _flickr_e_x_i_f_tag_8m.xml */,
+				C7679732141CF7810097A5C2 /* _flickr_kit_8h.xml */,
+				C7679733141CF7810097A5C2 /* _flickr_kit_constants_8h.xml */,
+				C7679734141CF7810097A5C2 /* _flickr_kit_helpers_8m.xml */,
+				C7679735141CF7810097A5C2 /* _flickr_license_8h.xml */,
+				C7679736141CF7810097A5C2 /* _flickr_license_8m.xml */,
+				C7679737141CF7810097A5C2 /* _flickr_person_8h.xml */,
+				C7679738141CF7810097A5C2 /* _flickr_person_8m.xml */,
+				C7679739141CF7810097A5C2 /* _flickr_person_manager_8h.xml */,
+				C767973A141CF7810097A5C2 /* _flickr_person_manager_8m.xml */,
+				C767973B141CF7810097A5C2 /* _flickr_photo_8h.xml */,
+				C767973C141CF7810097A5C2 /* _flickr_photo_8m.xml */,
+				C767973D141CF7810097A5C2 /* _flickr_photoset_8h.xml */,
+				C767973E141CF7810097A5C2 /* _flickr_photoset_8m.xml */,
+				C767973F141CF7810097A5C2 /* _flickr_tag_8h.xml */,
+				C7679740141CF7810097A5C2 /* _flickr_tag_8m.xml */,
+				C7679741141CF7810097A5C2 /* _flickr_token_8h.xml */,
+				C7679742141CF7810097A5C2 /* _flickr_token_8m.xml */,
+				C7679743141CF7810097A5C2 /* _n_s_color_09_c_g_color_8h.xml */,
+				C7679744141CF7810097A5C2 /* _n_s_color_09_c_g_color_8m.xml */,
+				C7679745141CF7810097A5C2 /* _n_s_string_09_m_d5_hash_8h.xml */,
+				C7679746141CF7810097A5C2 /* _n_s_string_09_m_d5_hash_8m.xml */,
+				C7679747141CF7810097A5C2 /* class_n_s_string.xml */,
+				C7679748141CF7810097A5C2 /* combine.xslt */,
+				C7679749141CF7810097A5C2 /* compound.xsd */,
+				C767974A141CF7810097A5C2 /* dir_88c961e27ea574c115ec55c306fdb1d8.xml */,
+				C767974B141CF7810097A5C2 /* index.xml */,
+				C767974C141CF7810097A5C2 /* index.xsd */,
+				C767974D141CF7810097A5C2 /* interface_flickr_a_p_i_response.xml */,
+				C767974E141CF7810097A5C2 /* interface_flickr_asynchronous_fetcher.xml */,
+				C767974F141CF7810097A5C2 /* interface_flickr_authorization_controller.xml */,
+				C7679750141CF7810097A5C2 /* interface_flickr_authorization_controller_07_private_08.xml */,
+				C7679751141CF7810097A5C2 /* interface_flickr_authorization_sheet_controller.xml */,
+				C7679752141CF7810097A5C2 /* interface_flickr_comment.xml */,
+				C7679753141CF7810097A5C2 /* interface_flickr_e_x_i_f_tag.xml */,
+				C7679754141CF7810097A5C2 /* interface_flickr_license.xml */,
+				C7679755141CF7810097A5C2 /* interface_flickr_person.xml */,
+				C7679756141CF7810097A5C2 /* interface_flickr_person_manager.xml */,
+				C7679757141CF7810097A5C2 /* interface_flickr_person_manager_07_private_08.xml */,
+				C7679758141CF7810097A5C2 /* interface_flickr_photo.xml */,
+				C7679759141CF7810097A5C2 /* interface_flickr_photo_07_private_08.xml */,
+				C767975A141CF7810097A5C2 /* interface_flickr_photoset.xml */,
+				C767975B141CF7810097A5C2 /* interface_flickr_photoset_07_private_08.xml */,
+				C767975C141CF7810097A5C2 /* interface_flickr_tag.xml */,
+				C767975D141CF7810097A5C2 /* interface_flickr_token.xml */,
+				C767975E141CF7810097A5C2 /* interface_n_s_color_07_c_g_color_08.xml */,
+				C767975F141CF7810097A5C2 /* interface_n_s_string_07_m_d5_hash_08.xml */,
+			);
+			path = xml;
 			sourceTree = "<group>";
 		};
 		C7692523132FEC6D005F6AC3 = {
@@ -362,7 +601,8 @@
 				C769252B132FEC6D005F6AC3 /* Frameworks */,
 				C769252C132FEC6D005F6AC3 /* Headers */,
 				C769252D132FEC6D005F6AC3 /* Resources */,
-				C73977BA140929E8005C8562 /* CopyFiles */,
+				C73977BA140929E8005C8562 /* Copy Frameworks */,
+				C7679715141CF6C90097A5C2 /* Build Documentation */,
 			);
 			buildRules = (
 			);
@@ -431,17 +671,27 @@
 				C799094E133262570000B732 /* sa.large.png in Resources */,
 				C72789FF1332894D008C4321 /* cr.large.png in Resources */,
 				C757798E13A1434F00060713 /* FlickrAuthorizationSheetController.xib in Resources */,
-				BB61E74D141CF4E900839347 /* common.css in Resources */,
-				BB61E74E141CF4E900839347 /* print.css in Resources */,
-				BB61E74F141CF4E900839347 /* screen.css in Resources */,
-				BB61E750141CF4E900839347 /* doxyclean.py in Resources */,
-				BB61E751141CF4E900839347 /* index2html.xslt in Resources */,
-				BB61E752141CF4E900839347 /* object.xslt in Resources */,
-				BB61E753141CF4E900839347 /* object2html.xslt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C7679715141CF6C90097A5C2 /* Build Documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Documentation";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm -rf Documentation/xml\nrm -rf Documentation/latex\nrm -rf Documentation/apple\n\nDG=`which doxygen`\n\nif [ \"$DG\" == \"\" ]; then exit 0;fi\n\ndoxygen Documentation/Doxyfile\nDocumentation/doxyclean/doxyclean.py --name=FlickrKit --input=Documentation/xml/ --output=Documentation/apple";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C769252A132FEC6D005F6AC3 /* Sources */ = {
@@ -464,6 +714,7 @@
 				C757798B13A1422E00060713 /* FlickrAuthorizationSheetController.m in Sources */,
 				BB1647C713A281C700E64DEF /* FlickrToken.m in Sources */,
 				C73977CB14092BEF005C8562 /* NSColor+CGColor.m in Sources */,
+				C72E5489141CF845007280F3 /* Makefile in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

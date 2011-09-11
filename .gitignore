@@ -9,6 +9,7 @@ build/
 *.xcworkspace
 xcuserdata
 .DS_Store
-Doxyfile
 Source/apiKey.h
-
+Documentation/apple
+Documentation/xml
+Documentation/latex
