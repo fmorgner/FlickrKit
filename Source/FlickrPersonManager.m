@@ -28,7 +28,7 @@
 
 @implementation FlickrPersonManager
 
-static FlickrPersonManager* sharedPersonManager = nil;
+__strong static FlickrPersonManager* sharedPersonManager = nil;
 
 #pragma mark - Object lifecycle
 
@@ -46,13 +46,10 @@ static FlickrPersonManager* sharedPersonManager = nil;
 
 + (FlickrPersonManager*)sharedManager
 	{
-	@synchronized(self)
-		{
-		if (sharedPersonManager == nil)
-			{
-			sharedPersonManager = [[super allocWithZone:NULL] init];
-			}
-		}
+	static dispatch_once_t once = 0;
+	dispatch_once(&once, ^{
+    sharedPersonManager = [[self alloc] init];
+		});
 	return sharedPersonManager;
 	}
 
@@ -66,25 +63,6 @@ static FlickrPersonManager* sharedPersonManager = nil;
   return self;
 	}
  
-//- (id)retain
-//	{
-//  return self;
-//	}
-// 
-//- (NSUInteger)retainCount
-//	{
-//  return UINT_MAX;
-//	}
-// 
-//- (oneway void)release
-//	{
-//	}
-// 
-//- (id)autorelease
-//	{
-//  return self;
-//	}
-
 #pragma mark - Search methods
 
 - (FlickrPerson*)personForID:(NSString*)anID
