@@ -37,7 +37,7 @@
 	[loadingOverlay setWantsLayer:YES];
 	[loadingOverlay.layer setCornerRadius:5.0f];
 	[loadingOverlay.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
-	[loadingOverlay bind:@"hidden" toObject:flickrWebView withKeyPath:@"isLoading" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName forKey:NSValueTransformerNameBindingOption]];
+	[loadingOverlay bind:@"hidden" toObject:flickrWebView withKeyPath:@"isLoading" options:@{NSValueTransformerNameBindingOption: NSNegateBooleanTransformerName}];
 	[loadingIndicator becomeFirstResponder];
 	[loadingIndicator bind:@"animate" toObject:flickrWebView withKeyPath:@"isLoading" options:nil];
 	}

@@ -174,7 +174,7 @@
 
 - (void)fetchEXIFInformation
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetEXIF, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetEXIF, @{@"photo_id": ID}, NO);
 
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
@@ -194,7 +194,7 @@
 
 - (void)fetchImageOfSize:(FlickrImageSize)aSize
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetSizes, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetSizes, @{@"photo_id": ID}, NO);
 
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
@@ -222,7 +222,7 @@
 	
 - (void)fetchContexts
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetAllContexts, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetAllContexts, @{@"photo_id": ID}, NO);
 
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
@@ -252,7 +252,7 @@
 	
 - (void)fetchComments
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosCommentsGetList, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosCommentsGetList, @{@"photo_id": ID}, NO);
 
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
@@ -272,7 +272,7 @@
 
 - (void)fetchFavorites
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetFavorites, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetFavorites, @{@"photo_id": ID}, NO);
 	
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
@@ -301,7 +301,7 @@
 
 - (void)fetchGeneralInformation
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetInfo, [NSDictionary dictionaryWithObject:ID forKey:@"photo_id"], NO);
+	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetInfo, @{@"photo_id": ID}, NO);
 	
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {

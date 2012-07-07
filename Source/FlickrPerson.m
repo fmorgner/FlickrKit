@@ -178,7 +178,7 @@
 - (void)fetchPersonInformation
 	{
 	NSString* escapedUserID = [ID stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSURL* informationURL = flickrMethodURL(@"flickr.people.getInfo", [NSDictionary dictionaryWithObject:escapedUserID forKey:@"user_id"], NO);
+	NSURL* informationURL = flickrMethodURL(@"flickr.people.getInfo", @{@"user_id": escapedUserID}, NO);
 	
 	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 	[dataFetcher fetchDataAtURL:informationURL withCompletionHandler:^(id fetchResult) {

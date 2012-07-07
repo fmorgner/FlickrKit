@@ -41,7 +41,7 @@
 			{
 			NSString* errorDescription = [[[[xmlContent nodesForXPath:@"rsp/err" error:&xmlError] objectAtIndex:0] attributeForName:@"msg"] stringValue];
 			NSInteger errorCode = [[[[[xmlContent nodesForXPath:@"rsp/err" error:&xmlError] objectAtIndex:0] attributeForName:@"code"] stringValue] intValue];
-			error = [[NSError errorWithDomain:kFlickrErrorDomain code:errorCode userInfo:[NSDictionary dictionaryWithObject:errorDescription forKey:NSLocalizedDescriptionKey]] retain];
+			error = [[NSError errorWithDomain:kFlickrErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey: errorDescription}] retain];
 			}
 		}
 	return self;

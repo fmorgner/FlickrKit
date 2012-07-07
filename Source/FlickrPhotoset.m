@@ -56,7 +56,7 @@
 		{
 		self.ID = anID;
 		self.title = aTitle;
-		NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosetGetInfo, [NSDictionary dictionaryWithObject:ID forKey:@"photoset_id"], NO);
+		NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosetGetInfo, @{@"photoset_id": ID}, NO);
 		FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 		[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
 			if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])

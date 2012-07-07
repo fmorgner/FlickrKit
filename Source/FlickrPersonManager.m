@@ -123,7 +123,7 @@ static FlickrPersonManager* sharedPersonManager = nil;
 
 - (NSArray*)peopleForProStatus:(BOOL)theStatus
 	{
-	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"proStatus == %@", [NSNumber numberWithBool:theStatus]];
+	NSPredicate* filterPredicate = [NSPredicate predicateWithFormat:@"proStatus == %@", @(theStatus)];
 	NSArray* filterResult = [people filteredArrayUsingPredicate:filterPredicate];
 	return filterResult;
 	}

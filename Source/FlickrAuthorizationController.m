@@ -39,12 +39,12 @@
 - (void)authSheetDidClose
 	{
 	FlickrAsynchronousFetcher* tokenFetcher = [FlickrAsynchronousFetcher new];
-	[tokenFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getToken", [NSDictionary dictionaryWithObject:frob forKey:@"frob"], NO) withCompletionHandler:^(id fetchResult) {
+	[tokenFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getToken", @{@"frob": frob}, NO) withCompletionHandler:^(id fetchResult) {
 		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
 			{
 			NSXMLNode* tokenNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/auth" error:nil] lastObject];
 			FlickrToken* token = [[FlickrToken alloc] initWithXMLElement:(NSXMLElement*)tokenNode];
-			[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAuthorizationControllerDidReceiveToken object:self userInfo:[NSDictionary dictionaryWithObject:[token copy] forKey:FlickrTokenKey]];
+			[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAuthorizationControllerDidReceiveToken object:self userInfo:@{FlickrTokenKey: [token copy]}];
 			[token release];
 			}
 	}];

@@ -58,7 +58,7 @@
 		NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
 		
 		[userInfo setObject:url forKey:FlickrURLKey];
-		[userInfo setObject:[NSNumber numberWithInteger:((NSHTTPURLResponse*)response).statusCode] forKey:FlickrHTTPStatusKey];
+		[userInfo setObject:@(((NSHTTPURLResponse*)response).statusCode) forKey:FlickrHTTPStatusKey];
 		[userInfo setObject:[NSHTTPURLResponse localizedStringForStatusCode:((NSHTTPURLResponse*)response).statusCode] forKey:FlickrDescriptionKey];
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAsynchronousFetcherDidFailNotification object:self userInfo:(NSDictionary*)userInfo];

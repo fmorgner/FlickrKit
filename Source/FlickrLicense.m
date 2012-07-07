@@ -129,49 +129,49 @@
 	switch (self.code)
 		{
 		case kFlickrLicenseCCBy:
-			returnArray = [NSArray arrayWithObjects:ccImage, byImage, nil];
+			returnArray = @[ccImage, byImage];
 			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 				[(NSImage*)obj setName:[self name]];
 			}];
 			break;
 			
 		case kFlickrLicenseCCByNc:
-			returnArray = [NSArray arrayWithObjects:ccImage, byImage, ncImage, nil];
+			returnArray = @[ccImage, byImage, ncImage];
 			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 				[(NSImage*)obj setName:[self name]];
 			}];
 			break;
 			
 		case kFlickrLicenseCCByNcNd:
-			returnArray = [NSArray arrayWithObjects:ccImage, byImage, ncImage, ndImage, nil];
+			returnArray = @[ccImage, byImage, ncImage, ndImage];
 			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 				[(NSImage*)obj setName:[self name]];
 			}];
 			break;
 			
 		case kFlickrLicenseCCByNcSa:
-			returnArray = [NSArray arrayWithObjects:ccImage, byImage, ncImage, saImage, nil];
+			returnArray = @[ccImage, byImage, ncImage, saImage];
 			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 				[(NSImage*)obj setName:[self name]];
 			}];
 			break;
 			
 		case kFlickrLicenseCCByNd:
-			returnArray = [NSArray arrayWithObjects:ccImage, byImage, ndImage, nil];
+			returnArray = @[ccImage, byImage, ndImage];
 			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 				[(NSImage*)obj setName:[self name]];
 			}];
 			break;
 			
 		case kFlickrLicenseCCBySa:
-			returnArray = [NSArray arrayWithObjects:ccImage, byImage, saImage, nil];
+			returnArray = @[ccImage, byImage, saImage];
 			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 				[(NSImage*)obj setName:[self name]];
 			}];
 			break;
 		
 		case kFlickrLicenseAllRightsReserved:
-			returnArray = [NSArray arrayWithObject:crImage];
+			returnArray = @[crImage];
 			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 				[(NSImage*)obj setName:[self name]];
 			}];
