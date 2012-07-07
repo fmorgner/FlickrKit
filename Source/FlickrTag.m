@@ -8,33 +8,26 @@
 
 #import "FlickrTag.h"
 
-
 @implementation FlickrTag
-
-@synthesize ID;
-@synthesize author;
-@synthesize rawName;
-@synthesize name;
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement
 	{
 	if ((self = [super init]))
 		{
-		self.ID = [[anElement attributeForName:@"id"] stringValue];
-		self.rawName = [[anElement attributeForName:@"raw"] stringValue];
-		self.name = [anElement stringValue];
+		_ID = [[anElement attributeForName:@"id"] stringValue];
+		_rawName = [[anElement attributeForName:@"raw"] stringValue];
+		_name = [anElement stringValue];
 
-		personManager = [FlickrPersonManager sharedManager];
-		FlickrPerson* searchResult = [personManager personForID:[[anElement attributeForName:@"author"] stringValue]];
+		FlickrPerson* searchResult = [[FlickrPersonManager sharedManager] personForID:[[anElement attributeForName:@"author"] stringValue]];
 		
 		if (searchResult)
 			{
-			self.author = searchResult;
+			_author = searchResult;
   		}
 		else
 			{
-			self.author = [FlickrPerson personWithID:[[anElement attributeForName:@"author"] stringValue]];
-			[personManager addPerson:self.author];
+			_author = [FlickrPerson personWithID:[[anElement attributeForName:@"author"] stringValue]];
+			[[FlickrPersonManager sharedManager] addPerson:_author];
 			}
 		
     }

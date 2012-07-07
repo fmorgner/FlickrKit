@@ -12,18 +12,18 @@ static NSString* kFlickrErrorDomain = @"FlickrErrorDomain";
 
 @interface FlickrAPIResponse : NSObject
 	{
-	NSString* status;
-	NSData* rawContent;
+	NSString* __unsafe_unretained status;
+	NSData* __unsafe_unretained rawContent;
 	NSXMLDocument* xmlContent;
-	NSError* error;
+	NSError* __unsafe_unretained error;
 	}
 
 - (id)initWithData:(NSData*)theData;
 + (FlickrAPIResponse*)responseWithData:(NSData*)theData;
 
-@property(nonatomic,readonly) NSString* status;
-@property(nonatomic,readonly) NSData* rawContent;
+@property(unsafe_unretained, nonatomic,readonly) NSString* status;
+@property(unsafe_unretained, nonatomic,readonly) NSData* rawContent;
 @property(nonatomic,readonly) NSXMLDocument* xmlContent;
-@property(nonatomic,readonly) NSError* error;
+@property(unsafe_unretained, nonatomic,readonly) NSError* error;
 
 @end

@@ -21,38 +21,7 @@
 
 @end
 
-@implementation FlickrAuthorizationController(Private)
-
-- (void)requestFrob
-	{
-	FlickrAsynchronousFetcher* frobFetcher = [FlickrAsynchronousFetcher new];
-	[frobFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getFrob", nil, NO) withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSXMLNode* frobNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/frob" error:nil] lastObject];
-			self.frob = [frobNode stringValue];
-			}
-	}];
-	}
-
-- (void)authSheetDidClose
-	{
-	FlickrAsynchronousFetcher* tokenFetcher = [FlickrAsynchronousFetcher new];
-	[tokenFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getToken", @{@"frob": frob}, NO) withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSXMLNode* tokenNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/auth" error:nil] lastObject];
-			FlickrToken* token = [[FlickrToken alloc] initWithXMLElement:(NSXMLElement*)tokenNode];
-			[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAuthorizationControllerDidReceiveToken object:self userInfo:@{FlickrTokenKey: [token copy]}];
-			}
-	}];
-	}
-
-@end
-
 @implementation FlickrAuthorizationController
-
-@synthesize authorizationURL, frob, authorizationSheetController;
 
 - (id)init
 	{
@@ -85,10 +54,10 @@
 	{
 	if([keyPath isEqualToString:@"frob"])
 		{
-		if(!![frob length])
+		if(!![_frob length])
 			{
-			NSMutableString* urlString = [NSMutableString stringWithFormat:FlickrAuthURL, APIKey, permission, frob];
-			NSString* signatureBaseString = [NSMutableString stringWithFormat:@"%@api_key%@frob%@perms%@", APISecret, APIKey, frob, permission];
+			NSMutableString* urlString = [NSMutableString stringWithFormat:@"%@%@%@%@", FlickrAuthURL, APIKey, permission, _frob];
+			NSString* signatureBaseString = [NSMutableString stringWithFormat:@"%@api_key%@frob%@perms%@", APISecret, APIKey, _frob, permission];
 			NSString* signature = [[signatureBaseString MD5Hash] lowercaseString];
 			[urlString appendFormat:@"&api_sig=%@", signature];
 			
@@ -99,7 +68,36 @@
 		{
 		self.authorizationSheetController = [FlickrAuthorizationSheetController authorizationSheetControllerWithURL:authorizationURL];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authSheetDidClose) name:FlickrAuthorizationSheetDidClose object:nil];
-		[authorizationSheetController presentSheet];
+		[_authorizationSheetController presentSheet];
 		}
 	}
+@end
+
+@implementation FlickrAuthorizationController(Private)
+
+- (void)requestFrob
+	{
+	FlickrAsynchronousFetcher* frobFetcher = [FlickrAsynchronousFetcher new];
+	[frobFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getFrob", nil, NO) withCompletionHandler:^(id fetchResult) {
+		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+			{
+			NSXMLNode* frobNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/frob" error:nil] lastObject];
+			self.frob = [frobNode stringValue];
+			}
+	}];
+	}
+
+- (void)authSheetDidClose
+	{
+	FlickrAsynchronousFetcher* tokenFetcher = [FlickrAsynchronousFetcher new];
+	[tokenFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getToken", @{@"frob": _frob}, NO) withCompletionHandler:^(id fetchResult) {
+		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+			{
+			NSXMLNode* tokenNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/auth" error:nil] lastObject];
+			FlickrToken* token = [[FlickrToken alloc] initWithXMLElement:(NSXMLElement*)tokenNode];
+			[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAuthorizationControllerDidReceiveToken object:self userInfo:@{FlickrTokenKey: [token copy]}];
+			}
+	}];
+	}
+
 @end

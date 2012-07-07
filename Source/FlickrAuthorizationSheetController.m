@@ -11,7 +11,6 @@
 #import "NSColor+CGColor.h"
 
 @implementation FlickrAuthorizationSheetController
-@synthesize flickrWebView;
 
 - (id)initWithWindowNibName:(NSString *)windowNibName authURL:(NSURL*)anAuthURL
 	{
@@ -30,16 +29,16 @@
 
 - (void)awakeFromNib
 	{
-	[flickrWebView setMainFrameURL:[authURL absoluteString]];
-	[flickrWebView setMaintainsBackForwardList:NO];
+	[_flickrWebView setMainFrameURL:[authURL absoluteString]];
+	[_flickrWebView setMaintainsBackForwardList:NO];
 	
 	
 	[loadingOverlay setWantsLayer:YES];
 	[loadingOverlay.layer setCornerRadius:5.0f];
 	[loadingOverlay.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
-	[loadingOverlay bind:@"hidden" toObject:flickrWebView withKeyPath:@"isLoading" options:@{NSValueTransformerNameBindingOption: NSNegateBooleanTransformerName}];
+	[loadingOverlay bind:@"hidden" toObject:_flickrWebView withKeyPath:@"isLoading" options:@{NSValueTransformerNameBindingOption: NSNegateBooleanTransformerName}];
 	[loadingIndicator becomeFirstResponder];
-	[loadingIndicator bind:@"animate" toObject:flickrWebView withKeyPath:@"isLoading" options:nil];
+	[loadingIndicator bind:@"animate" toObject:_flickrWebView withKeyPath:@"isLoading" options:nil];
 	}
 
 - (void)windowDidLoad

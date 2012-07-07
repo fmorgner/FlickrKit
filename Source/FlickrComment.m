@@ -11,8 +11,6 @@
 
 @implementation FlickrComment
 
-@synthesize ID, url, author, rawText, dateCreated, strippedText;
-
 - (id)init
 	{	
 	if ((self = [super init]))
@@ -27,17 +25,17 @@
 	{	
 	if ((self = [super init]))
 		{
-  	self.ID = [[anElement attributeForName:@"id"] stringValue];
-		self.author = [FlickrPerson personWithID:[[anElement attributeForName:@"author"] stringValue]];
-		self.url = [NSURL URLWithString:[[anElement attributeForName:@"permalink"] stringValue]];
-		self.dateCreated = [NSDate dateWithTimeIntervalSince1970:[[[anElement attributeForName:@"datecreate"] stringValue] integerValue]];
-		self.rawText = [anElement stringValue];
+  	_ID = [[anElement attributeForName:@"id"] stringValue];
+		_author = [FlickrPerson personWithID:[[anElement attributeForName:@"author"] stringValue]];
+		_url = [NSURL URLWithString:[[anElement attributeForName:@"permalink"] stringValue]];
+		_dateCreated = [NSDate dateWithTimeIntervalSince1970:[[[anElement attributeForName:@"datecreate"] stringValue] integerValue]];
+		_rawText = [anElement stringValue];
 
 		
 	
-		NSMutableString *html = [NSMutableString stringWithCapacity:[rawText length]];
+		NSMutableString *html = [NSMutableString stringWithCapacity:[_rawText length]];
 
-		NSScanner *scanner = [NSScanner scannerWithString:rawText];
+		NSScanner *scanner = [NSScanner scannerWithString:_rawText];
 		NSString *tempText = nil;
 
 		while (![scanner isAtEnd])

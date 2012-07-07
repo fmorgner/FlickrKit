@@ -12,16 +12,6 @@
 @class FlickrPhoto;
 
 @interface FlickrPhotoset : NSObject
-	{
-	NSString* ID;
-	NSString* title;
-	NSString* desc;
-	NSString* primary;
-	
-	NSUInteger photoCount;
-	
-	FlickrPerson* owner;
-	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
 - (id)initWithID:(NSString*)anID title:(NSString*)aTitle;

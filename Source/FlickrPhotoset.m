@@ -17,29 +17,7 @@
 - (void)loadSetInformationFromXMLElement:(NSXMLElement*)anElement;
 @end
 
-@implementation FlickrPhotoset(Private)
-
-- (void)loadSetInformationFromXMLElement:(NSXMLElement *)anElement
-	{
-	self.ID = (!ID) ? ID : [[anElement attributeForName:@"id"] stringValue];
-	self.title = (!title) ? title : [[[anElement elementsForName:@"title"] lastObject] stringValue];
-	
-	self.owner = [FlickrPerson personWithID:[[anElement attributeForName:@"owner"] stringValue]];
-	self.desc = [[[anElement elementsForName:@"description"] lastObject] stringValue];
-	self.primary = [[anElement attributeForName:@"primary"] stringValue];
-	self.photoCount = [[[anElement attributeForName:@"photos"] stringValue] intValue];
-	}
-
-@end
-
 @implementation FlickrPhotoset
-
-@synthesize ID;
-@synthesize primary;
-@synthesize title;
-@synthesize desc;
-@synthesize owner;
-@synthesize photoCount;
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement
 	{
@@ -54,9 +32,9 @@
 	{
 	if((self = [super init]))
 		{
-		self.ID = anID;
-		self.title = aTitle;
-		NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosetGetInfo, @{@"photoset_id": ID}, NO);
+		_ID = anID;
+		_title = aTitle;
+		NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosetGetInfo, @{@"photoset_id": _ID}, NO);
 		FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 		[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
 			if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
@@ -82,5 +60,20 @@
 	return [[FlickrPhotoset alloc] initWithID:anID title:atitle];
 	}
 
+
+@end
+
+@implementation FlickrPhotoset(Private)
+
+- (void)loadSetInformationFromXMLElement:(NSXMLElement *)anElement
+	{
+	_ID = (!_ID) ? _ID : [[anElement attributeForName:@"id"] stringValue];
+	_title = (!_title) ? _title : [[[anElement elementsForName:@"title"] lastObject] stringValue];
+	
+	_owner = [FlickrPerson personWithID:[[anElement attributeForName:@"owner"] stringValue]];
+	_desc = [[[anElement elementsForName:@"description"] lastObject] stringValue];
+	_primary = [[anElement attributeForName:@"primary"] stringValue];
+	_photoCount = [[[anElement attributeForName:@"photos"] stringValue] intValue];
+	}
 
 @end

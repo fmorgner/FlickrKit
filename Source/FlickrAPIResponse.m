@@ -47,7 +47,7 @@
 	return self;
 	}
 
-+ (FlickrAPIResponse*)responseWithData:(NSData*)theData;
++ (FlickrAPIResponse*)responseWithData:(NSData*)theData
 	{
 	return [[FlickrAPIResponse alloc] initWithData:theData];
 	}

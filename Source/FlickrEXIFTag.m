@@ -11,21 +11,19 @@
 
 @implementation FlickrEXIFTag
 
-@synthesize label, raw, clean, value, tagspace, tag, tagspaceID;
-
 - (id)initWithXMLElement:(NSXMLElement*)anElement
 	{
   if ((self = [super init]))
 		{
-		label = [[[anElement attributeForName:@"label"] stringValue] copy];
-		tagspace = [[[anElement attributeForName:@"tagspace"] stringValue] copy];
-		tagspaceID = [[[anElement attributeForName:@"tagspaceID"] stringValue] intValue];
-		tag = [[[anElement attributeForName:@"tag"] stringValue] intValue];
+		_label = [[[anElement attributeForName:@"label"] stringValue] copy];
+		_tagspace = [[[anElement attributeForName:@"tagspace"] stringValue] copy];
+		_tagspaceID = [[[anElement attributeForName:@"tagspaceID"] stringValue] intValue];
+		_tag = [[[anElement attributeForName:@"tag"] stringValue] intValue];
 		
-		raw = [[[[anElement elementsForName:@"raw"] lastObject] stringValue] copy];
-		clean = [[[[anElement elementsForName:@"clean"] lastObject] stringValue] copy];
+		_raw = [[[[anElement elementsForName:@"raw"] lastObject] stringValue] copy];
+		_clean = [[[[anElement elementsForName:@"clean"] lastObject] stringValue] copy];
 		
-		(clean) ? (value = clean) : (value = raw);
+		(_clean) ? (_value = _clean) : (_value = _raw);
     }
 
   return self;
@@ -39,8 +37,8 @@
 - (void)dealloc
 	{
 	
-	tagspaceID = 0;
-	tag = 0;
+	_tagspaceID = 0;
+	_tag = 0;
 	
 	}
 

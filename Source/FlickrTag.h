@@ -11,15 +11,6 @@
 #import "FlickrPersonManager.h"
 
 @interface FlickrTag : NSObject
-	{
-	FlickrPerson* author;
-	NSString* rawName;
-	NSString* name;
-	NSString* ID;
-	
-	@protected
-	FlickrPersonManager* personManager;
-	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
 + (FlickrTag*)tagWithXMLElement:(NSXMLElement*)anElement;

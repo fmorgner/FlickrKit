@@ -46,32 +46,6 @@ NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
 @class FlickrAPIResponse;
 
 @interface FlickrPhoto : NSObject
-	{
-	NSString* ID;
-	NSString* title;
-	NSString* description;
-
-	NSInteger commentCount;
-	
-	NSDate* dateTaken;
-	NSDate* datePosted;
-	NSDate* dateLastUpdate;
-	
-	NSArray* photosets;
-	NSArray* pools;
-	NSArray* tags;
-	NSArray* comments;
-	NSArray* favorites;
-	NSArray* galleries;
-	NSArray* exifTags;
-
-	NSDictionary* URLs;
-	
-	NSImage* image;
-	
-	FlickrLicense* license;
-	FlickrPerson* owner;
-	}
 
 - (id)initWithID:(NSString*)anID;
 - (id)initWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;

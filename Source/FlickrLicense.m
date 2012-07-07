@@ -11,13 +11,11 @@
 
 @implementation FlickrLicense
 
-@synthesize code;
-
 - (id)initWithCode:(FlickrLicenseCode)aCode
 	{
 	if ((self = [super init]))
 		{
-		code = aCode;
+		_code = aCode;
     }
   
 	return self;
@@ -33,7 +31,7 @@
 	{
 	NSString* returnName;
 	
-	switch (code)
+	switch (_code)
 		{
   	case kFlickrLicenseAllRightsReserved:
     	returnName = @"All Rights Reserved";
@@ -74,7 +72,7 @@
 	{
 	NSURL* returnURL;
 	
-	switch (code)
+	switch (_code)
 		{
   	case kFlickrLicenseAllRightsReserved:
     	returnURL = nil;

@@ -31,7 +31,7 @@ NSString* generateArgumentString(NSDictionary* arguments)
 
 NSURL* flickrMethodURL(NSString* method, NSDictionary* arguments, BOOL sign)
 	{
-	NSMutableString* urlString = [NSMutableString stringWithFormat:FlickrAPIBaseURL, method, APIKey];
+	NSMutableString* urlString = [NSMutableString stringWithFormat:@"%@%@%@", FlickrAPIBaseURL, method, APIKey];
 	NSMutableString* signatureBaseString = [NSMutableString stringWithFormat:@"%@", APISecret];
 
 	NSMutableDictionary* signatureArgumentSet = [NSMutableDictionary dictionaryWithDictionary:arguments];
@@ -40,7 +40,7 @@ NSURL* flickrMethodURL(NSString* method, NSDictionary* arguments, BOOL sign)
 
 	[urlString appendString:generateArgumentString(arguments)];
 
-	[signatureBaseString appendFormat:generateArgumentString(signatureArgumentSet)];
+	[signatureBaseString appendString:generateArgumentString(signatureArgumentSet)];
 	[signatureBaseString replaceOccurrencesOfString:@"&" withString:@"" options:0 range:NSMakeRange(0, [signatureBaseString length])];	
 	[signatureBaseString replaceOccurrencesOfString:@"=" withString:@"" options:0 range:NSMakeRange(0, [signatureBaseString length])];	
 

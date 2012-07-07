@@ -36,7 +36,7 @@
 	return self;
 	}
 	
-+	(FlickrAuthorizationContext*)contextWithConsumer:(OAuthConsumer*)aConsumer;
++	(FlickrAuthorizationContext*)contextWithConsumer:(OAuthConsumer*)aConsumer
 	{
 	return [[FlickrAuthorizationContext alloc] initWithConsumer:aConsumer];
 	}

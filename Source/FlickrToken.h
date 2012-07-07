@@ -11,11 +11,6 @@
 @class FlickrPerson;
 
 @interface FlickrToken : NSObject <NSCopying,NSCoding>
-	{
-	NSString* tokenString;
-	NSString* permissions;
-	FlickrPerson* user;
-	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
 

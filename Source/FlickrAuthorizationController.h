@@ -13,9 +13,7 @@
 @interface FlickrAuthorizationController : NSObject
 	{
 	@protected
-		NSString* frob;
 		NSString* permission;
-		FlickrAuthorizationSheetController* authorizationSheetController;
 	
 	@public
 		NSURL* authorizationURL;

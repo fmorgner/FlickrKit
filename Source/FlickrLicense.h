@@ -22,10 +22,6 @@ typedef enum _FlickrLicenseCode
 	} FlickrLicenseCode;
 
 @interface FlickrLicense : NSObject
-	{
-	@private
-  NSInteger code;
-	}
 
 - (id)initWithCode:(FlickrLicenseCode)aCode;
 + (id)licenseWithCode:(FlickrLicenseCode)aCode;

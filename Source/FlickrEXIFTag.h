@@ -10,22 +10,12 @@
 
 
 @interface FlickrEXIFTag : NSObject
-	{
-	NSString* label;
-	NSString* __unsafe_unretained value;
-	NSString* raw;
-	NSString* clean;
-	NSString* tagspace;
-	
-	short tagspaceID;
-	short tag;
-	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
 + (FlickrEXIFTag*)exifTagWithXMLElement:(NSXMLElement*)anElement;
 
 @property(readonly) NSString* label;
-@property(unsafe_unretained, readonly) NSString* value;
+@property(readonly) NSString* value;
 @property(readonly) NSString* raw;
 @property(readonly) NSString* clean;
 @property(readonly) NSString* tagspace;

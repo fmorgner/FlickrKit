@@ -11,15 +11,13 @@
 
 @implementation FlickrToken
 
-@synthesize tokenString, user, permissions;
-
 - (id)initWithXMLElement:(NSXMLElement*)anElement
 	{
   if ((self = [super init]))
 		{
-		self.tokenString = [[[anElement elementsForName:@"token"] lastObject] stringValue];
-		self.permissions = [[[anElement elementsForName:@"perms"]	lastObject] stringValue];
-		self.user = [FlickrPerson personWithID:[[[[anElement elementsForName:@"user"] lastObject] attributeForName:@"nsid"] stringValue]];
+		_tokenString = [[[anElement elementsForName:@"token"] lastObject] stringValue];
+		_permissions = [[[anElement elementsForName:@"perms"]	lastObject] stringValue];
+		_user = [FlickrPerson personWithID:[[[[anElement elementsForName:@"user"] lastObject] attributeForName:@"nsid"] stringValue]];
     }
     
   return self;
@@ -30,9 +28,9 @@
 	FlickrToken* copy = nil;
 	if((copy = [[FlickrToken allocWithZone:zone] init]))
 		{
-		copy.tokenString = self.tokenString;
-		copy.permissions = self.permissions;
-		copy.user = self.user;
+		copy.tokenString = _tokenString;
+		copy.permissions = _permissions;
+		copy.user = _user;
 		}
 	
 	return copy;
@@ -42,15 +40,15 @@
 	{
 	if([aCoder allowsKeyedCoding])
 		{
-		[aCoder encodeObject:tokenString forKey:@"tokenString"];
-		[aCoder encodeObject:permissions forKey:@"permissions"];
-		[aCoder encodeObject:user.ID forKey:@"user.ID"];
+		[aCoder encodeObject:_tokenString forKey:@"tokenString"];
+		[aCoder encodeObject:_permissions forKey:@"permissions"];
+		[aCoder encodeObject:_user.ID forKey:@"user.ID"];
 		}
 	else
 		{
-		[aCoder encodeObject:tokenString];
-		[aCoder encodeObject:permissions];
-		[aCoder encodeObject:user.ID];
+		[aCoder encodeObject:_tokenString];
+		[aCoder encodeObject:_permissions];
+		[aCoder encodeObject:_user.ID];
 		}
 	}
 
@@ -60,15 +58,15 @@
 		{
 		if([aDecoder allowsKeyedCoding])
 			{
-			self.tokenString = [aDecoder decodeObjectForKey:@"tokenString"];
-			self.permissions = [aDecoder decodeObjectForKey:@"permissions"];
-			self.user = [FlickrPerson personWithID:[aDecoder decodeObjectForKey:@"user.ID"]];
+			_tokenString = [aDecoder decodeObjectForKey:@"tokenString"];
+			_permissions = [aDecoder decodeObjectForKey:@"permissions"];
+			_user = [FlickrPerson personWithID:[aDecoder decodeObjectForKey:@"user.ID"]];
 			}
 		else
 			{
-			self.tokenString = [aDecoder decodeObject];
-			self.permissions = [aDecoder decodeObject];
-			self.user = [FlickrPerson personWithID:[aDecoder decodeObject]];
+			_tokenString = [aDecoder decodeObject];
+			_permissions = [aDecoder decodeObject];
+			_user = [FlickrPerson personWithID:[aDecoder decodeObject]];
 			}
 		}
 		

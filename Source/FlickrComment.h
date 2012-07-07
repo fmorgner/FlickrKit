@@ -10,14 +10,6 @@
 #import "FlickrPerson.h"
 
 @interface FlickrComment : NSObject
-	{
-	NSString* ID;
-	NSString* rawText;
-	NSString* strippedText;
-	NSDate* dateCreated;
-	NSURL* url;
-	FlickrPerson* author;
-	}
 
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
 
