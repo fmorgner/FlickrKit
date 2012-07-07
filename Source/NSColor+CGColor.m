@@ -8,6 +8,10 @@
 //	http://bill.dudney.net/roller/objc/entry/nscolor_cgcolorref
 //
 
+//  This Category isn't needed anymore since 10.8
+
+#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_8)
+
 #import "NSColor+CGColor.h"
 
 @implementation NSColor(CGColor)
@@ -24,3 +28,5 @@
 	}
 
 @end
+
+#endif
