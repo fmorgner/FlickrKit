@@ -33,20 +33,15 @@
 
 + (FlickrEXIFTag*)exifTagWithXMLElement:(NSXMLElement*)anElement
 	{
-	return [[[FlickrEXIFTag alloc] initWithXMLElement:anElement] autorelease];
+	return [[FlickrEXIFTag alloc] initWithXMLElement:anElement];
 	}
 
 - (void)dealloc
 	{
-	[tagspace release];
-	[clean release];
-	[label release];
-	[raw release];
 	
 	tagspaceID = 0;
 	tag = 0;
 	
-  [super dealloc];
 	}
 
 @end

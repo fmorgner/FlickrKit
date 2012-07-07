@@ -19,7 +19,7 @@
 - (id)initWithConsumer:(OAuthConsumer*)aConsumer;
 +	(FlickrAuthorizationContext*)contextWithConsumer:(OAuthConsumer*)aConsumer;
 
-@property(retain) OAuthToken* token;
-@property(retain) OAuthConsumer* consumer;
+@property(strong) OAuthToken* token;
+@property(strong) OAuthConsumer* consumer;
 
 @end

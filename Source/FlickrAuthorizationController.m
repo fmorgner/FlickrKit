@@ -33,7 +33,6 @@
 			self.frob = [frobNode stringValue];
 			}
 	}];
-	[frobFetcher release];
 	}
 
 - (void)authSheetDidClose
@@ -45,10 +44,8 @@
 			NSXMLNode* tokenNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/auth" error:nil] lastObject];
 			FlickrToken* token = [[FlickrToken alloc] initWithXMLElement:(NSXMLElement*)tokenNode];
 			[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAuthorizationControllerDidReceiveToken object:self userInfo:@{FlickrTokenKey: [token copy]}];
-			[token release];
 			}
 	}];
-	[tokenFetcher release];
 	}
 
 @end
@@ -70,11 +67,6 @@
 - (void)dealloc
 	{
 	[self removeObserver:self forKeyPath:@"frob"];
-	[frob release];
-	[permission release];
-	[authorizationURL release];
-	[authorizationSheetController release];
-  [super dealloc];
 	}
 
 - (void)generateAuthorizationURLForPermission:(NSString*)aPermission

@@ -30,6 +30,6 @@
 @property(copy) NSDate* dateCreated;
 @property(copy) NSURL* url;
 
-@property(retain) FlickrPerson* author;
+@property(strong) FlickrPerson* author;
 
 @end

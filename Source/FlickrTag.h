@@ -25,9 +25,9 @@
 + (FlickrTag*)tagWithXMLElement:(NSXMLElement*)anElement;
 
 
-@property(nonatomic,retain) FlickrPerson* author;
-@property(nonatomic,retain) NSString* rawName;
-@property(nonatomic,retain) NSString* name;
-@property(nonatomic,retain) NSString* ID;
+@property(nonatomic,strong) FlickrPerson* author;
+@property(nonatomic,strong) NSString* rawName;
+@property(nonatomic,strong) NSString* name;
+@property(nonatomic,strong) NSString* ID;
 
 @end

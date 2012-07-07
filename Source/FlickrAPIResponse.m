@@ -29,19 +29,19 @@
 		{
 		NSError* xmlError = nil;
 
-		rawContent = [theData retain];
+		rawContent = theData;
 		xmlContent = [[NSXMLDocument alloc] initWithData:theData options:0 error:&xmlError];
 
 		if(xmlError != nil)
 			return nil;
 				
-		status = [[[[[xmlContent nodesForXPath:@"rsp" error:&xmlError] lastObject] attributeForName:@"stat"] stringValue] retain];
+		status = [[[[xmlContent nodesForXPath:@"rsp" error:&xmlError] lastObject] attributeForName:@"stat"] stringValue];
 		
 		if([status isEqualToString:@"fail"])
 			{
 			NSString* errorDescription = [[[[xmlContent nodesForXPath:@"rsp/err" error:&xmlError] objectAtIndex:0] attributeForName:@"msg"] stringValue];
 			NSInteger errorCode = [[[[[xmlContent nodesForXPath:@"rsp/err" error:&xmlError] objectAtIndex:0] attributeForName:@"code"] stringValue] intValue];
-			error = [[NSError errorWithDomain:kFlickrErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey: errorDescription}] retain];
+			error = [NSError errorWithDomain:kFlickrErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
 			}
 		}
 	return self;
@@ -49,16 +49,8 @@
 
 + (FlickrAPIResponse*)responseWithData:(NSData*)theData;
 	{
-	return [[[FlickrAPIResponse alloc] initWithData:theData] autorelease];
+	return [[FlickrAPIResponse alloc] initWithData:theData];
 	}
 
-- (void)dealloc
-	{
-	[status release];
-	[rawContent release];
-	[xmlContent release];
-	[error release];
-	[super dealloc];
-	}
 
 @end

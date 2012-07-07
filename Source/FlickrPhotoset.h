@@ -29,14 +29,14 @@
 + (FlickrPhotoset*)setWithXMLElement:(NSXMLElement*)anElement;
 + (FlickrPhotoset*)setWithID:(NSString*)anID title:(NSString*)atitle;
 
-@property(nonatomic, retain) NSString* ID;
-@property(nonatomic, retain) NSString* title;
-@property(nonatomic, retain) NSString* desc;
+@property(nonatomic, strong) NSString* ID;
+@property(nonatomic, strong) NSString* title;
+@property(nonatomic, strong) NSString* desc;
 	
 @property(nonatomic, assign) NSUInteger photoCount;
 	
-@property(nonatomic, retain) FlickrPerson* owner;
-@property(nonatomic, retain) NSString* primary;
+@property(nonatomic, strong) FlickrPerson* owner;
+@property(nonatomic, strong) NSString* primary;
 
 
 @end

@@ -21,7 +21,7 @@
 
 @property(copy) NSString* tokenString;
 @property(copy) NSString* permissions;
-@property(retain) FlickrPerson* user;
+@property(strong) FlickrPerson* user;
 
 
 @end

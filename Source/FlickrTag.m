@@ -43,16 +43,8 @@
 
 + (FlickrTag*)tagWithXMLElement:(NSXMLElement*)anElement
 	{
-	return [[[FlickrTag alloc] initWithXMLElement:anElement] autorelease];
+	return [[FlickrTag alloc] initWithXMLElement:anElement];
 	}
 
-- (void)dealloc
-	{
-	[ID release];
-	[author release];
-	[rawName release];
-	[name release];
-	[super dealloc];
-	}
 
 @end

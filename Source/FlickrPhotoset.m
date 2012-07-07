@@ -67,7 +67,6 @@
 				}
 
 		}];
-		[dataFetcher release];
 		}
 
 	return self;
@@ -75,17 +74,13 @@
 
 + (FlickrPhotoset*)setWithXMLElement:(NSXMLElement*)anElement
 	{
-	return [[[FlickrPhotoset alloc] initWithXMLElement:anElement] autorelease];
+	return [[FlickrPhotoset alloc] initWithXMLElement:anElement];
 	}
 	
 + (FlickrPhotoset*)setWithID:(NSString*)anID title:(NSString*)atitle
 	{
-	return [[[FlickrPhotoset alloc] initWithID:anID title:atitle] autorelease];
+	return [[FlickrPhotoset alloc] initWithID:anID title:atitle];
 	}
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 @end

@@ -17,7 +17,7 @@
 	{
 	if((self = [super initWithWindowNibName:windowNibName]))
 		{
-		authURL = [anAuthURL retain];
+		authURL = anAuthURL;
 		}
 	
 	return self;
@@ -25,7 +25,7 @@
 
 + (FlickrAuthorizationSheetController*)authorizationSheetControllerWithURL:(NSURL*)anAuthorizationURL
 	{
-	return [[[FlickrAuthorizationSheetController alloc]initWithWindowNibName:@"FlickrAuthorizationSheetController" authURL:anAuthorizationURL] autorelease];
+	return [[FlickrAuthorizationSheetController alloc]initWithWindowNibName:@"FlickrAuthorizationSheetController" authURL:anAuthorizationURL];
 	}
 
 - (void)awakeFromNib

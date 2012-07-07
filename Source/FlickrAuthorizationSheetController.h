@@ -12,7 +12,7 @@
 @interface FlickrAuthorizationSheetController : NSWindowController
 	{
 	@protected
-		WebView *flickrWebView;
+		WebView *__unsafe_unretained flickrWebView;
 		NSURL* authURL;
 		IBOutlet NSView* loadingOverlay;
 		IBOutlet NSProgressIndicator* loadingIndicator;
@@ -24,6 +24,6 @@
 - (id)initWithWindowNibName:(NSString *)windowNibName authURL:(NSURL*)anAuthURL;
 + (FlickrAuthorizationSheetController*)authorizationSheetControllerWithURL:(NSURL*)anAuthorizationURL;
 
-@property (assign) IBOutlet WebView *flickrWebView;
+@property (unsafe_unretained) IBOutlet WebView *flickrWebView;
 
 @end

@@ -134,22 +134,22 @@
 
 + (FlickrPhoto*)photo
 	{
-	return [[[FlickrPhoto alloc] init] autorelease];
+	return [[FlickrPhoto alloc] init];
 	}
 	
 + (FlickrPhoto*)photoWithXMLElement:(NSXMLElement*)anElement error:(NSError**)error
 	{
-	return [[[FlickrPhoto alloc] initWithXMLElement:anElement error:(NSError**)error] autorelease];
+	return [[FlickrPhoto alloc] initWithXMLElement:anElement error:(NSError**)error];
 	}
 
 + (FlickrPhoto*)photoWithAPIResponse:(FlickrAPIResponse*)aResponse error:(NSError**)error
 	{
-	return [[[FlickrPhoto alloc] initWithAPIResponse:aResponse error:(NSError**)error] autorelease];
+	return [[FlickrPhoto alloc] initWithAPIResponse:aResponse error:(NSError**)error];
 	}
 
 + (FlickrPhoto*)photoWithID:(NSString*)anID
 	{
-	return [[[FlickrPhoto alloc] initWithID:anID] autorelease];
+	return [[FlickrPhoto alloc] initWithID:anID];
 	}
 
 #pragma mark - Information Fetching
@@ -189,7 +189,6 @@
 			self.exifTags = fetchedExifTags;
 			}
 	}];
-	[dataFetcher release];
 	}
 
 - (void)fetchImageOfSize:(FlickrImageSize)aSize
@@ -212,12 +211,10 @@
 			[imageFetcher fetchDataAtURL:imageURL withCompletionHandler:^(id fetchResult)
 				{
 				if(![fetchResult isKindOfClass:[NSError class]])
-					self.image = [[[NSImage alloc] initWithData:fetchResult] autorelease];
+					self.image = [[NSImage alloc] initWithData:fetchResult];
 			}];
-			[imageFetcher release];
 			}
 	}];
-	[dataFetcher release];
 	}
 	
 - (void)fetchContexts
@@ -247,7 +244,6 @@
 			self.pools = poolArray;
 			}
 	}];
-	[dataFetcher release];
 	}
 	
 - (void)fetchComments
@@ -267,7 +263,6 @@
 			self.comments = commentsArray;
 			}
 	}];
-	[dataFetcher release];
 	}
 
 - (void)fetchFavorites
@@ -296,7 +291,6 @@
 			}
 
 	}];
-	[dataFetcher release];
 	}
 
 - (void)fetchGeneralInformation
@@ -312,25 +306,10 @@
 			[self parseXMLElement:photoElement];
 			}
 	}];
-	[dataFetcher release];
 	}
 
 #pragma mark - Object deallocation
 
-- (void)dealloc
-	{
-	[tags release];
-	[image release];
-	[pools release];
-	[photosets release];
-	[comments release];
-	[title release];
-	[favorites release];
-	[galleries release];
-	[URLs release];
-	[owner release];
-	[super dealloc];
-	}
 
 @end
 

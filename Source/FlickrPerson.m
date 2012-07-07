@@ -105,7 +105,7 @@
 	
 	if(searchResult)
 		{
-		return [searchResult retain];
+		return searchResult;
 		}
 	
   if ((self = [super init]))
@@ -119,7 +119,7 @@
 	
 + (FlickrPerson*)personWithXMLElement:(NSXMLElement*)anElement
 	{
-	return [[[FlickrPerson alloc] initWithXMLElement:anElement] autorelease];
+	return [[FlickrPerson alloc] initWithXMLElement:anElement];
 	}
 
 - (id)initWithID:(NSString*)anID
@@ -128,7 +128,7 @@
 	
 	if(searchResult)
 		{
-		return [searchResult retain];
+		return searchResult;
 		}
 	
   if ((self = [super init]))
@@ -143,19 +143,9 @@
 
 + (FlickrPerson*)personWithID:(NSString*)anID
 	{
-	return [[[FlickrPerson alloc] initWithID:anID] autorelease];
+	return [[FlickrPerson alloc] initWithID:anID];
 	}
 
-- (void)dealloc
-	{
-	[ID release];
-	[username release];
-	[name release];
-	[location release];
-	[firstPhotoTaken release];
-	[firstPhotoUploaded release];
-  [super dealloc];
-	}
 
 - (void)loadPersonInformationFromXMLElement:(NSXMLElement*)anElement
 	{
@@ -194,7 +184,6 @@
 				[self loadPersonInformationFromXMLElement:personElement];
 				}
 	}];
-	[dataFetcher release];
 	}
 
 @end

@@ -91,28 +91,28 @@ NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
 - (void)fetchFavorites;
 - (void)fetchGeneralInformation;
 
-@property(nonatomic, retain) NSString* ID;
-@property(nonatomic, retain) NSString* title;
-@property(nonatomic, retain) NSString* description;
+@property(nonatomic, strong) NSString* ID;
+@property(nonatomic, strong) NSString* title;
+@property(nonatomic, strong) NSString* description;
 
 @property(nonatomic, assign) NSInteger commentCount;
 
-@property(nonatomic, retain) NSDate* dateTaken;
-@property(nonatomic, retain) NSDate* datePosted;
-@property(nonatomic, retain) NSDate* dateLastUpdate;
+@property(nonatomic, strong) NSDate* dateTaken;
+@property(nonatomic, strong) NSDate* datePosted;
+@property(nonatomic, strong) NSDate* dateLastUpdate;
 
-@property(nonatomic, retain) NSArray* photosets;
-@property(nonatomic, retain) NSArray* pools;
-@property(nonatomic, retain) NSArray* tags;
-@property(nonatomic, retain) NSArray* comments;
-@property(nonatomic, retain) NSArray* favorites;
-@property(nonatomic, retain) NSArray* galleries;
-@property(nonatomic, retain) NSArray* exifTags;
+@property(nonatomic, strong) NSArray* photosets;
+@property(nonatomic, strong) NSArray* pools;
+@property(nonatomic, strong) NSArray* tags;
+@property(nonatomic, strong) NSArray* comments;
+@property(nonatomic, strong) NSArray* favorites;
+@property(nonatomic, strong) NSArray* galleries;
+@property(nonatomic, strong) NSArray* exifTags;
 
-@property(nonatomic, retain) NSDictionary* URLs;
+@property(nonatomic, strong) NSDictionary* URLs;
 
-@property(nonatomic, retain) NSImage* image;
+@property(nonatomic, strong) NSImage* image;
 
-@property(nonatomic, retain) FlickrLicense* license;
-@property(nonatomic, retain) FlickrPerson* owner;
+@property(nonatomic, strong) FlickrLicense* license;
+@property(nonatomic, strong) FlickrPerson* owner;
 @end

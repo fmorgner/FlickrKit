@@ -22,12 +22,6 @@
   return self;
 	}
 
-- (void)dealloc
-	{
-	[url release];
-	[completionHandler release];
-  [super dealloc];
-	}
 
 - (void)fetchDataAtURL:(NSURL*)theURL withCompletionHandler:(void (^)(id fetchResult))block
 	{

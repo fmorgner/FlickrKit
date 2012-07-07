@@ -25,13 +25,9 @@
 
 + (id)licenseWithCode:(FlickrLicenseCode)aCode
 	{
-	return [[[FlickrLicense alloc]  initWithCode:aCode] autorelease];
+	return [[FlickrLicense alloc]  initWithCode:aCode];
 	}
 
-- (void)dealloc
-	{
-	[super dealloc];
-	}
 
 - (NSString*)name
 	{
@@ -119,62 +115,76 @@
 	{
 	NSArray* returnArray = nil;
 
-	NSImage* ccImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"cc.large" ofType:@"png"]] autorelease];
-	NSImage* byImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"by.large" ofType:@"png"]] autorelease];
-	NSImage* ncImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"nc.large" ofType:@"png"]] autorelease];
-	NSImage* ndImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"nd.large" ofType:@"png"]] autorelease];
-	NSImage* saImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"sa.large" ofType:@"png"]] autorelease];
-	NSImage* crImage = [[[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"cr.large" ofType:@"png"]] autorelease];
+	NSImage* ccImage = [[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"cc.large" ofType:@"png"]];
+	NSImage* byImage = [[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"by.large" ofType:@"png"]];
+	NSImage* ncImage = [[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"nc.large" ofType:@"png"]];
+	NSImage* ndImage = [[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"nd.large" ofType:@"png"]];
+	NSImage* saImage = [[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"sa.large" ofType:@"png"]];
+	NSImage* crImage = [[NSImage alloc] initWithContentsOfFile:[KitBundle pathForResource:@"cr.large" ofType:@"png"]];
 
 	switch (self.code)
 		{
 		case kFlickrLicenseCCBy:
-			returnArray = @[ccImage, byImage];
-			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-				[(NSImage*)obj setName:[self name]];
-			}];
+			{
+				returnArray = @[ccImage, byImage];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[self name]];
+				}];
+			}
 			break;
 			
 		case kFlickrLicenseCCByNc:
-			returnArray = @[ccImage, byImage, ncImage];
-			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-				[(NSImage*)obj setName:[self name]];
-			}];
+			{
+				returnArray = @[ccImage, byImage, ncImage];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[self name]];
+				}];
+			}
 			break;
 			
 		case kFlickrLicenseCCByNcNd:
-			returnArray = @[ccImage, byImage, ncImage, ndImage];
-			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-				[(NSImage*)obj setName:[self name]];
-			}];
+			{
+				returnArray = @[ccImage, byImage, ncImage, ndImage];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[self name]];
+				}];
+			}
 			break;
 			
 		case kFlickrLicenseCCByNcSa:
-			returnArray = @[ccImage, byImage, ncImage, saImage];
-			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-				[(NSImage*)obj setName:[self name]];
-			}];
+			{
+				returnArray = @[ccImage, byImage, ncImage, saImage];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[self name]];
+				}];
+			}
 			break;
 			
 		case kFlickrLicenseCCByNd:
-			returnArray = @[ccImage, byImage, ndImage];
-			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-				[(NSImage*)obj setName:[self name]];
-			}];
+			{
+				returnArray = @[ccImage, byImage, ndImage];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[self name]];
+				}];
+			}
 			break;
 			
 		case kFlickrLicenseCCBySa:
-			returnArray = @[ccImage, byImage, saImage];
-			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-				[(NSImage*)obj setName:[self name]];
-			}];
+			{
+				returnArray = @[ccImage, byImage, saImage];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[self name]];
+				}];
+			}
 			break;
 		
 		case kFlickrLicenseAllRightsReserved:
-			returnArray = @[crImage];
-			[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-				[(NSImage*)obj setName:[self name]];
-			}];
+			{
+				returnArray = @[crImage];
+				[returnArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[(NSImage*)obj setName:[self name]];
+				}];
+			}
 			break;
 						
 		default:

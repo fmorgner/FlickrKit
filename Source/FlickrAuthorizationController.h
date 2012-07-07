@@ -24,7 +24,7 @@
 - (void)generateAuthorizationURLForPermission:(NSString*)aPermission;
 - (void)authorizeForPermission:(NSString*)aPermission;
 
-@property(retain) FlickrAuthorizationSheetController* authorizationSheetController;
+@property(strong) FlickrAuthorizationSheetController* authorizationSheetController;
 @property(copy) NSURL* authorizationURL;
 @property(copy) NSString* frob;
 

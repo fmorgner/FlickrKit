@@ -24,7 +24,7 @@
 	
 +	(FlickrAuthorizationContext*)contextWithToken:(OAuthToken*)aToken
 	{
-	return [[[FlickrAuthorizationContext alloc] initWithToken:aToken] autorelease];
+	return [[FlickrAuthorizationContext alloc] initWithToken:aToken];
 	}
 
 - (id)initWithConsumer:(OAuthConsumer*)aComsumer
@@ -38,7 +38,7 @@
 	
 +	(FlickrAuthorizationContext*)contextWithConsumer:(OAuthConsumer*)aConsumer;
 	{
-	return [[[FlickrAuthorizationContext alloc] initWithConsumer:aConsumer] autorelease];
+	return [[FlickrAuthorizationContext alloc] initWithConsumer:aConsumer];
 	}
 
 

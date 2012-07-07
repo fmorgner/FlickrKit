@@ -63,13 +63,9 @@
 
 + (FlickrComment*)commentWithXMLElement:(NSXMLElement*)anElement
 	{
-	return [[[FlickrComment alloc] initWithXMLElement:anElement] autorelease];
+	return [[FlickrComment alloc] initWithXMLElement:anElement];
 	}
 
 
-- (void)dealloc
-	{
-  [super dealloc];
-	}
 
 @end

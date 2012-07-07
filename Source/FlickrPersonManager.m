@@ -20,8 +20,7 @@
 	{
 	if(newPeople != people)
 		{
-		[people release];
-		people = [newPeople retain];
+		people = newPeople;
 		}
 	}
 
@@ -42,11 +41,6 @@ static FlickrPersonManager* sharedPersonManager = nil;
 	return self;
 	}
 
-- (void)dealloc
-	{
-	[people release];
-	[super dealloc];
-	}
 
 #pragma mark - Singleton implementation
 
@@ -64,7 +58,7 @@ static FlickrPersonManager* sharedPersonManager = nil;
 
 + (id)allocWithZone:(NSZone *)zone
 	{
-  return [[self sharedManager] retain];
+  return [self sharedManager];
 	}
 
 - (id)copyWithZone:(NSZone *)zone
@@ -72,24 +66,24 @@ static FlickrPersonManager* sharedPersonManager = nil;
   return self;
 	}
  
-- (id)retain
-	{
-  return self;
-	}
- 
-- (NSUInteger)retainCount
-	{
-  return UINT_MAX;
-	}
- 
-- (oneway void)release
-	{
-	}
- 
-- (id)autorelease
-	{
-  return self;
-	}
+//- (id)retain
+//	{
+//  return self;
+//	}
+// 
+//- (NSUInteger)retainCount
+//	{
+//  return UINT_MAX;
+//	}
+// 
+//- (oneway void)release
+//	{
+//	}
+// 
+//- (id)autorelease
+//	{
+//  return self;
+//	}
 
 #pragma mark - Search methods
 
