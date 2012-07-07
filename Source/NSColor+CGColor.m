@@ -20,7 +20,7 @@
   [self getComponents:components];
   CGColorRef color = CGColorCreate(colorSpace, components);
   free((void*)components);
-  return color;
+  return (CGColorRef)[(id)color autorelease];
 	}
 
 @end
