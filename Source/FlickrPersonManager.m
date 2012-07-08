@@ -46,23 +46,16 @@ __strong static FlickrPersonManager* sharedPersonManager = nil;
 
 + (FlickrPersonManager*)sharedManager
 	{
-	static dispatch_once_t once = 0;
-	dispatch_once(&once, ^{
-    sharedPersonManager = [[self alloc] init];
-		});
+	@synchronized(self)
+		{
+		static dispatch_once_t once = 0;
+		dispatch_once(&once, ^{
+    	sharedPersonManager = [[self alloc] init];
+			});
+		}
 	return sharedPersonManager;
 	}
 
-+ (id)allocWithZone:(NSZone *)zone
-	{
-  return [self sharedManager];
-	}
-
-- (id)copyWithZone:(NSZone *)zone
-	{
-  return self;
-	}
- 
 #pragma mark - Search methods
 
 - (FlickrPerson*)personForID:(NSString*)anID
