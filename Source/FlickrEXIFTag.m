@@ -15,15 +15,15 @@
 	{
   if ((self = [super init]))
 		{
-		_label = [[[anElement attributeForName:@"label"] stringValue] copy];
-		_tagspace = [[[anElement attributeForName:@"tagspace"] stringValue] copy];
+		_label = [[anElement attributeForName:@"label"] stringValue];
+		_tagspace = [[anElement attributeForName:@"tagspace"] stringValue];
 		_tagspaceID = [[[anElement attributeForName:@"tagspaceID"] stringValue] intValue];
 		_tag = [[[anElement attributeForName:@"tag"] stringValue] intValue];
 		
-		_raw = [[[[anElement elementsForName:@"raw"] lastObject] stringValue] copy];
-		_clean = [[[[anElement elementsForName:@"clean"] lastObject] stringValue] copy];
+		_raw = [[[anElement elementsForName:@"raw"] lastObject] stringValue];
+		_clean = [[[anElement elementsForName:@"clean"] lastObject] stringValue];
 		
-		(_clean) ? (_value = _clean) : (_value = _raw);
+		_value = (_clean) ? _clean : _raw;
     }
 
   return self;
@@ -32,14 +32,6 @@
 + (FlickrEXIFTag*)exifTagWithXMLElement:(NSXMLElement*)anElement
 	{
 	return [[FlickrEXIFTag alloc] initWithXMLElement:anElement];
-	}
-
-- (void)dealloc
-	{
-	
-	_tagspaceID = 0;
-	_tag = 0;
-	
 	}
 
 @end

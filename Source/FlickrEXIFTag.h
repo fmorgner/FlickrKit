@@ -14,13 +14,13 @@
 - (id)initWithXMLElement:(NSXMLElement*)anElement;
 + (FlickrEXIFTag*)exifTagWithXMLElement:(NSXMLElement*)anElement;
 
-@property(readonly) NSString* label;
-@property(readonly) NSString* value;
-@property(readonly) NSString* raw;
-@property(readonly) NSString* clean;
-@property(readonly) NSString* tagspace;
+@property(strong) NSString* label;
+@property(strong) NSString* value;
+@property(strong) NSString* raw;
+@property(strong) NSString* clean;
+@property(strong) NSString* tagspace;
 
-@property(readonly) short tagspaceID;
-@property(readonly) short tag;
+@property(assign) short tagspaceID;
+@property(assign) short tag;
 
 @end
