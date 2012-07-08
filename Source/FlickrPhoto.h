@@ -40,7 +40,6 @@ NSString* flickrImageSizeString(FlickrImageSize size);
 // Returns an NSString object containing the localized name of the given FlickrImageSize.
 NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
 
-
 @class FlickrPerson;
 @class FlickrLicense;
 @class FlickrAPIResponse;
@@ -65,28 +64,28 @@ NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
 - (void)fetchFavorites;
 - (void)fetchGeneralInformation;
 
-@property(nonatomic, strong) NSString* ID;
-@property(nonatomic, strong) NSString* title;
-@property(nonatomic, strong) NSString* description;
+@property(strong) NSString* ID;
+@property(strong) NSString* title;
+@property(strong) NSString* description;
 
-@property(nonatomic, assign) NSInteger commentCount;
+@property(assign) NSInteger commentCount;
 
-@property(nonatomic, strong) NSDate* dateTaken;
-@property(nonatomic, strong) NSDate* datePosted;
-@property(nonatomic, strong) NSDate* dateLastUpdate;
+@property(strong) NSDate* dateTaken;
+@property(strong) NSDate* datePosted;
+@property(strong) NSDate* dateLastUpdate;
 
-@property(nonatomic, strong) NSArray* photosets;
-@property(nonatomic, strong) NSArray* pools;
-@property(nonatomic, strong) NSArray* tags;
-@property(nonatomic, strong) NSArray* comments;
-@property(nonatomic, strong) NSArray* favorites;
-@property(nonatomic, strong) NSArray* galleries;
-@property(nonatomic, strong) NSArray* exifTags;
+@property(strong) NSMutableArray* photosets;
+@property(strong) NSMutableArray* pools;
+@property(strong) NSMutableArray* tags;
+@property(strong) NSMutableArray* comments;
+@property(strong) NSMutableArray* favorites;
+@property(strong) NSMutableArray* galleries;
+@property(strong) NSMutableArray* exifTags;
 
-@property(nonatomic, strong) NSDictionary* URLs;
+@property(strong) NSMutableDictionary* URLs;
 
-@property(nonatomic, strong) NSImage* image;
+@property(strong) NSImage* image;
 
-@property(nonatomic, strong) FlickrLicense* license;
-@property(nonatomic, strong) FlickrPerson* owner;
+@property(strong) FlickrLicense* license;
+@property(strong) FlickrPerson* owner;
 @end
