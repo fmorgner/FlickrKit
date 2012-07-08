@@ -140,7 +140,7 @@
 		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
 			{
 			NSError* error;
-			NSArray* nodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:[NSString stringWithFormat:@"rsp/sizes/size[@label='%@']", flickrImageSizeString(aSize)] error:&error];
+			NSArray* nodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:[NSString stringWithFormat:@"rsp/sizes/size[@label='%@']", [FlickrPhoto stringForImageSize:aSize]] error:&error];
 			
 			if(error)
 				return; // TODO: add more sophisticated error handling
@@ -248,6 +248,78 @@
 	}];
 	}
 
+#pragma mark - Image size helper functions
+
++ (NSString*)stringForImageSize:(FlickrImageSize)aSize
+	{
+	NSString* returnString = nil;
+
+	switch (aSize)
+		{
+  case kFlickrImageSizeSquare:
+		returnString = @"Square";    
+    break;
+  case kFlickrImageSizeThumbnail:
+		returnString = @"Thumbnail";    
+    break;
+  case kFlickrImageSizeSmall:
+		returnString = @"Small";    
+    break;
+  case kFlickrImageSizeMedium:
+		returnString = @"Medium";    
+    break;
+  case kFlickrImageSizeMedium640:
+		returnString = @"Medium 640";    
+    break;
+  case kFlickrImageSizeLarge:
+		returnString = @"Large";    
+    break;
+  case kFlickrImageSizeOriginal:
+		returnString = @"Original";    
+    break;
+  default:
+    break;
+		}
+	
+	return returnString;
+	}
+
++ (NSString*)localizedStringForImageSize:(FlickrImageSize)aSize
+	{
+	NSString* returnString = nil;
+	
+	switch (aSize)
+		{
+  case kFlickrImageSizeSquare:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSquare", @"FlickrImageSize", KitBundle, @"The square size");
+    break;
+  case kFlickrImageSizeThumbnail:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeThumbnail", @"FlickrImageSize", KitBundle, @"The thumbnail size");    
+    break;
+  case kFlickrImageSizeSmall:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSmall", @"FlickrImageSize", KitBundle, @"The small size");    
+    break;
+  case kFlickrImageSizeMedium:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium", @"FlickrImageSize", KitBundle, @"The medium size");    
+    break;
+  case kFlickrImageSizeMedium640:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium640", @"FlickrImageSize", KitBundle, @"The medium 640 size");    
+    break;
+  case kFlickrImageSizeLarge:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeLarge", @"FlickrImageSize", KitBundle, @"The large size");    
+    break;
+  case kFlickrImageSizeOriginal:
+		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeOriginal", @"FlickrImageSize", KitBundle, @"The original size");    
+    break;
+  default:
+    break;
+		}
+	
+	return returnString;
+	}
+
+#pragma mark - Private Methods
+
 - (void)parseXMLElement:(NSXMLElement*)anElement
 	{
 	if(!anElement)
@@ -282,73 +354,3 @@
 	}
 
 @end
-
-#pragma mark - Image size helper functions
-
-NSString* flickrImageSizeString(FlickrImageSize size)
-	{
-	NSString* returnString = nil;
-
-	switch (size)
-		{
-  case kFlickrImageSizeSquare:
-		returnString = @"Square";    
-    break;
-  case kFlickrImageSizeThumbnail:
-		returnString = @"Thumbnail";    
-    break;
-  case kFlickrImageSizeSmall:
-		returnString = @"Small";    
-    break;
-  case kFlickrImageSizeMedium:
-		returnString = @"Medium";    
-    break;
-  case kFlickrImageSizeMedium640:
-		returnString = @"Medium 640";    
-    break;
-  case kFlickrImageSizeLarge:
-		returnString = @"Large";    
-    break;
-  case kFlickrImageSizeOriginal:
-		returnString = @"Original";    
-    break;
-  default:
-    break;
-		}
-	
-	return returnString;
-	}
-
-NSString* flickrImageSizeLocalizedString(FlickrImageSize size)
-	{
-	NSString* returnString = nil;
-	
-	switch (size)
-		{
-  case kFlickrImageSizeSquare:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSquare", @"FlickrImageSize", KitBundle, @"The square size");
-    break;
-  case kFlickrImageSizeThumbnail:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeThumbnail", @"FlickrImageSize", KitBundle, @"The thumbnail size");    
-    break;
-  case kFlickrImageSizeSmall:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeSmall", @"FlickrImageSize", KitBundle, @"The small size");    
-    break;
-  case kFlickrImageSizeMedium:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium", @"FlickrImageSize", KitBundle, @"The medium size");    
-    break;
-  case kFlickrImageSizeMedium640:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeMedium640", @"FlickrImageSize", KitBundle, @"The medium 640 size");    
-    break;
-  case kFlickrImageSizeLarge:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeLarge", @"FlickrImageSize", KitBundle, @"The large size");    
-    break;
-  case kFlickrImageSizeOriginal:
-		returnString = NSLocalizedStringFromTableInBundle(@"FlickrImageSizeOriginal", @"FlickrImageSize", KitBundle, @"The original size");    
-    break;
-  default:
-    break;
-		}
-	
-	return returnString;
-	}

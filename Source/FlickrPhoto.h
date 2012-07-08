@@ -32,13 +32,6 @@ typedef enum _FlickrImageSize
 	kFlickrImageSizeOriginal = 64,
 	} FlickrImageSize;
 	
-// Returns an NSString object representing the name of the given FlickrImageSize.
-// This can be very useful to formulate and xpath query.
-
-NSString* flickrImageSizeString(FlickrImageSize size);
-
-// Returns an NSString object containing the localized name of the given FlickrImageSize.
-NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
 
 @class FlickrPerson;
 @class FlickrLicense;
@@ -63,6 +56,16 @@ NSString* flickrImageSizeLocalizedString(FlickrImageSize size);
 - (void)fetchComments;
 - (void)fetchFavorites;
 - (void)fetchGeneralInformation;
+
+// Returns an NSString object representing the name of the given FlickrImageSize.
+// This can be very useful to formulate and xpath query.
+
++ (NSString*)stringForImageSize:(FlickrImageSize)aSize;
+
+// Returns an NSString object containing the localized name of the given FlickrImageSize.
++ (NSString*)localizedStringForImageSize:(FlickrImageSize)aSize;
+
+
 
 @property(strong) NSString* ID;
 @property(strong) NSString* title;
