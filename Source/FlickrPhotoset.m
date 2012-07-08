@@ -12,9 +12,10 @@
 #import "FlickrKitConstants.h"
 #import "FlickrAPIResponse.h"
 
-@interface FlickrPhotoset(Private)
+@interface FlickrPhotoset()
 
-- (void)loadSetInformationFromXMLElement:(NSXMLElement*)anElement;
+- (void)parseXMLElement:(NSXMLElement*)anElement;
+
 @end
 
 @implementation FlickrPhotoset
@@ -23,7 +24,7 @@
 	{
 	if ((self = [super init]))
 		{
-		[self loadSetInformationFromXMLElement:anElement];
+		[self parseXMLElement:anElement];
     }
 	return self;
 	}
@@ -34,6 +35,7 @@
 		{
 		_ID = anID;
 		_title = aTitle;
+
 		NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosetGetInfo, @{@"photoset_id": _ID}, NO);
 		FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
 		[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
@@ -41,9 +43,8 @@
 				{
 				NSError* error;
 				NSXMLElement* photosetElement = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/photoset" error:&error] lastObject];
-				[self loadSetInformationFromXMLElement:photosetElement];
+				[self parseXMLElement:photosetElement];
 				}
-
 		}];
 		}
 
@@ -60,20 +61,15 @@
 	return [[FlickrPhotoset alloc] initWithID:anID title:atitle];
 	}
 
-
-@end
-
-@implementation FlickrPhotoset(Private)
-
-- (void)loadSetInformationFromXMLElement:(NSXMLElement *)anElement
+- (void)parseXMLElement:(NSXMLElement *)anElement
 	{
-	_ID = (!_ID) ? _ID : [[anElement attributeForName:@"id"] stringValue];
-	_title = (!_title) ? _title : [[[anElement elementsForName:@"title"] lastObject] stringValue];
+	self.ID = (!_ID) ? _ID : [[anElement attributeForName:@"id"] stringValue];
+	self.title = (!self.title) ? self.title : [[[anElement elementsForName:@"title"] lastObject] stringValue];
 	
-	_owner = [FlickrPerson personWithID:[[anElement attributeForName:@"owner"] stringValue]];
-	_desc = [[[anElement elementsForName:@"description"] lastObject] stringValue];
-	_primary = [[anElement attributeForName:@"primary"] stringValue];
-	_photoCount = [[[anElement attributeForName:@"photos"] stringValue] intValue];
+	self.owner = [FlickrPerson personWithID:[[anElement attributeForName:@"owner"] stringValue]];
+	self.desc = [[[anElement elementsForName:@"description"] lastObject] stringValue];
+	self.primary = [[anElement attributeForName:@"primary"] stringValue];
+	self.photoCount = [[[anElement attributeForName:@"photos"] stringValue] intValue];
 	}
 
 @end
