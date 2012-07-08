@@ -12,6 +12,35 @@
 #import "FlickrAsynchronousFetcher.h"
 #import "FlickrAPIResponse.h"
 
+@interface FlickrPerson ()
+
+/*!
+ * \param anElement A NSXMLElement containing the FlickrPerson information
+ *
+ * \return nothing
+ *
+ * \sa FlickrPerson#fetchPersonInformation:
+ * \sa FlickrPerson#personWithID:
+ *
+ * \since 1.0
+ *
+ * \brief Populate a FlickrPerson instance with information
+ *
+ * This instance-method populates the information of a FlickrPerson (username, name
+ * location, firstPhotoTaken, firstPhotoUploaded and photoCount) usin the contents of
+ * the supplied NSXMLElement. You can fetch the XML data from flickr.com using an API
+ * request.
+ *
+ * Please note that you don't need to call this method. You can call
+ * FlickrPerson#personWithID: instead.
+ */
+- (void)parseXMLElement:(NSXMLElement*)anElement;
+
+@property(assign) short iconServerID;
+@property(assign) short iconFarmID;
+
+@end
+
 @implementation FlickrPerson
 
 - (id)init
@@ -37,8 +66,8 @@
 			_firstPhotoUploaded = [aDecoder decodeObjectForKey:@"firstPhotoUploaded"];
 			_photoCount = [aDecoder decodeIntegerForKey:@"photoCount"];
 			_proStatus = [aDecoder decodeBoolForKey:@"proStatus"];
-			iconServerID = [aDecoder decodeIntForKey:@"iconServerID"];
-			iconFarmID = [aDecoder decodeIntForKey:@"iconFarmID"];
+			_iconServerID = [aDecoder decodeIntForKey:@"iconServerID"];
+			_iconFarmID = [aDecoder decodeIntForKey:@"iconFarmID"];
 			}
 		else
 			{
@@ -50,8 +79,8 @@
 			_firstPhotoUploaded = [aDecoder decodeObject];
 			[aDecoder decodeValueOfObjCType:@encode(NSUInteger) at:&_photoCount];
 			[aDecoder decodeValueOfObjCType:@encode(BOOL) at:&_proStatus];
-			[aDecoder decodeValueOfObjCType:@encode(short) at:&iconServerID];
-			[aDecoder decodeValueOfObjCType:@encode(short) at:&iconFarmID];
+			[aDecoder decodeValueOfObjCType:@encode(short) at:&_iconServerID];
+			[aDecoder decodeValueOfObjCType:@encode(short) at:&_iconFarmID];
 			}
     }
 
@@ -70,8 +99,8 @@
 		[aCoder encodeObject:_firstPhotoUploaded forKey:@"firstPhotoUploaded"];
 		[aCoder encodeInteger:_photoCount forKey:@"photoCount"];
 		[aCoder encodeBool:_proStatus forKey:@"proStatus"];
-		[aCoder encodeInt:iconServerID forKey:@"iconServerID"];
-		[aCoder encodeInt:iconFarmID forKey:@"iconFarmID"];
+		[aCoder encodeInt:_iconServerID forKey:@"iconServerID"];
+		[aCoder encodeInt:_iconFarmID forKey:@"iconFarmID"];
 		}
 	else
 		{
@@ -83,8 +112,8 @@
 		[aCoder encodeObject:_firstPhotoUploaded];
 		[aCoder encodeValueOfObjCType:@encode(NSUInteger) at:&_photoCount];
 		[aCoder encodeValueOfObjCType:@encode(BOOL) at:&_proStatus];
-		[aCoder encodeValueOfObjCType:@encode(short) at:&iconServerID];
-		[aCoder encodeValueOfObjCType:@encode(short) at:&iconFarmID];
+		[aCoder encodeValueOfObjCType:@encode(short) at:&_iconServerID];
+		[aCoder encodeValueOfObjCType:@encode(short) at:&_iconFarmID];
 		}
 	}
 
@@ -101,7 +130,7 @@
 	
   if ((self = [super init]))
 		{
-		[self loadPersonInformationFromXMLElement:anElement];
+		[self parseXMLElement:anElement];
     }
 
 	[[FlickrPersonManager sharedManager] addPerson:self];
@@ -137,25 +166,6 @@
 	return [[FlickrPerson alloc] initWithID:anID];
 	}
 
-
-- (void)loadPersonInformationFromXMLElement:(NSXMLElement*)anElement
-	{
-	_ID = [[anElement attributeForName:@"nsid"] stringValue];
-	_proStatus = [[[anElement attributeForName:@"ispro"] stringValue] boolValue];
-	iconServerID = [[[anElement attributeForName:@"iconserver"] stringValue] intValue];
-	iconFarmID = [[[anElement attributeForName:@"iconfarm"] stringValue] intValue];
-	
-	_username =  [[[anElement elementsForName:@"username"] lastObject] stringValue];
-	_name =  [[[anElement elementsForName:@"realname"] lastObject] stringValue];
-	
-	NSXMLElement* photosElement = [[anElement elementsForName:@"photos"] lastObject];
-	_firstPhotoTaken = [NSDate dateWithString:[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue]];
-	_firstPhotoUploaded = [NSDate dateWithTimeIntervalSince1970:[[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue] intValue]];
-	_photoCount = [[[[photosElement elementsForName:@"count"] lastObject] stringValue] integerValue];
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPersonLoadingDidFinishNotification object:self];
-	}
-
 - (void)fetchPersonInformation
 	{
 	NSString* escapedUserID = [_ID stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -172,9 +182,27 @@
 				if(error)
 					return; // TODO: add more sophisticated error handling
 					
-				[self loadPersonInformationFromXMLElement:personElement];
+				[self parseXMLElement:personElement];
 				}
 	}];
+	}
+
+- (void)parseXMLElement:(NSXMLElement*)anElement
+	{
+	_ID = [[anElement attributeForName:@"nsid"] stringValue];
+	_proStatus = [[[anElement attributeForName:@"ispro"] stringValue] boolValue];
+	_iconServerID = [[[anElement attributeForName:@"iconserver"] stringValue] intValue];
+	_iconFarmID = [[[anElement attributeForName:@"iconfarm"] stringValue] intValue];
+	
+	_username =  [[[anElement elementsForName:@"username"] lastObject] stringValue];
+	_name =  [[[anElement elementsForName:@"realname"] lastObject] stringValue];
+	
+	NSXMLElement* photosElement = [[anElement elementsForName:@"photos"] lastObject];
+	_firstPhotoTaken = [NSDate dateWithString:[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue]];
+	_firstPhotoUploaded = [NSDate dateWithTimeIntervalSince1970:[[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue] intValue]];
+	_photoCount = [[[[photosElement elementsForName:@"count"] lastObject] stringValue] integerValue];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPersonLoadingDidFinishNotification object:self];
 	}
 
 @end
