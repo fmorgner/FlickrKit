@@ -11,16 +11,6 @@
 
 @implementation FlickrComment
 
-- (id)init
-	{	
-	if ((self = [super init]))
-		{
-  	
-		}
-    
-	return self;
-	}
-
 - (id)initWithXMLElement:(NSXMLElement*)anElement
 	{	
 	if ((self = [super init]))
@@ -30,8 +20,6 @@
 		_url = [NSURL URLWithString:[[anElement attributeForName:@"permalink"] stringValue]];
 		_dateCreated = [NSDate dateWithTimeIntervalSince1970:[[[anElement attributeForName:@"datecreate"] stringValue] integerValue]];
 		_rawText = [anElement stringValue];
-
-		
 	
 		NSMutableString *html = [NSMutableString stringWithCapacity:[_rawText length]];
 
@@ -53,7 +41,7 @@
 			tempText = nil;
 			}
 
-		self.strippedText = (NSString*)html;
+		_strippedText = (NSString*)html;
 		}
     
 	return self;
