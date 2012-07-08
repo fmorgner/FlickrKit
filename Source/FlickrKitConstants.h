@@ -28,11 +28,11 @@
 // This is the base url for every API call. Every call needs to at least
 // have a method and the api_key of the calling application
 
-static NSString* FlickrAPIBaseURL = @"http://api.flickr.com/services/rest/?method=%@&api_key=%@";
+static NSString* FlickrAPIBaseURLFormat = @"http://api.flickr.com/services/rest/?method=%@&api_key=%@";
 
 // This is the authorization URL. It is used to authorize an application for
 // certain permissions on a user account.
-static NSString* FlickrAuthURL = @"http://flickr.com/services/auth/?api_key=%@&perms=%@&frob=%@";
+static NSString* FlickrAuthURLFormat = @"http://flickr.com/services/auth/?api_key=%@&perms=%@&frob=%@";
 
 // - flickr.photos.* methods
 

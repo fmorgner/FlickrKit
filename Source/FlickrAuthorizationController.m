@@ -56,7 +56,7 @@
 		{
 		if(!![_frob length])
 			{
-			NSMutableString* urlString = [NSMutableString stringWithFormat:@"%@%@%@%@", FlickrAuthURL, APIKey, permission, _frob];
+			NSMutableString* urlString = [NSMutableString stringWithFormat:@"%@%@%@%@", FlickrAuthURLFormat, APIKey, permission, _frob];
 			NSString* signatureBaseString = [NSMutableString stringWithFormat:@"%@api_key%@frob%@perms%@", APISecret, APIKey, _frob, permission];
 			NSString* signature = [[signatureBaseString MD5Hash] lowercaseString];
 			[urlString appendFormat:@"&api_sig=%@", signature];
