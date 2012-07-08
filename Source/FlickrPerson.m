@@ -180,7 +180,8 @@
 				NSXMLElement* personElement = [[xmlDocument nodesForXPath:@"rsp/person" error:&error] lastObject];
 				
 				if(error)
-					return; // TODO: add more sophisticated error handling
+					#warning Add sophisticated error handling
+					return;
 					
 				[self parseXMLElement:personElement];
 				}

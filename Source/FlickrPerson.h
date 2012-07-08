@@ -19,11 +19,6 @@
 #import <Foundation/Foundation.h>
 
 @interface FlickrPerson : NSObject <NSCoding>
-	{
-	@protected
-	short iconServerID;
-	short iconFarmID;
-	}
 	
 /*! @{ 
  * \name Object creation
@@ -145,28 +140,6 @@
  * to populate the instance.
  */
 - (void)fetchPersonInformation;
-
-/*!
- * \param anElement A NSXMLElement containing the FlickrPerson information
- *
- * \return nothing
- *
- * \sa FlickrPerson#fetchPersonInformation:
- * \sa FlickrPerson#personWithID:
- *
- * \since 1.0
- *
- * \brief Populate a FlickrPerson instance with information
- *
- * This instance-method populates the information of a FlickrPerson (username, name
- * location, firstPhotoTaken, firstPhotoUploaded and photoCount) usin the contents of
- * the supplied NSXMLElement. You can fetch the XML data from flickr.com using an API
- * request.
- *
- * Please note that you don't need to call this method. You can call
- * FlickrPerson#personWithID: instead.
- */
-- (void)loadPersonInformationFromXMLElement:(NSXMLElement*)anElement;
 
 /*! @} */
 
