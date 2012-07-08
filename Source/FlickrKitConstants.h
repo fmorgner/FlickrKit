@@ -34,41 +34,6 @@ static NSString* FlickrAPIBaseURLFormat = @"http://api.flickr.com/services/rest/
 // certain permissions on a user account.
 static NSString* FlickrAuthURLFormat = @"http://flickr.com/services/auth/?api_key=%@&perms=%@&frob=%@";
 
-// - flickr.photos.* methods
-
-// This method is used to gather some basic information about a photo.
-static NSString* FlickrAPIMethodPhotosGetInfo = @"flickr.photos.getInfo";
-
-// This method is used to gather all visible pools and sets a photo belongs to.
-static NSString* FlickrAPIMethodPhotosGetAllContexts = @"flickr.photos.getAllContexts";
-
-// This method is used to gather all comments on a photo.
-static NSString* FlickrAPIMethodPhotosCommentsGetList = @"flickr.photos.comments.getList";
-
-// This method is used to gather a list of people who favorited a photo.
-static NSString* FlickrAPIMethodPhotosGetFavorites = @"flickr.photos.getFavorites";
-
-// This method is used to gather a list of URLs for available sizes of a photo.
-static NSString* FlickrAPIMethodPhotosGetSizes = @"flickr.photos.getSizes";
-
-// This method is used to gather the EXIF information of a photo.
-static NSString* FlickrAPIMethodPhotosGetEXIF = @"flickr.photos.getExif";
-
-// - flickr.galleries.* methods
-
-// This method is used to gather a list of galleries a photo appears in.
-static NSString* FlickrAPIMethodGalleriesGetListForPhoto = @"flickr.galleries.getListForPhoto";
-
-// - flickr.people.* methods
-
-// This method is used to gather some information about a person.
-static NSString* FlickrAPIMethodPeopleGetInfo = @"flickr.people.getInfo";
-
-// - flickr.photoset.* methods
-
-// This method is used to gather some information about a photoset
-static NSString* FlickrAPIMethodPhotosetGetInfo = @"flickr.photosets.getInfo";
-
 // - Helper functions
 
 // This function returns an NSURL object for a given method which is either singed or not signed

@@ -18,3 +18,4 @@
 #import "FlickrTag.h"
 #import "FlickrToken.h"
 #import "FlickrAuthorizationSheetController.h"
+#import "FlickrAPIRequest.h"
