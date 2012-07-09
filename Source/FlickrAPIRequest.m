@@ -48,12 +48,8 @@ static NSDictionary* methodParameterTable;
 	{
 	if(self == [FlickrAPIRequest class])
 		{
-		methodParameterTable = @{ FlickrAPIMethodPhotosGetInfo : @[@"required:photo_id", @"optional:secret"],
-															FlickrAPIMethodPhotosGetAllContexts : @[@"required:photo_id"],
-															FlickrAPIMethodPhotosGetEXIF : @[@"required:photo_id", @"optional:secret"],
-															FlickrAPIMethodPhotosGetFavorites : @[@"required:photo_id", @"optional:page", @"optional:per_page"],
-															FlickrAPIMethodPhotosCommentsGetList : @[@"required:photo_id", @"optional:min_comment_date", @"optional:max_comment_date"]
-														};
+		NSData* flickrAPIMethodDefinitionsData = [NSData dataWithContentsOfFile:[KitBundle pathForResource:@"FlickrAPIMethodDefinitions" ofType:@"plist"]];
+		methodParameterTable = [NSPropertyListSerialization propertyListFromData:flickrAPIMethodDefinitionsData mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:nil];
 		}
 	}
 

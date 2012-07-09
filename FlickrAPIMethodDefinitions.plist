@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>flickr.photos.comments.getList</key>
+	<array>
+		<string>required:photo_id</string>
+		<string>optional:min_comment_date</string>
+		<string>optional:max_comment_date</string>
+	</array>
+	<key>flickr.photos.getAllContexts</key>
+	<array>
+		<string>required:photo_id</string>
+	</array>
+	<key>flickr.photos.getInfo</key>
+	<array>
+		<string>required:photo_id</string>
+		<string>optional:secret</string>
+	</array>
+	<key>flickr.photos.getExif</key>
+	<array>
+		<string>required:photo_id</string>
+		<string>optional:secret</string>
+	</array>
+	<key>flickr.photos.getFavorites</key>
+	<array>
+		<string>required:photo_id</string>
+		<string>optional:page</string>
+		<string>optional:per_page</string>
+	</array>
+	<key>flickr.photos.getSizes</key>
+	<array>
+		<string>required:photo_id</string>
+	</array>
+	<key>flickr.galleries.getListForPhoto</key>
+	<array>
+		<string>required:photo_id</string>
+		<string>optional:page</string>
+		<string>optional:per_page</string>
+	</array>
+	<key>flickr.photosets.getInfo</key>
+	<array>
+		<string>required:photoset_id</string>
+	</array>
+</dict>
+</plist>
