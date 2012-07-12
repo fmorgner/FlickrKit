@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class FlickrAPIRequest;
+@class FlickrAPIMethodCall;
 
 @protocol FlickrAPIRequestDelegate <NSObject>
 
-- (void)requestDidFinish:(FlickrAPIRequest*)theRequest;
-- (void)request:(FlickrAPIRequest*)theRequest didFailWithError:(NSError*)theError;
+- (void)requestDidFinish:(FlickrAPIMethodCall*)theRequest;
+- (void)request:(FlickrAPIMethodCall*)theRequest didFailWithError:(NSError*)theError;
 
 @end

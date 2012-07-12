@@ -11,7 +11,7 @@
 #import "FlickrAsynchronousFetcher.h"
 #import "FlickrKitConstants.h"
 #import "FlickrAPIResponse.h"
-#import "FlickrAPIRequest.h"
+#import "FlickrAPIMethodCall.h"
 
 @interface FlickrPhotoset()
 

@@ -15,7 +15,7 @@
 #import "FlickrEXIFTag.h"
 #import "FlickrPhotoset.h"
 #import "FlickrComment.h"
-#import "FlickrAPIRequest.h"
+#import "FlickrAPIMethodCall.h"
 
 @interface FlickrPhoto()
 

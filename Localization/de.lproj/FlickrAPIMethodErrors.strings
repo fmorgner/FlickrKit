@@ -9,8 +9,8 @@
 "FlickrAPIMethodErrorUnknownMethodDescription" = "Unbekannte API Methode übergeben.";
 "FlickrAPIMethodErrorUnknownMethodReason" = "Die angeforderte API Methode ist nicht bekannt.";
 
-"FlickrAPIMethodErrorParamterMissingDescription" = "Ein benötigter Parameter fehlt."
-"FlickrAPIMethodErrorParamterMissingReason" = "Ein benötigter Parameter wurde nicht übergeben."
+"FlickrAPIMethodErrorParamterMissingDescription" = "Ein benötigter Parameter fehlt.";
+"FlickrAPIMethodErrorParamterMissingReason" = "Ein benötigter Parameter wurde nicht übergeben.";
 
 "FlickrAPIMethodErrorIllegalParameterDescription" = "Ungültiger Parameter.";
 "FlickrAPIMethodErrorIllegalParameterReason" = "Es wurde ein ungültiger Parameter übergeben.";

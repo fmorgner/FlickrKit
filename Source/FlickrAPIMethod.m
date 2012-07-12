@@ -122,12 +122,15 @@ static NSDictionary* methodParameterTable;
 		{
 		if(!theParameters[parameter])
 			{
-			NSDictionary* userInfo = @{NSLocalizedDescriptionKey : NSLocalizedStringFromTableInBundle(@"FlickrAPIMethodErrorParamterMissingDescription", @"FlickrAPIMethodErrors", KitBundle, @"Missing parameter"),
-																 NSLocalizedFailureReasonErrorKey : NSLocalizedStringFromTableInBundle(@"FlickrAPIMethodErrorParamterMissingReason", @"FlickrAPIMethodErrors", KitBundle, @"Missing parameter reason"),
-																 @"parameter" : parameter
-																};
-			*theError = [NSError errorWithDomain:FlickrKitAPIMethodErrorDomain code:-2 userInfo:userInfo];
-			return NO;
+			if(theError != NULL)
+				{
+				NSDictionary* userInfo = @{NSLocalizedDescriptionKey : NSLocalizedStringFromTableInBundle(@"FlickrAPIMethodErrorParamterMissingDescription", @"FlickrAPIMethodErrors", KitBundle, @"Missing parameter"),
+																	 NSLocalizedFailureReasonErrorKey : NSLocalizedStringFromTableInBundle(@"FlickrAPIMethodErrorParamterMissingReason", @"FlickrAPIMethodErrors", KitBundle, @"Missing parameter reason"),
+																	 @"parameter" : parameter
+																	};
+				*theError = [NSError errorWithDomain:FlickrKitAPIMethodErrorDomain code:-2 userInfo:userInfo];
+				return NO;
+				}
 			}
 		}
 		
@@ -135,12 +138,15 @@ static NSDictionary* methodParameterTable;
 		{
 		if(![combinedParameters containsObject:parameter])
 			{
-			NSDictionary* userInfo = @{NSLocalizedDescriptionKey : NSLocalizedStringFromTableInBundle(@"FlickrAPIMethodErrorIllegalParameterDescription", @"FlickrAPIMethodErrors", KitBundle, @"Illegal parameter"),
-																 NSLocalizedFailureReasonErrorKey : NSLocalizedStringFromTableInBundle(@"FlickrAPIMethodErrorIllegalParameterReason", @"FlickrAPIMethodErrors", KitBundle, @"Illegal parameter reason"),
-																 @"parameter" : parameter
-																};
-			*theError = [NSError errorWithDomain:FlickrKitAPIMethodErrorDomain code:-2 userInfo:userInfo];
+			if(theError != NULL)
+				{
+				NSDictionary* userInfo = @{NSLocalizedDescriptionKey : NSLocalizedStringFromTableInBundle(@"FlickrAPIMethodErrorIllegalParameterDescription", @"FlickrAPIMethodErrors", KitBundle, @"Illegal parameter"),
+																	 NSLocalizedFailureReasonErrorKey : NSLocalizedStringFromTableInBundle(@"FlickrAPIMethodErrorIllegalParameterReason", @"FlickrAPIMethodErrors", KitBundle, @"Illegal parameter reason"),
+																	 @"parameter" : parameter
+																	};
+				*theError = [NSError errorWithDomain:FlickrKitAPIMethodErrorDomain code:-2 userInfo:userInfo];
 			return NO;
+			}
 			}
 		}
 	
