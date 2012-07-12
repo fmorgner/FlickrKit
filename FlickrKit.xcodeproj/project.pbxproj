@@ -33,7 +33,7 @@
 		C77A660A133F62950026C24B /* FlickrComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C77A6608133F62950026C24B /* FlickrComment.m */; };
 		C77F24AC15A9D86D00A914DD /* FlickrAPIMethodCall.h in Headers */ = {isa = PBXBuildFile; fileRef = C77F24AA15A9D86D00A914DD /* FlickrAPIMethodCall.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C77F24AD15A9D86D00A914DD /* FlickrAPIMethodCall.m in Sources */ = {isa = PBXBuildFile; fileRef = C77F24AB15A9D86D00A914DD /* FlickrAPIMethodCall.m */; };
-		C77F24B315A9F55C00A914DD /* FlickrAPIRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C77F24B215A9E52800A914DD /* FlickrAPIRequestDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C77F24B315A9F55C00A914DD /* FlickrAPIMethodCallDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C77F24B215A9E52800A914DD /* FlickrAPIMethodCallDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C780D75B15AB574200397356 /* FlickrAPIMethodDefinitions.plist in Resources */ = {isa = PBXBuildFile; fileRef = C780D75A15AB574200397356 /* FlickrAPIMethodDefinitions.plist */; };
 		C780D75E15AB6F6700397356 /* FlickrAPIMethodErrors.strings in Resources */ = {isa = PBXBuildFile; fileRef = C780D75C15AB6F6700397356 /* FlickrAPIMethodErrors.strings */; };
 		C78C0794137EC13C0048209E /* FlickrAuthorizationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C78C0792137EC13B0048209E /* FlickrAuthorizationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -222,7 +222,7 @@
 		C77A6608133F62950026C24B /* FlickrComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrComment.m; sourceTree = "<group>"; };
 		C77F24AA15A9D86D00A914DD /* FlickrAPIMethodCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIMethodCall.h; sourceTree = "<group>"; };
 		C77F24AB15A9D86D00A914DD /* FlickrAPIMethodCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrAPIMethodCall.m; sourceTree = "<group>"; };
-		C77F24B215A9E52800A914DD /* FlickrAPIRequestDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrAPIRequestDelegate.h; sourceTree = "<group>"; };
+		C77F24B215A9E52800A914DD /* FlickrAPIMethodCallDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrAPIMethodCallDelegate.h; sourceTree = "<group>"; };
 		C780D75A15AB574200397356 /* FlickrAPIMethodDefinitions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FlickrAPIMethodDefinitions.plist; sourceTree = "<group>"; };
 		C780D75D15AB6F6700397356 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FlickrAPIMethodErrors.strings; sourceTree = "<group>"; };
 		C780D76015AB7BD700397356 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/FlickrAPIMethodErrors.strings; sourceTree = "<group>"; };
@@ -520,7 +520,7 @@
 				C7692545132FEDA9005F6AC3 /* FlickrAPIResponse.m */,
 				C77F24AA15A9D86D00A914DD /* FlickrAPIMethodCall.h */,
 				C77F24AB15A9D86D00A914DD /* FlickrAPIMethodCall.m */,
-				C77F24B215A9E52800A914DD /* FlickrAPIRequestDelegate.h */,
+				C77F24B215A9E52800A914DD /* FlickrAPIMethodCallDelegate.h */,
 				C77A6607133F62950026C24B /* FlickrComment.h */,
 				C77A6608133F62950026C24B /* FlickrComment.m */,
 				C7D25BF3135DE373003FF694 /* FlickrEXIFTag.h */,
@@ -606,7 +606,7 @@
 				C7E19DE615AF52D500A2FD54 /* FlickrAPIMethod.h in Headers */,
 				C75A8B9A1333F32C00716282 /* FlickrAPIResponse.h in Headers */,
 				C77F24AC15A9D86D00A914DD /* FlickrAPIMethodCall.h in Headers */,
-				C77F24B315A9F55C00A914DD /* FlickrAPIRequestDelegate.h in Headers */,
+				C77F24B315A9F55C00A914DD /* FlickrAPIMethodCallDelegate.h in Headers */,
 				C7278A041333F0B4008C4321 /* FlickrLicense.h in Headers */,
 				C7E99E5F133142DE0027226A /* FlickrPerson.h in Headers */,
 				C7E99E641331457E0027226A /* FlickrPersonManager.h in Headers */,
