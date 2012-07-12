@@ -1,8 +1,8 @@
 /*
  *
- * FlickrAPIRequest.m
+ * FlickrAPIMethod.h
  * -------------------------------------------------------------------------
- * begin                 : 2012-07-08
+ * begin                 : 2012-07-12
  * copyright             : Copyright (C) 2012 by Felix Morgner
  * email                 : felix.morgner@gmail.com
  * =========================================================================
@@ -27,36 +27,25 @@
  *
  */
 
-#import "FlickrAPIRequest.h"
-#import <OAuthKit/OAuthKit.h>
+/*!
+ * \class FlickrAPIMethod FlickrAPIMethod.h
+ * \author Felix Morgner http://www.felixmorgner.ch
+ *
+ * This class represents API methods. It facilitates all the necessary conformity
+ * checks and encapsulates the method very cleanly.
+ *
+ */
 
-@interface FlickrAPIRequest ()
+#import <Foundation/Foundation.h>
 
-@property(strong) FlickrAuthorizationContext* authorizationContext;
-@property(strong) FlickrAPIMethod* APIMethod;
+// The FlickrKitAPIMethodErrorDomain error domain
+static NSString* FlickrKitAPIMethodErrorDomain = @"FlickrKitAPIMethodErrorDomain";
 
-@end
+@interface FlickrAPIMethod : NSObject
 
-@implementation FlickrAPIRequest
++ (FlickrAPIMethod*)methodWithName:(NSString*)aName andParameters:(NSDictionary*)theParameters error:(NSError**)anError;
 
-- (id)initWithAuthorizationContext:(FlickrAuthorizationContext*)anAuthContext method:(FlickrAPIMethod*)aMethod;
-	{
-	if((self = [super init]))
-		{
-		_authorizationContext = anAuthContext;
-		_APIMethod = aMethod;
-		}
-
-	return self;
-	}
-
-+ (FlickrAPIRequest*)requestWithAuthorizationContext:(FlickrAuthorizationContext*)anAuthContext method:(FlickrAPIMethod*)aMethod;
-	{
-	return [[FlickrAPIRequest alloc] initWithAuthorizationContext:anAuthContext method:aMethod];
-	}
-
-- (void)fetch
-  {
-	}
+@property(strong, readonly) NSString* name;
+@property(strong, readonly) NSDictionary* parameters;
 
 @end

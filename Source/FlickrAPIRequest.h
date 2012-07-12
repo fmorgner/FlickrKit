@@ -75,6 +75,7 @@ static NSString* FlickrAPIMethodPhotosetGetInfo = @"flickr.photosets.getInfo";
 
 
 @class FlickrAuthorizationContext;
+@class FlickrAPIMethod;
 
 @interface FlickrAPIRequest : NSObject
 
@@ -85,7 +86,6 @@ static NSString* FlickrAPIMethodPhotosetGetInfo = @"flickr.photosets.getInfo";
 /*!
  * \param anAuthContext The authorization context which should be used
  * \param aMethod The method that should be called
- * \param theParameters Method parameters
  *
  * \return An initialized FlickrAPIRequest instance with a retaincount of 1
  *
@@ -99,12 +99,11 @@ static NSString* FlickrAPIMethodPhotosetGetInfo = @"flickr.photosets.getInfo";
  * Returns nil if the object could not be initialized.
  */
 
-- (id)initWithAuthorizationContext:(FlickrAuthorizationContext*)anAuthContext method:(NSString*)aMethod parameters:(NSDictionary*)theParameters;
+- (id)initWithAuthorizationContext:(FlickrAuthorizationContext*)anAuthContext method:(FlickrAPIMethod*)aMethod;
 
 /*!
  * \param anAuthContext The authorization context which should be used
  * \param aMethod The method that should be called
- * \param theParameters Method parameters
  *
  * \return An alocated an initialized FlickrAPIRequest instance with a retaincount of 1
  *
@@ -118,7 +117,7 @@ static NSString* FlickrAPIMethodPhotosetGetInfo = @"flickr.photosets.getInfo";
  * Returns nil if the object could not be created.
  */
 
-+ (FlickrAPIRequest*)requestWithAuthorizationContext:(FlickrAuthorizationContext*)anAuthContext method:(NSString*)aMethod parameters:(NSDictionary*)theParameters;
++ (FlickrAPIRequest*)requestWithAuthorizationContext:(FlickrAuthorizationContext*)anAuthContext method:(FlickrAPIMethod*)aMethod;
 
 /*! @} */
 
