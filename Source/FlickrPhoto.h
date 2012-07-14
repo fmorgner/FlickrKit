@@ -37,7 +37,7 @@ typedef enum _FlickrImageSize
 @class FlickrLicense;
 @class FlickrAPIResponse;
 
-@interface FlickrPhoto : NSObject
+@interface FlickrPhoto : NSObject <NSURLConnectionDelegate>
 
 - (id)initWithID:(NSString*)anID;
 - (id)initWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;

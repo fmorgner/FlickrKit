@@ -18,5 +18,7 @@
 #import "FlickrTag.h"
 #import "FlickrToken.h"
 #import "FlickrAuthorizationSheetController.h"
+#import "FlickrAuthorizationContext.h"
 #import "FlickrAPIMethodCall.h"
 #import "FlickrAPIMethod.h"
+#import <OAuthKit/OAuthKit.h>

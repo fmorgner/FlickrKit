@@ -7,19 +7,23 @@
 //
 
 #import "FlickrPhoto.h"
-#import "FlickrAsynchronousFetcher.h"
-#import "FlickrAPIResponse.h"
 #import "FlickrTag.h"
 #import "FlickrLicense.h"
 #import "FlickrPerson.h"
 #import "FlickrEXIFTag.h"
 #import "FlickrPhotoset.h"
 #import "FlickrComment.h"
+
+#import "FlickrAuthorizationContext.h"
+#import "FlickrAPIMethod.h"
 #import "FlickrAPIMethodCall.h"
+#import "FlickrAPIResponse.h"
 
 @interface FlickrPhoto()
 
 - (void)parseXMLElement:(NSXMLElement*)anElement;
+
+@property(strong) NSMutableData* imageData;
 
 @end
 
@@ -115,13 +119,15 @@
 
 - (void)fetchEXIFInformation
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetEXIF, @{@"photo_id": _ID}, NO);
-
-	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+	FlickrAPIMethod* methodGetExif = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosGetEXIF andParameters:@{@"photo_id" : _ID} error:nil];
+	
+	if(methodGetExif)
+		{
+		FlickrAPIMethodCall* methodCall = [FlickrAPIMethodCall methodCallWithAuthorizationContext:[FlickrAuthorizationContext sharedContext] method:methodGetExif];
+		[methodCall dispatchWithCompletionHandler:^(id methodCallResult) {
+		if([methodCallResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)methodCallResult status] isEqualToString:@"ok"])
 			{
-			NSArray* nodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/photo/exif" error:nil];
+			NSArray* nodes = [[(FlickrAPIResponse*)methodCallResult xmlContent] nodesForXPath:@"rsp/photo/exif" error:nil];
 			NSMutableArray* fetchedExifTags = [NSMutableArray arrayWithCapacity:[nodes count]];
 			for(NSXMLElement* element in nodes)
 				{
@@ -129,124 +135,142 @@
 				}
 			self.exifTags = fetchedExifTags;
 			}
-	}];
+		}];
+		}
+	
 	}
 
 - (void)fetchImageOfSize:(FlickrImageSize)aSize
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetSizes, @{@"photo_id": _ID}, NO);
-
-	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSError* error;
-			NSArray* nodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:[NSString stringWithFormat:@"rsp/sizes/size[@label='%@']", [FlickrPhoto stringForImageSize:aSize]] error:&error];
-			
-			if(error)
-				return; // TODO: add more sophisticated error handling
-			
-			NSURL* imageURL = [NSURL URLWithString:[[[nodes lastObject] attributeForName:@"source"] stringValue]];
-			
-			FlickrAsynchronousFetcher* imageFetcher = [FlickrAsynchronousFetcher new];
-			[imageFetcher fetchDataAtURL:imageURL withCompletionHandler:^(id fetchResult)
+	FlickrAPIMethod* methodGetSizes = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosGetSizes andParameters:@{@"photo_id" : _ID} error:nil];
+	
+	if(methodGetSizes)
+		{
+		FlickrAPIMethodCall* methodCall = [FlickrAPIMethodCall methodCallWithAuthorizationContext:[FlickrAuthorizationContext sharedContext] method:methodGetSizes];
+		[methodCall dispatchWithCompletionHandler:^(id methodCallResult) {
+			if([methodCallResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)methodCallResult status] isEqualToString:@"ok"])
 				{
-				if(![fetchResult isKindOfClass:[NSError class]])
-					self.image = [[NSImage alloc] initWithData:fetchResult];
-			}];
-			}
-	}];
+				NSError* error;
+				NSArray* nodes = [[(FlickrAPIResponse*)methodCallResult xmlContent] nodesForXPath:[NSString stringWithFormat:@"rsp/sizes/size[@label='%@']", [FlickrPhoto stringForImageSize:aSize]] error:&error];
+				
+				if(error)
+					return; // TODO: add more sophisticated error handling
+				
+				_imageData = [NSMutableData data];
+				[NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[[nodes lastObject] attributeForName:@"source"] stringValue]]] delegate:self];
+				
+				
+//				FlickrAsynchronousFetcher* imageFetcher = [FlickrAsynchronousFetcher new];
+//				[imageFetcher fetchDataAtURL:imageURL withCompletionHandler:^(id fetchResult)
+//					{
+//					if(![fetchResult isKindOfClass:[NSError class]])
+//						self.image = [[NSImage alloc] initWithData:fetchResult];
+//				}];
+				}
+		}];
+		}
 	}
 	
 - (void)fetchContexts
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetAllContexts, @{@"photo_id": _ID}, NO);
-
-	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSArray* setNodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/set" error:nil];
-
-			NSMutableArray* setArray = [NSMutableArray arrayWithCapacity:[setNodes count]];
-			for(NSXMLElement* element in setNodes)
+	FlickrAPIMethod* methodGetAllContexts = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosGetAllContexts andParameters:@{@"photo_id" : _ID} error:nil];
+	
+	if(methodGetAllContexts)
+		{
+		FlickrAPIMethodCall* methodCall = [FlickrAPIMethodCall methodCallWithAuthorizationContext:[FlickrAuthorizationContext sharedContext] method:methodGetAllContexts];
+		[methodCall dispatchWithCompletionHandler:^(id methodCallResult) {
+			if([methodCallResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)methodCallResult status] isEqualToString:@"ok"])
 				{
-				[setArray addObject:[FlickrPhotoset setWithID:[[element attributeForName:@"id"] stringValue] title:[[element attributeForName:@"title"] stringValue]]];
-				}
-			self.photosets = setArray;
+				NSArray* setNodes = [[(FlickrAPIResponse*)methodCallResult xmlContent] nodesForXPath:@"rsp/set" error:nil];
 
-			NSArray* poolNodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/pool" error:nil];
+				NSMutableArray* setArray = [NSMutableArray arrayWithCapacity:[setNodes count]];
+				for(NSXMLElement* element in setNodes)
+					{
+					[setArray addObject:[FlickrPhotoset setWithID:[[element attributeForName:@"id"] stringValue] title:[[element attributeForName:@"title"] stringValue]]];
+					}
+				self.photosets = setArray;
 
-			NSMutableArray* poolArray = [NSMutableArray arrayWithCapacity:[setNodes count]];
-			for(NSXMLElement* element in poolNodes)
-				{
-				[poolArray addObject:[[element attributeForName:@"title"] stringValue]];
+				NSArray* poolNodes = [[(FlickrAPIResponse*)methodCallResult xmlContent] nodesForXPath:@"rsp/pool" error:nil];
+
+				NSMutableArray* poolArray = [NSMutableArray arrayWithCapacity:[setNodes count]];
+				for(NSXMLElement* element in poolNodes)
+					{
+					[poolArray addObject:[[element attributeForName:@"title"] stringValue]];
+					}
+				self.pools = poolArray;
 				}
-			self.pools = poolArray;
-			}
-	}];
+		}];
+		}
 	}
 	
 - (void)fetchComments
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosCommentsGetList, @{@"photo_id": _ID}, NO);
+	FlickrAPIMethod* methodCommentsGetList = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosCommentsGetList andParameters:@{@"photo_id": _ID} error:nil];
 
-	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSArray* nodes = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/comments/comment" error:nil];
-			NSMutableArray* commentsArray = [NSMutableArray arrayWithCapacity:[nodes count]];
-			for(NSXMLElement* element in nodes)
+	if(methodCommentsGetList)
+		{
+		FlickrAPIMethodCall* methodCall = [FlickrAPIMethodCall methodCallWithAuthorizationContext:[FlickrAuthorizationContext sharedContext] method:methodCommentsGetList];
+		[methodCall dispatchWithCompletionHandler:^(id methodCallResult) {
+			if([methodCallResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)methodCallResult status] isEqualToString:@"ok"])
 				{
-				[commentsArray addObject:[FlickrComment commentWithXMLElement:element]];
+				NSArray* nodes = [[(FlickrAPIResponse*)methodCallResult xmlContent] nodesForXPath:@"rsp/comments/comment" error:nil];
+				NSMutableArray* commentsArray = [NSMutableArray arrayWithCapacity:[nodes count]];
+				for(NSXMLElement* element in nodes)
+					{
+					[commentsArray addObject:[FlickrComment commentWithXMLElement:element]];
+					}
+				self.comments = commentsArray;
 				}
-			self.comments = commentsArray;
-			}
-	}];
+		}];
+		}
 	}
 
 - (void)fetchFavorites
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetFavorites, @{@"photo_id": _ID}, NO);
-	
-	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSError* error;
-			NSArray* personArray = [[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/photo/person" error:&error];
-			
-			if(error)
-				return; // TODO: Add more sophisticated error handling
-			
-			NSMutableArray* favoriteArray = [NSMutableArray arrayWithCapacity:[personArray count]];
-			
-			for(NSXMLElement* element in personArray)
-				{
-				NSString* personID = [[element attributeForName:@"nsid"] stringValue];
-				[favoriteArray addObject:[FlickrPerson personWithID:personID]];
-				}
-			
-			self.favorites = favoriteArray;
-			}
+	FlickrAPIMethod* methodGetFavorites = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosGetFavorites andParameters:@{@"photo_id" : _ID} error:nil];
 
-	}];
+	if(methodGetFavorites)
+		{
+		FlickrAPIMethodCall* methodCall = [FlickrAPIMethodCall methodCallWithAuthorizationContext:[FlickrAuthorizationContext sharedContext] method:methodGetFavorites];
+		[methodCall dispatchWithCompletionHandler:^(id methodCallResult) {
+			if([methodCallResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)methodCallResult status] isEqualToString:@"ok"])
+				{
+				NSError* error;
+				NSArray* personArray = [[(FlickrAPIResponse*)methodCallResult xmlContent] nodesForXPath:@"rsp/photo/person" error:&error];
+				
+				if(error)
+					return; // TODO: Add more sophisticated error handling
+				
+				NSMutableArray* favoriteArray = [NSMutableArray arrayWithCapacity:[personArray count]];
+				
+				for(NSXMLElement* element in personArray)
+					{
+					NSString* personID = [[element attributeForName:@"nsid"] stringValue];
+					[favoriteArray addObject:[FlickrPerson personWithID:personID]];
+					}
+				
+				self.favorites = favoriteArray;
+				}
+		}];
+		}
 	}
 
 - (void)fetchGeneralInformation
 	{
-	NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosGetInfo, @{@"photo_id": _ID}, NO);
-	
-	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSXMLElement* photoElement = (NSXMLElement*)[[[(FlickrAPIResponse*)fetchResult xmlContent] rootElement] childAtIndex:0];
+	FlickrAPIMethod* methodGetInfo = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosGetInfo andParameters:@{@"photo_id" : _ID} error:nil];
 
-			[self parseXMLElement:photoElement];
-			}
-	}];
+	if(methodGetInfo)
+		{
+		FlickrAPIMethodCall* methodCall = [FlickrAPIMethodCall methodCallWithAuthorizationContext:[FlickrAuthorizationContext sharedContext] method:methodGetInfo];
+		[methodCall dispatchWithCompletionHandler:^(id methodCallResult) {
+			if([methodCallResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)methodCallResult status] isEqualToString:@"ok"])
+				{
+				NSXMLElement* photoElement = (NSXMLElement*)[[[(FlickrAPIResponse*)methodCallResult xmlContent] rootElement] childAtIndex:0];
+
+				[self parseXMLElement:photoElement];
+				}
+		}];
+		}
 	}
 
 #pragma mark - Image size helper functions
@@ -354,4 +378,16 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPhotoDidChangeNotification object:self];
 	}
 
+#pragma mark - NSURLConnection delegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+	{
+	[_imageData appendData:data];
+	}
+	
+- (void)connectionDidFinishLoading:(NSURLConnection*)connection
+	{
+	self.image = [[NSImage alloc] initWithData:_imageData];
+	_imageData = nil;
+	}
 @end

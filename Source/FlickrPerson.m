@@ -8,9 +8,11 @@
 
 #import "FlickrPerson.h"
 #import "FlickrPersonManager.h"
-#import "FlickrKitConstants.h"
-#import "FlickrAsynchronousFetcher.h"
+
+#import "FlickrAuthorizationContext.h"
 #import "FlickrAPIResponse.h"
+#import "FlickrAPIMethod.h"
+#import "FlickrAPIMethodCall.h"
 
 @interface FlickrPerson ()
 
@@ -148,15 +150,16 @@
 
 - (void)fetchPersonInformation
 	{
-	NSString* escapedUserID = [_ID stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSURL* informationURL = flickrMethodURL(@"flickr.people.getInfo", @{@"user_id": escapedUserID}, NO);
+	FlickrAPIMethod* methodGetInfo = [FlickrAPIMethod methodWithName:FlickrAPIMethodPeopleGetInfo andParameters:@{@"user_id" : [_ID stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]} error:nil];
 	
-	FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-	[dataFetcher fetchDataAtURL:informationURL withCompletionHandler:^(id fetchResult) {
-			if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+	if(methodGetInfo)
+		{
+		FlickrAPIMethodCall* methodCall = [FlickrAPIMethodCall methodCallWithAuthorizationContext:[FlickrAuthorizationContext sharedContext] method:methodGetInfo];
+		[methodCall dispatchWithCompletionHandler:^(id methodCallResult) {
+			if([methodCallResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)methodCallResult status] isEqualToString:@"ok"])
 				{
 				NSError* error;
-				NSXMLDocument* xmlDocument = [fetchResult xmlContent];
+				NSXMLDocument* xmlDocument = [methodCallResult xmlContent];
 				NSXMLElement* personElement = [[xmlDocument nodesForXPath:@"rsp/person" error:&error] lastObject];
 				
 				if(error)
@@ -165,25 +168,26 @@
 					
 				[self parseXMLElement:personElement];
 				}
-	}];
+		}];
+		}
 	}
 
 - (void)parseXMLElement:(NSXMLElement*)anElement
 	{
-	_ID = [[anElement attributeForName:@"nsid"] stringValue];
-	_proStatus = [[[anElement attributeForName:@"ispro"] stringValue] boolValue];
-	_iconServerID = [[[anElement attributeForName:@"iconserver"] stringValue] intValue];
-	_iconFarmID = [[[anElement attributeForName:@"iconfarm"] stringValue] intValue];
+	self.ID = [[anElement attributeForName:@"nsid"] stringValue];
+	self.proStatus = [[[anElement attributeForName:@"ispro"] stringValue] boolValue];
+	self.iconServerID = [[[anElement attributeForName:@"iconserver"] stringValue] intValue];
+	self.iconFarmID = [[[anElement attributeForName:@"iconfarm"] stringValue] intValue];
 	
-	_username =  [[[anElement elementsForName:@"username"] lastObject] stringValue];
-	_name =  [[[anElement elementsForName:@"realname"] lastObject] stringValue];
+	self.username =  [[[anElement elementsForName:@"username"] lastObject] stringValue];
+	self.name =  [[[anElement elementsForName:@"realname"] lastObject] stringValue];
 	
 	NSXMLElement* photosElement = [[anElement elementsForName:@"photos"] lastObject];
-	_firstPhotoTaken = [NSDate dateWithString:[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue]];
-	_firstPhotoUploaded = [NSDate dateWithTimeIntervalSince1970:[[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue] intValue]];
-	_photoCount = [[[[photosElement elementsForName:@"count"] lastObject] stringValue] integerValue];
+	self.firstPhotoTaken = [NSDate dateWithString:[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue]];
+	self.firstPhotoUploaded = [NSDate dateWithTimeIntervalSince1970:[[[[photosElement elementsForName:@"firstdatetaken"] lastObject] stringValue] intValue]];
+	self.photoCount = [[[[photosElement elementsForName:@"count"] lastObject] stringValue] integerValue];
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPersonLoadingDidFinishNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:FlickrPersonDidChangeNotification object:self];
 	}
 
 @end

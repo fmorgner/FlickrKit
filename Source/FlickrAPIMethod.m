@@ -29,11 +29,14 @@
 
 
 #import "FlickrAPIMethod.h"
+#import <OAuthKit/OAuthKit.h>
 
 @interface FlickrAPIMethod()
 
 - (id)initWithName:(NSString*)aName andParameters:(NSDictionary*)theParameters;
 + (BOOL)methodIsValidWithName:(NSString*)aName andParameters:(NSDictionary*) theParameters error:(NSError**)theError;
+
+@property(strong) NSDictionary* rawParameters;
 
 @end
 
@@ -56,7 +59,7 @@ static NSDictionary* methodParameterTable;
 + (FlickrAPIMethod *)methodWithName:(NSString *)aName andParameters:(NSDictionary *)theParameters error:(NSError**)anError
 	{
 	FlickrAPIMethod* theMethod = nil;
-	NSError* validityError = nil;
+	__autoreleasing NSError* validityError = nil;
 	
 	if([FlickrAPIMethod methodIsValidWithName:aName andParameters:theParameters error:&validityError])
 		{
@@ -64,10 +67,24 @@ static NSDictionary* methodParameterTable;
 		}
 	else
 		{
-		*anError = validityError;
+		anError = &validityError;
 		}
 
 	return theMethod;
+	}
+
+- (NSURL*)methodURL
+	{
+	#warning Factor out the URL into a globaly accessible entity
+	
+	NSMutableString* urlString = [NSMutableString stringWithFormat:FlickrAPIBaseURLFormat, _name];
+	
+	for (NSString* parameter in _rawParameters)
+		{
+		[urlString appendFormat:@"&%@=%@", parameter, _rawParameters[parameter]];
+		}
+	
+	return [NSURL URLWithString:urlString];
 	}
 
 #pragma mark - Private methods
@@ -77,7 +94,14 @@ static NSDictionary* methodParameterTable;
 	if((self = [super init]))
 		{
 		_name = aName;
-		_parameters = theParameters;
+		_rawParameters = theParameters;
+		_parameters = [NSMutableArray arrayWithCapacity:[_parameters count]];
+		
+		for(NSString* parameter in _rawParameters)
+			{
+			[(NSMutableArray*)_parameters addObject:[OAuthParameter parameterWithKey:parameter andValue:_rawParameters[parameter]]];
+			}
+		
 		}
 		
 	return self;
@@ -146,7 +170,7 @@ static NSDictionary* methodParameterTable;
 																	};
 				*theError = [NSError errorWithDomain:FlickrKitAPIMethodErrorDomain code:-2 userInfo:userInfo];
 			return NO;
-			}
+				}
 			}
 		}
 	

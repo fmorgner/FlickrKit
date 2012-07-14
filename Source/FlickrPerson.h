@@ -3,7 +3,7 @@
 //  FlickrKit
 //
 //  Created by Felix Morgner on 16.03.11.
-//  Copyright 2011 Felix Morgner. All rights reserved.
+//  strongright 2011 Felix Morgner. All rights reserved.
 //
 
 /*!
@@ -17,6 +17,8 @@
  */
 
 #import <Foundation/Foundation.h>
+
+static NSString* FlickrPersonDidChangeNotification = @"FlickrPersonDidChangeNotification";
 
 @interface FlickrPerson : NSObject <NSCoding>
 	
@@ -147,14 +149,14 @@
  * \name Person Information
  */
 
-@property(nonatomic,copy) NSString* ID; /*!< The ID of a FlickrPerson. This ID uniquely identifies a FlickrPerson. */
-@property(nonatomic,copy) NSString* username; /*!< The username of a FlickrPerson. The username uniquely identifies a FlickrPerson. */
-@property(nonatomic,copy) NSString* name; /*!< The name of a FlickrPerson. The name does _NOT_ uniquely identify a FlickrPerson since multiple people can have the same name.*/
-@property(nonatomic,copy) NSString* location; /*!< The location of a FlickrPerson. The location does _NOT_ uniquely identify a FlickrPerson since multiple people can have the same location.*/
-@property(nonatomic,copy) NSDate* firstPhotoTaken; /*!< The date of the oldest photo of a FlickrPerson. Note that this is the oldest in the way that it was taken as the earliest. */
-@property(nonatomic,copy) NSDate* firstPhotoUploaded; /*!< The date of the first uploaded photo of a FlickrPerson. */
-@property(nonatomic,assign) NSUInteger photoCount; /*!< The count of photos of a FlickrPerson.*/
-@property(nonatomic,assign,getter = hasProStatus) BOOL proStatus; /*!< The pro status of a FlickrPerson.*/
+@property(strong) NSString* ID; /*!< The ID of a FlickrPerson. This ID uniquely identifies a FlickrPerson. */
+@property(strong) NSString* username; /*!< The username of a FlickrPerson. The username uniquely identifies a FlickrPerson. */
+@property(strong) NSString* name; /*!< The name of a FlickrPerson. The name does _NOT_ uniquely identify a FlickrPerson since multiple people can have the same name.*/
+@property(strong) NSString* location; /*!< The location of a FlickrPerson. The location does _NOT_ uniquely identify a FlickrPerson since multiple people can have the same location.*/
+@property(strong) NSDate* firstPhotoTaken; /*!< The date of the oldest photo of a FlickrPerson. Note that this is the oldest in the way that it was taken as the earliest. */
+@property(strong) NSDate* firstPhotoUploaded; /*!< The date of the first uploaded photo of a FlickrPerson. */
+@property(assign) NSUInteger photoCount; /*!< The count of photos of a FlickrPerson.*/
+@property(assign,getter = hasProStatus) BOOL proStatus; /*!< The pro status of a FlickrPerson.*/
 
 /*! @} */
 

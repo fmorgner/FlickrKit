@@ -11,35 +11,15 @@
 
 @implementation FlickrAuthorizationContext
 
-@synthesize token, consumer;
+__strong static FlickrAuthorizationContext* _sharedContext;
 
-- (id)initWithToken:(OAuthToken*)aToken
++ (FlickrAuthorizationContext *)sharedContext
 	{
-	if((self = [super init]))
-		{
-		self.token = aToken;
-		}
-	return self;
+	static dispatch_once_t once = 0;
+	dispatch_once(&once, ^{
+		_sharedContext = [[self alloc] init];
+		});
+	return _sharedContext;
 	}
-	
-+	(FlickrAuthorizationContext*)contextWithToken:(OAuthToken*)aToken
-	{
-	return [[FlickrAuthorizationContext alloc] initWithToken:aToken];
-	}
-
-- (id)initWithConsumer:(OAuthConsumer*)aComsumer
-	{
-	if((self = [super init]))
-		{
-		self.consumer = aComsumer;
-		}
-	return self;
-	}
-	
-+	(FlickrAuthorizationContext*)contextWithConsumer:(OAuthConsumer*)aConsumer
-	{
-	return [[FlickrAuthorizationContext alloc] initWithConsumer:aConsumer];
-	}
-
 
 @end

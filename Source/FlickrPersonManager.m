@@ -46,13 +46,10 @@ __strong static FlickrPersonManager* sharedPersonManager = nil;
 
 + (FlickrPersonManager*)sharedManager
 	{
-	@synchronized(self)
-		{
-		static dispatch_once_t once = 0;
-		dispatch_once(&once, ^{
-    	sharedPersonManager = [[self alloc] init];
-			});
-		}
+	static dispatch_once_t once = 0;
+	dispatch_once(&once, ^{
+		sharedPersonManager = [[self alloc] init];
+		});
 	return sharedPersonManager;
 	}
 

@@ -9,7 +9,6 @@
 #import "FlickrAuthorizationController.h"
 #import "FlickrAuthorizationSheetController.h"
 #import "FlickrKitConstants.h"
-#import "FlickrAsynchronousFetcher.h"
 #import "FlickrAPIResponse.h"
 #import "FlickrToken.h"
 #import "NSString+MD5Hash.h"
@@ -71,33 +70,4 @@
 		[_authorizationSheetController presentSheet];
 		}
 	}
-@end
-
-@implementation FlickrAuthorizationController(Private)
-
-- (void)requestFrob
-	{
-	FlickrAsynchronousFetcher* frobFetcher = [FlickrAsynchronousFetcher new];
-	[frobFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getFrob", nil, NO) withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSXMLNode* frobNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/frob" error:nil] lastObject];
-			self.frob = [frobNode stringValue];
-			}
-	}];
-	}
-
-- (void)authSheetDidClose
-	{
-	FlickrAsynchronousFetcher* tokenFetcher = [FlickrAsynchronousFetcher new];
-	[tokenFetcher fetchDataAtURL:flickrMethodURL(@"flickr.auth.getToken", @{@"frob": _frob}, NO) withCompletionHandler:^(id fetchResult) {
-		if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
-			{
-			NSXMLNode* tokenNode = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/auth" error:nil] lastObject];
-			FlickrToken* token = [[FlickrToken alloc] initWithXMLElement:(NSXMLElement*)tokenNode];
-			[[NSNotificationCenter defaultCenter] postNotificationName:FlickrAuthorizationControllerDidReceiveToken object:self userInfo:@{FlickrTokenKey: [token copy]}];
-			}
-	}];
-	}
-
 @end

@@ -13,11 +13,7 @@
 
 @interface FlickrAuthorizationContext : NSObject
 
-- (id)initWithToken:(OAuthToken*)aToken;
-+	(FlickrAuthorizationContext*)contextWithToken:(OAuthToken*)aToken;
-
-- (id)initWithConsumer:(OAuthConsumer*)aConsumer;
-+	(FlickrAuthorizationContext*)contextWithConsumer:(OAuthConsumer*)aConsumer;
++ (FlickrAuthorizationContext*)sharedContext;
 
 @property(strong) OAuthToken* token;
 @property(strong) OAuthConsumer* consumer;

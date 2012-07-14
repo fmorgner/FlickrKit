@@ -27,7 +27,10 @@
  *
  */
 
+#import "FlickrAPIMethod.h"
 #import "FlickrAPIMethodCall.h"
+#import "FlickrAPIResponse.h"
+#import "FlickrAuthorizationContext.h"
 #import <OAuthKit/OAuthKit.h>
 
 @interface FlickrAPIMethodCall ()
@@ -57,12 +60,30 @@
 
 - (void)dispatch
   {
+	#warning fix this!!!
+	OAuthRequest* theRequest = [OAuthRequest requestWithURL:[_APIMethod methodURL] consumer:[_authorizationContext consumer] token:[_authorizationContext token] realm:@"" signerClass:[OAuthSignerHMAC class]];
 	
+	for(OAuthParameter* parameter in [_APIMethod parameters])
+		{
+		[theRequest addParameter:parameter];
+		}
+	
+	[theRequest prepare];
+	
+	if(theRequest.isPrepared)
+		{
+		OAuthRequestFetcher* theFetcher = [[OAuthRequestFetcher alloc] init];
+		[theFetcher fetchRequest:theRequest completionHandler:^(id fetchResult) {
+			if([fetchResult isKindOfClass:[NSData class]])
+				_completionHandler([FlickrAPIResponse responseWithData:(NSData*)fetchResult]);
+		}];
+		}
 	}
 
-- (void)dispatchWithCompletionHandler:(void (^)(id))aCompletionHandler
+- (void)dispatchWithCompletionHandler:(void (^)(id response))aCompletionHandler
 	{
 	_completionHandler = aCompletionHandler;
+	[self dispatch];
 	}
 	
 

@@ -8,10 +8,10 @@
 
 #import "FlickrPhotoset.h"
 #import "FlickrPersonManager.h"
-#import "FlickrAsynchronousFetcher.h"
-#import "FlickrKitConstants.h"
 #import "FlickrAPIResponse.h"
 #import "FlickrAPIMethodCall.h"
+#import "FlickrAPIMethod.h"
+#import "FlickrAuthorizationContext.h"
 
 @interface FlickrPhotoset()
 
@@ -36,17 +36,19 @@
 		{
 		_ID = anID;
 		_title = aTitle;
-
-		NSURL* url = flickrMethodURL(FlickrAPIMethodPhotosetGetInfo, @{@"photoset_id": _ID}, NO);
-		FlickrAsynchronousFetcher* dataFetcher = [FlickrAsynchronousFetcher new];
-		[dataFetcher fetchDataAtURL:url withCompletionHandler:^(id fetchResult) {
-			if([fetchResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)fetchResult status] isEqualToString:@"ok"])
+		
+		FlickrAPIMethod* methodGetInfo = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosetGetInfo andParameters:@{@"photoset_id" : _ID} error:nil];
+		FlickrAPIMethodCall* methodCall = [FlickrAPIMethodCall methodCallWithAuthorizationContext:[FlickrAuthorizationContext sharedContext] method:methodGetInfo];
+		
+		[methodCall dispatchWithCompletionHandler:^(id methodCallResult) {
+			if([methodCallResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)methodCallResult status] isEqualToString:@"ok"])
 				{
 				NSError* error;
-				NSXMLElement* photosetElement = [[[(FlickrAPIResponse*)fetchResult xmlContent] nodesForXPath:@"rsp/photoset" error:&error] lastObject];
+				NSXMLElement* photosetElement = [[[(FlickrAPIResponse*)methodCallResult xmlContent] nodesForXPath:@"rsp/photoset" error:&error] lastObject];
 				[self parseXMLElement:photosetElement];
 				}
 		}];
+		
 		}
 
 	return self;
