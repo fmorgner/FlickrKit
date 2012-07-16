@@ -15,7 +15,9 @@
 
 + (FlickrAuthorizationContext*)sharedContext;
 
-@property(strong) OAuthToken* token;
-@property(strong) OAuthConsumer* consumer;
+@property(readonly) OAuthToken* token;
+@property(readonly) OAuthConsumer* consumer;
+@property(strong) NSString* key;
+@property(strong) NSString* secret;
 
 @end
