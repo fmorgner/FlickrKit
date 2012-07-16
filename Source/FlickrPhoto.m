@@ -159,13 +159,6 @@
 				_imageData = [NSMutableData data];
 				[NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[[nodes lastObject] attributeForName:@"source"] stringValue]]] delegate:self];
 				
-				
-//				FlickrAsynchronousFetcher* imageFetcher = [FlickrAsynchronousFetcher new];
-//				[imageFetcher fetchDataAtURL:imageURL withCompletionHandler:^(id fetchResult)
-//					{
-//					if(![fetchResult isKindOfClass:[NSError class]])
-//						self.image = [[NSImage alloc] initWithData:fetchResult];
-//				}];
 				}
 		}];
 		}
