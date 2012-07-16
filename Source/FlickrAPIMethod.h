@@ -49,6 +49,9 @@ static NSString* FlickrAPIMethodPhotosGetInfo = @"flickr.photos.getInfo";
 // This method is used to gather all visible pools and sets a photo belongs to.
 static NSString* FlickrAPIMethodPhotosGetAllContexts = @"flickr.photos.getAllContexts";
 
+// This method return the surrounding photos of a photo
+static NSString* FlickrAPIMethodPhotosGetContext = @"flickr.photos.getContext";
+
 // This method is used to gather all comments on a photo.
 static NSString* FlickrAPIMethodPhotosCommentsGetList = @"flickr.photos.comments.getList";
 

@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>flickr.people.getInfo</key>
-	<array>
-		<string>required:user_id</string>
-	</array>
 	<key>flickr.photos.comments.getList</key>
 	<array>
 		<string>required:photo_id</string>
@@ -36,6 +32,10 @@
 	<array>
 		<string>required:photo_id</string>
 	</array>
+	<key>flickr.people.getInfo</key>
+	<array>
+		<string>required:user_id</string>
+	</array>
 	<key>flickr.galleries.getListForPhoto</key>
 	<array>
 		<string>required:photo_id</string>
@@ -45,6 +45,10 @@
 	<key>flickr.photosets.getInfo</key>
 	<array>
 		<string>required:photoset_id</string>
+	</array>
+	<key>flickr.photo.getContext</key>
+	<array>
+		<string>required:photo_id</string>
 	</array>
 </dict>
 </plist>
