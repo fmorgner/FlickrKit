@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		BB1647C613A281C700E64DEF /* FlickrToken.h in Headers */ = {isa = PBXBuildFile; fileRef = BB1647C413A281C700E64DEF /* FlickrToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB1647C713A281C700E64DEF /* FlickrToken.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1647C513A281C700E64DEF /* FlickrToken.m */; };
+		C707928515B1BFE700D449A3 /* OAuthKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C73977B5140929C6005C8562 /* OAuthKit.framework */; };
 		C72789FF1332894D008C4321 /* cr.large.png in Resources */ = {isa = PBXBuildFile; fileRef = C72789FD1332894D008C4321 /* cr.large.png */; };
 		C7278A041333F0B4008C4321 /* FlickrLicense.h in Headers */ = {isa = PBXBuildFile; fileRef = C7278A021333F0B3008C4321 /* FlickrLicense.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7278A051333F0B4008C4321 /* FlickrLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = C7278A031333F0B3008C4321 /* FlickrLicense.m */; };
 		C73977B9140929D6005C8562 /* OAuthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73977B5140929C6005C8562 /* OAuthKit.framework */; };
-		C73977BB140929F1005C8562 /* OAuthKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C73977B5140929C6005C8562 /* OAuthKit.framework */; };
 		C73977CA14092BEF005C8562 /* NSColor+CGColor.h in Headers */ = {isa = PBXBuildFile; fileRef = C73977C814092BEF005C8562 /* NSColor+CGColor.h */; };
 		C73977CB14092BEF005C8562 /* NSColor+CGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C73977C914092BEF005C8562 /* NSColor+CGColor.m */; };
 		C757798A13A1422E00060713 /* FlickrAuthorizationSheetController.h in Headers */ = {isa = PBXBuildFile; fileRef = C757798813A1422E00060713 /* FlickrAuthorizationSheetController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -86,7 +86,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C73977BB140929F1005C8562 /* OAuthKit.framework in Copy Frameworks */,
+				C707928515B1BFE700D449A3 /* OAuthKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,7 +800,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "";
 				LD_DYLIB_INSTALL_NAME = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
@@ -819,7 +819,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "";
 				LD_DYLIB_INSTALL_NAME = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
@@ -842,6 +842,7 @@
 				INFOPLIST_FILE = "FlickrKit-Info.plist";
 				INSTALL_PATH = "@rpath";
 				LD_DYLIB_INSTALL_NAME = "@rpath/FlickrKit.framework/Versions/A/FlickrKit";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = FlickrKit;
 				WRAPPER_EXTENSION = framework;
@@ -854,8 +855,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -865,6 +864,7 @@
 				INFOPLIST_FILE = "FlickrKit-Info.plist";
 				INSTALL_PATH = "@rpath";
 				LD_DYLIB_INSTALL_NAME = "@rpath/FlickrKit.framework/Versions/A/FlickrKit";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = FlickrKit;
 				WRAPPER_EXTENSION = framework;
