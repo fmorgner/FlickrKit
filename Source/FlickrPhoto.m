@@ -105,7 +105,7 @@
 		[self fetchEXIFInformation];
 		
 	if(anInformationMask & kFlickrPhotoInformationContexts)
-		[self fetchContexts];
+		[self fetchAllContexts];
 		
 	if(anInformationMask & kFlickrPhotoInformationComments)
 		[self fetchComments];
@@ -164,7 +164,7 @@
 		}
 	}
 	
-- (void)fetchContexts
+- (void)fetchAllContexts
 	{
 	FlickrAPIMethod* methodGetAllContexts = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosGetAllContexts andParameters:@{@"photo_id" : _ID} error:nil];
 	
@@ -195,7 +195,26 @@
 		}];
 		}
 	}
+
+- (void)fetchContext
+	{
+	FlickrAPIMethod* methodGetContext = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosGetContext andParameters:@{@"photo_id" : _ID} error:nil];
 	
+	if(methodGetContext)
+		{
+		FlickrAPIMethodCall* methodCall = [FlickrAPIMethodCall methodCallWithAuthorizationContext:[FlickrAuthorizationContext sharedContext] method:methodGetContext];
+		
+		__block __weak FlickrPhoto* thisPhoto = self;
+		[methodCall dispatchWithCompletionHandler:^(id methodCallResult) {
+			if([methodCallResult isKindOfClass:[FlickrAPIResponse class]] && [[(FlickrAPIResponse*)methodCallResult status] isEqualToString:@"ok"])
+				{
+				thisPhoto.previous = [FlickrPhoto photoWithID:[[[[[(FlickrAPIResponse*)methodCallResult xmlContent] nodesForXPath:@"rsp/prevphoto" error:nil] lastObject] attributeForName:@"id"] stringValue]];
+				thisPhoto.next = [FlickrPhoto photoWithID:[[[[[(FlickrAPIResponse*)methodCallResult xmlContent] nodesForXPath:@"rsp/nextphoto" error:nil] lastObject] attributeForName:@"id"] stringValue]];
+				}
+		}];
+		}
+	}
+
 - (void)fetchComments
 	{
 	FlickrAPIMethod* methodCommentsGetList = [FlickrAPIMethod methodWithName:FlickrAPIMethodPhotosCommentsGetList andParameters:@{@"photo_id": _ID} error:nil];

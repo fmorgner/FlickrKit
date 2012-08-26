@@ -52,20 +52,14 @@ typedef enum _FlickrImageSize
 
 - (void)fetchEXIFInformation;
 - (void)fetchImageOfSize:(FlickrImageSize)aSize;
-- (void)fetchContexts;
+- (void)fetchAllContexts;
+- (void)fetchContext; //1.1
 - (void)fetchComments;
 - (void)fetchFavorites;
 - (void)fetchGeneralInformation;
 
-// Returns an NSString object representing the name of the given FlickrImageSize.
-// This can be very useful to formulate and xpath query.
-
 + (NSString*)stringForImageSize:(FlickrImageSize)aSize;
-
-// Returns an NSString object containing the localized name of the given FlickrImageSize.
 + (NSString*)localizedStringForImageSize:(FlickrImageSize)aSize;
-
-
 
 @property(strong) NSString* ID;
 @property(strong) NSString* title;
@@ -91,4 +85,8 @@ typedef enum _FlickrImageSize
 
 @property(strong) FlickrLicense* license;
 @property(strong) FlickrPerson* owner;
+
+@property(weak) FlickrPhoto* next;
+@property(weak) FlickrPhoto* previous;
+
 @end
