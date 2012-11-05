@@ -12,7 +12,7 @@
 
 @protocol FlickrAPIMethodCallDelegate <NSObject>
 
-- (void)requestDidFinish:(FlickrAPIMethodCall*)theRequest;
-- (void)request:(FlickrAPIMethodCall*)theRequest didFailWithError:(NSError*)theError;
+- (void)methodCallDidFinish:(FlickrAPIMethodCall*)theRequest;
+- (void)methodCall:(FlickrAPIMethodCall*)theRequest didFailWithError:(NSError*)theError;
 
 @end
