@@ -75,8 +75,6 @@ static NSDictionary* methodParameterTable;
 
 - (NSURL*)methodURL
 	{
-	#warning Factor out the URL into a globaly accessible entity
-	
 	NSMutableString* urlString = [NSMutableString stringWithFormat:FlickrAPIBaseURLFormat, _name];
 	
 	for (NSString* parameter in _rawParameters)
