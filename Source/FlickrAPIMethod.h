@@ -86,6 +86,6 @@ static NSString* FlickrAPIMethodPhotosetGetInfo = @"flickr.photosets.getInfo";
 - (NSURL*)methodURL;
 
 @property(strong, readonly) NSString* name;
-@property(strong, readonly) NSArray* parameters;
+@property(strong, readonly) NSArray* oauthParameters;
 
 @end

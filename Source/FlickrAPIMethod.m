@@ -93,11 +93,11 @@ static NSDictionary* methodParameterTable;
 		{
 		_name = aName;
 		_rawParameters = theParameters;
-		_parameters = [NSMutableArray arrayWithCapacity:[_parameters count]];
+		_oauthParameters = [NSMutableArray arrayWithCapacity:[_rawParameters count]];
 		
 		for(NSString* parameter in _rawParameters)
 			{
-			[(NSMutableArray*)_parameters addObject:[OAuthParameter parameterWithKey:parameter andValue:_rawParameters[parameter]]];
+			[(NSMutableArray*)_oauthParameters addObject:[OAuthParameter parameterWithKey:parameter andValue:_rawParameters[parameter]]];
 			}
 		
 		}
