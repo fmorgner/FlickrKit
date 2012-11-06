@@ -60,13 +60,10 @@
 
 - (void)dispatch
   {
-	#warning fix this!!!
-	OAuthRequest* theRequest = [OAuthRequest requestWithURL:[_APIMethod methodURL] consumer:[_authorizationContext consumer] token:[_authorizationContext token] realm:@"" signerClass:[OAuthSignerHMAC class]];
+	OAuthRequest* theRequest = [OAuthRequest requestWithURL:[_APIMethod methodURL] consumer:[_authorizationContext consumer]
+													   token:[_authorizationContext token] realm:@"" signerClass:[OAuthSignerHMAC class]];
 	
-	for(OAuthParameter* parameter in [_APIMethod parameters])
-		{
-		[theRequest addParameter:parameter];
-		}
+	[theRequest addParameters:_APIMethod.oauthParameters];
 	
 	[theRequest prepare];
 	
