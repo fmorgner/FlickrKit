@@ -39,10 +39,6 @@ typedef enum _FlickrImageSize
 
 @interface FlickrPhoto : NSObject <NSURLConnectionDelegate>
 
-- (id)initWithID:(NSString*)anID;
-- (id)initWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;
-- (id)initWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
-
 + (FlickrPhoto*)photo;
 + (FlickrPhoto*)photoWithID:(NSString*)anID;
 + (FlickrPhoto*)photoWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;

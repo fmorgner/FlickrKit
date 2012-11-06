@@ -21,6 +21,10 @@
 
 @interface FlickrPhoto()
 
+- (id)initWithID:(NSString*)anID;
+- (id)initWithXMLElement:(NSXMLElement*)anElement  error:(NSError**)error;
+- (id)initWithAPIResponse:(FlickrAPIResponse*)aResponse  error:(NSError**)error;
+
 - (void)parseXMLElement:(NSXMLElement*)anElement;
 
 @property(strong) NSMutableData* imageData;
