@@ -7,50 +7,85 @@
 //
 
 #import "FlickrAPIResponse.h"
+#import "NSArray+FirstObject.h"
+#import "NSXMLNode+IntegerValue.h"
+
+@interface FlickrAPIResponse ()
+
+- (id)initWithData:(NSData*)theData error:(NSError**)anError;
+
+@end
 
 @implementation FlickrAPIResponse
 
 @synthesize status;
-@synthesize rawContent;
-@synthesize xmlContent;
+@synthesize raw;
+@synthesize xml;
 @synthesize error;
 
-- (id)init
+- (id)initWithData:(NSData*)theData error:(NSError**)anError
 	{
 	if ((self = [super init]))
 		{
-		}
-	return self;
-	}
+		NSError* xmlError;
 
-- (id)initWithData:(NSData*)theData
-	{
-	if ((self = [super init]))
-		{
-		NSError* xmlError = nil;
+		raw = [theData copy];
+		xml = [[NSXMLDocument alloc] initWithData:theData options:0 error:&xmlError];
 
-		rawContent = theData;
-		xmlContent = [[NSXMLDocument alloc] initWithData:theData options:0 error:&xmlError];
-
-		if(xmlError != nil)
+		if(xml == nil)
+      {
+      if(anError != NULL)
+        {
+        *anError = xmlError;
+        }
 			return nil;
-				
-		status = [[[[xmlContent nodesForXPath:@"rsp" error:&xmlError] lastObject] attributeForName:@"stat"] stringValue];
-		
+      }
+    
+    NSXMLElement* responseNode = (NSXMLElement*)[[xml nodesForXPath:@"rsp" error:&xmlError] lastObject];
+
+		if(xml == nil)
+      {
+      if(anError != NULL)
+        {
+        *anError = xmlError;
+        }
+			return nil;
+      }
+
+		status = [[responseNode attributeForName:@"stat"] stringValue];
+
 		if([status isEqualToString:@"fail"])
 			{
-			NSString* errorDescription = [[[[xmlContent nodesForXPath:@"rsp/err" error:&xmlError] objectAtIndex:0] attributeForName:@"msg"] stringValue];
-			NSInteger errorCode = [[[[[xmlContent nodesForXPath:@"rsp/err" error:&xmlError] objectAtIndex:0] attributeForName:@"code"] stringValue] intValue];
+      NSXMLElement* errorNode = (NSXMLElement*)[[xml nodesForXPath:@"err" error:&xmlError] firstObject];
+      
+      if(xml == nil)
+        {
+        if(anError != NULL)
+          {
+          *anError = xmlError;
+          }
+        return nil;
+        }
+
+			NSString* errorDescription = [[errorNode attributeForName:@"msg"] stringValue];
+			NSInteger errorCode        = [[errorNode attributeForName:@"code"] integerValue];
+
 			error = [NSError errorWithDomain:kFlickrErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
 			}
 		}
 	return self;
 	}
 
-+ (FlickrAPIResponse*)responseWithData:(NSData*)theData
++ (FlickrAPIResponse*)responseWithData:(NSData*)theData error:(NSError**)anError
 	{
-	return [[FlickrAPIResponse alloc] initWithData:theData];
-	}
+  id response = [[FlickrAPIResponse alloc] initWithData:theData error:anError];
+  
+  if(response == nil && anError != NULL)
+    {
+    *anError = (NSError*)response;
+    }
 
+  return response;
+	}
 
 @end
