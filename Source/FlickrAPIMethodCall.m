@@ -71,8 +71,23 @@
 		{
 		OAuthRequestFetcher* theFetcher = [[OAuthRequestFetcher alloc] init];
 		[theFetcher fetchRequest:theRequest completionHandler:^(id fetchResult) {
+			dispatch_retain(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
+			
 			if([fetchResult isKindOfClass:[NSData class]])
-				_completionHandler([FlickrAPIResponse responseWithData:(NSData*)fetchResult]);
+				{
+	
+				dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+				_completionHandler([FlickrAPIResponse responseWithData:(NSData*)fetchResult error:nil]);
+				dispatch_release(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
+				});
+				}
+			else
+				{
+				dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+				_completionHandler((NSError*)fetchResult);
+				dispatch_release(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
+				});
+				}
 		}];
 		}
 	}
