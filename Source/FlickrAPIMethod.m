@@ -67,7 +67,10 @@ static NSDictionary* methodParameterTable;
 		}
 	else
 		{
-		anError = &validityError;
+    if(anError != NULL)
+      {
+      *anError = validityError;
+      }
 		}
 
 	return theMethod;
