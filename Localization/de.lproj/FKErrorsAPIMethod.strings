@@ -1,0 +1,16 @@
+/* 
+  FlickrAPIMethodErrors.strings
+  FlickrKit
+
+  Created by Felix Morgner on 09.07.12.
+  Copyright (c) 2012 Felix Morgner. All rights reserved.
+*/
+
+"FKErrorDescriptionAPIUnknownMethod" = "Unbekannte API Methode übergeben.";
+"FKErrorReasonAPIUnknownMethod"      = "Die übergebene API Methode ist nicht bekannt.";
+
+"FKErrorDescriptionMissingParameter" = "Ein benötigter Parameter fehlt.";
+"FKErrorReasonMissingParameter"      = "Ein benötigter Parameter wurde nicht übergeben.";
+
+"FKErrorDescriptionIllegalParameter" = "Ungültiger Parameter.";
+"FKErrorReasonIllegalParameter"      = "Es wurde ein ungültiger Parameter übergeben.";

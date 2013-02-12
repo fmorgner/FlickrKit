@@ -14,3 +14,5 @@
 // This macro retrieves the framework bundle
 
 #define KitBundle [NSBundle bundleWithIdentifier:@"ch.felixmorgner.FlickrKit"]
+
+#import "FKConstants.h"

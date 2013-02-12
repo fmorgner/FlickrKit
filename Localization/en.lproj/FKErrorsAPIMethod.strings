@@ -1,0 +1,16 @@
+/* 
+  FlickrAPIMethodErrors.strings
+  FlickrKit
+
+  Created by Felix Morgner on 09.07.12.
+  Copyright (c) 2012 Felix Morgner. All rights reserved.
+*/
+
+"FKErrorDescriptionAPIUnknownMethod" = "Unknown API method supplied.";
+"FKErrorReasonAPIUnknownMethod"      = "The requested API method is not known.";
+
+"FKErrorDescriptionMissingParameter" = "A required parameter is missing.";
+"FKErrorReasonMissingParameter"      = "A required method parameter was not supplied.";
+
+"FKErrorDescriptionIllegalParameter" = "Parameter is illegal.";
+"FKErrorReasonIllegalParameter"      = "An illegal parameter was supplied.";
