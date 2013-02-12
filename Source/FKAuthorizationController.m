@@ -11,10 +11,9 @@
 #import "FKAPIResponse.h"
 #import "NSString+MD5Hash.h"
 
-@interface FKAuthorizationController(Private)
+@interface FKAuthorizationController()
 
-- (void)requestFrob;
-- (void)authSheetDidClose;
+@property NSString* permission;
 
 @end
 
@@ -37,8 +36,7 @@
 
 - (void)generateAuthorizationURLForPermission:(NSString*)aPermission
 	{
-	permission = [aPermission copy];
-	[self requestFrob];
+	_permission = [aPermission copy];
 	}
 	
 - (void)authorizeForPermission:(NSString*)aPermission
@@ -57,7 +55,7 @@
 		}
 	else if([keyPath isEqualToString:@"authorizationURL"])
 		{
-		self.authorizationSheetController = [FKAuthorizationSheetController authorizationSheetControllerWithURL:authorizationURL];
+		self.authorizationSheetController = [FKAuthorizationSheetController authorizationSheetControllerWithURL:_authorizationURL];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authSheetDidClose) name:FKNotificationAuthorizationSheetDidClose object:nil];
 		[_authorizationSheetController presentSheet];
 		}

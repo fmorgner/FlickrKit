@@ -12,12 +12,7 @@
 
 @interface FKAuthorizationController : NSObject
 	{
-	@protected
-		NSString* permission;
-	
-	@public
-		NSURL* authorizationURL;
-	}
+  }
 
 - (void)generateAuthorizationURLForPermission:(NSString*)aPermission;
 - (void)authorizeForPermission:(NSString*)aPermission;
