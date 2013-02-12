@@ -18,6 +18,8 @@
 #import "FKAPIMethod.h"
 #import "FKAPIResponse.h"
 
+#import "NSXMLNode+IntegerValue.h"
+
 @interface FKPhoto()
 
 - (id)initWithID:(NSString*)anID;
@@ -142,7 +144,7 @@
 	
 	}
 
-- (void)fetchImageOfSize:(FlickrImageSize)aSize
+- (void)fetchImageOfSize:(FKImageSize)aSize
 	{
 	FKAPIMethod* methodGetSizes = [FKAPIMethod methodWithName:FKMethodNamePhotosGetSizes parameters:@{@"photo_id" : _ID} authorizationContext:[FKAuthorizationContext sharedContext] error:nil];
 	
@@ -282,7 +284,7 @@
 
 #pragma mark - Image size helper functions
 
-+ (NSString*)stringForImageSize:(FlickrImageSize)aSize
++ (NSString*)stringForImageSize:(FKImageSize)aSize
 	{
 	NSString* returnString = nil;
 
@@ -316,7 +318,7 @@
 	return returnString;
 	}
 
-+ (NSString*)localizedStringForImageSize:(FlickrImageSize)aSize
++ (NSString*)localizedStringForImageSize:(FKImageSize)aSize
 	{
 	NSString* returnString = nil;
 	
@@ -362,7 +364,7 @@
 	self.description = [[[(NSXMLElement*)anElement nodesForXPath:@"description" error:nil] lastObject] stringValue];
 
 	self.commentCount = [[[[(NSXMLElement*)anElement nodesForXPath:@"comments" error:nil] lastObject] stringValue] intValue];
-	self.license = [FKLicense licenseWithCode:[[[(NSXMLElement*)anElement attributeForName:@"license"] stringValue] intValue]];
+	self.license = [FKLicense licenseWithCode:[[(NSXMLElement*)anElement attributeForName:@"license"] integerValue]];
 
 	self.owner = [FKPerson personWithID:[[[[anElement nodesForXPath:@"owner" error:nil] lastObject] attributeForName:@"nsid"] stringValue]];
 

@@ -10,8 +10,8 @@
 
 @interface FKLicense : NSObject
 
-- (id)initWithCode:(FlickrLicenseCode)aCode;
-+ (id)licenseWithCode:(FlickrLicenseCode)aCode;
+- (id)initWithCode:(FKLicenseCode)aCode;
++ (id)licenseWithCode:(FKLicenseCode)aCode;
 
 - (NSString*)name;
 - (NSURL*)URL;

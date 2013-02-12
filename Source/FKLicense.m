@@ -11,7 +11,7 @@
 
 @implementation FKLicense
 
-- (id)initWithCode:(FlickrLicenseCode)aCode
+- (id)initWithCode:(FKLicenseCode)aCode
 	{
 	if ((self = [super init]))
 		{
@@ -21,7 +21,7 @@
 	return self;
 	}
 
-+ (id)licenseWithCode:(FlickrLicenseCode)aCode
++ (id)licenseWithCode:(FKLicenseCode)aCode
 	{
 	return [[FKLicense alloc]  initWithCode:aCode];
 	}

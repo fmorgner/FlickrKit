@@ -9,7 +9,6 @@
 #import "FKAuthorizationController.h"
 #import "FKAuthorizationSheetController.h"
 #import "FKAPIResponse.h"
-#import "FlickrToken.h"
 #import "NSString+MD5Hash.h"
 
 @interface FKAuthorizationController(Private)
