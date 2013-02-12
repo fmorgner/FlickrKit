@@ -571,7 +571,7 @@
 				C7990948133262570000B732 /* nd.large.png */,
 				C7990949133262570000B732 /* sa.large.png */,
 			);
-			name = Images;
+			path = Images;
 			sourceTree = "<group>";
 		};
 		C7AE525016C7317F0012C6D5 /* Categories */ = {
