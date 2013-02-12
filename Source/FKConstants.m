@@ -1,6 +1,6 @@
 /*
  *
- * FlickrKitConstants.m
+ * FKConstants.m
  * -------------------------------------------------------------------------
  * begin                 : 2013-02-11
  * copyright             : Copyright (C) 2013 by Felix Morgner

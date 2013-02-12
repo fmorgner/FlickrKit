@@ -1,6 +1,6 @@
 /*
  *
- * FlickrKitConstants.m
+ * FKConstants.h
  * -------------------------------------------------------------------------
  * begin                 : 2011-03-24
  * copyright             : Copyright (C) 2011 by Felix Morgner
@@ -29,25 +29,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-// ---- API call URL stuff ---- //
-
-/* 
- * BASICS
- * 
- * There are some basic things to know about API calls.
- * for each API call the current user must have the
- * permissions to access the requested information.
- * This means, that if no user is authenticated,
- * the information must be public, or otherwise can't
- * be fetched.
- *
- * If no information is to be fetched, the user must
- * have the permission to change the requested sttribute
- * or else the call will fail. Some method calls must be
- * singned with a user token.
- * 
- */
-
 // ---- BEGIN ---- Error domains ---- //
 
 FOUNDATION_EXPORT NSString* const FKErrorDomainAPIMethod;
@@ -59,27 +40,19 @@ FOUNDATION_EXPORT NSString* const FKErrorDomainAPIResponse;
 
 // ---- BEGIN ---- Flickr API method names ---- //
 
-// flickr.photos.*
+FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetInfo;            // This method is used to gather some basic information about a photo.
+FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetAllContexts;     // This method is used to gather all visible pools and sets a photo belongs to.
+FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetContext;         // This method is used to gather the surrounding photos of a photo
+FOUNDATION_EXPORT NSString* const FKMethodNamePhotosCommentsGetList;    // This method is used to gather all comments on a photo.
+FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetFavorites;       // This method is used to gather a list of people who favorited a photo.
+FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetSizes;           // This method is used to gather a list of URLs for available sizes of a photo.
+FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetEXIF;            // This method is used to gather the EXIF information of a photo.
 
-FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetInfo;         // This method is used to gather some basic information about a photo.
-FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetAllContexts;  // This method is used to gather all visible pools and sets a photo belongs to.
-FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetContext;      // This method is used to gather the surrounding photos of a photo
-FOUNDATION_EXPORT NSString* const FKMethodNamePhotosCommentsGetList; // This method is used to gather all comments on a photo.
-FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetFavorites;    // This method is used to gather a list of people who favorited a photo.
-FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetSizes;        // This method is used to gather a list of URLs for available sizes of a photo.
-FOUNDATION_EXPORT NSString* const FKMethodNamePhotosGetEXIF;         // This method is used to gather the EXIF information of a photo.
+FOUNDATION_EXPORT NSString* const FKMethodNameGalleriesGetListForPhoto; // This method is used to gather a list of galleries a photo appears in.
 
-// flickr.galleries.*
+FOUNDATION_EXPORT NSString* const FKMethodNamePeopleGetInfo;            // This method is used to gather some information about a person.
 
-FOUNDATION_EXPORT NSString* const FKMethodNameGalleriesGetListForPhoto; // flickr.galleries.getListForPhoto - This method is used to gather a list of galleries a photo appears in.
-
-// flickr.people.*
-
-FOUNDATION_EXPORT NSString* const FKMethodNamePeopleGetInfo; // flickr.people.getInfo - This method is used to gather some information about a person.
-
-// flickr.photoset.*
-
-FOUNDATION_EXPORT NSString* const FKMethodNamePhotosetGetInfo; // flickr.photosets.getInfo - This method is used to gather some information about a photoset
+FOUNDATION_EXPORT NSString* const FKMethodNamePhotosetGetInfo;          // This method is used to gather some information about a photoset
 
 // ----  END  ---- Flickr API method names ---- //
 
