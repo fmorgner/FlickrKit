@@ -48,26 +48,6 @@
  * 
  */
 
-// This is the authorization URL. It is used to authorize an application for
-// certain permissions on a user account.
-//FOUNDATION_EXPORT NSString* const FlickrAuthURLFormat = @"http://flickr.com/services/auth/?api_key=%@&perms=%@&frob=%@";
-
-// - Helper functions
-
-// This function returns an NSURL object for a given method which is either singed or not signed
-// with a user token. This NSURL object can then be used to call API methods.
-//
-// This function takes three arguments:
-// method: the method to call
-// arguments: the arguments for the method
-// sign: whether or no to sing the call with a user token
-
-extern NSURL* flickrMethodURL(NSString* method, NSDictionary* arguments, BOOL sign);
-
-//FOUNDATION_EXPORT NSString* const FlickrKitAPIMethodErrorDomain = @"FlickrKitAPIMethodErrorDomain";
-//FOUNDATION_EXPORT NSString* const FlickrAPIBaseURLFormat = @"http://api.flickr.com/services/rest/?method=%@";
-
-
 // ---- BEGIN ---- Error domains ---- //
 
 FOUNDATION_EXPORT NSString* const FKErrorDomainAPIMethod;
@@ -105,7 +85,7 @@ FOUNDATION_EXPORT NSString* const FKMethodNamePhotosetGetInfo; // flickr.photose
 
 
 
-// ---- Notifications ---- //
+// ---- BEGIN ---- Notifications ---- //
 
 FOUNDATION_EXPORT NSString* const FKNotificationAsynchronousFetcherDidFail;
 FOUNDATION_EXPORT NSString* const FKNotificationPhotoDidChange;
@@ -114,11 +94,20 @@ FOUNDATION_EXPORT NSString* const FKNotificationAuthorizationSheetDidClose;
 FOUNDATION_EXPORT NSString* const FKNotificationAuthorizationControllerDidReceiveToken;
 FOUNDATION_EXPORT NSString* const FKNotificationPersonDidChange;
 
-// ---- Notification userInfo keys ---- //
-FOUNDATION_EXPORT NSString* const FlickrURLKey;
-FOUNDATION_EXPORT NSString* const FlickrHTTPStatusKey;
-FOUNDATION_EXPORT NSString* const FlickrDescriptionKey;
-FOUNDATION_EXPORT NSString* const FlickrTokenKey;
+// ----  END  ---- Notifications ---- //
+
+
+
+// ---- BEGIN ---- Notification userInfo keys ---- //
+
+FOUNDATION_EXPORT NSString* const FKNotificationKeyURL;
+FOUNDATION_EXPORT NSString* const FKNotificationKeyHTTPStatus;
+FOUNDATION_EXPORT NSString* const FKNotificationKeyDescription;
+FOUNDATION_EXPORT NSString* const FKNotificationKeyToken;
+
+// ----  END  ---- Notification userInfo keys ---- //
+
+
 
 // ---- BEGIN ---- Error code enumerations ---- //
 
@@ -130,6 +119,8 @@ typedef NS_ENUM(NSUInteger, FKErrorCodesAPIMethod)
   };
 
 // ----  END  ---- Error code enumerations ---- //
+
+
 
 // ---- BEGIN ---- Enumerations ---- //
 

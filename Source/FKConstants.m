@@ -69,7 +69,7 @@ NSString* const FKNotificationAuthorizationControllerDidReceiveToken = @"FlickrA
 NSString* const FKNotificationPersonDidChange = @"FKNotificationPersonDidChange";
 
 // ---- Notification userInfo keys ---- //
-NSString* const FlickrURLKey = @"url";
-NSString* const FlickrHTTPStatusKey = @"HTTPStatus";
-NSString* const FlickrDescriptionKey = @"description";
-NSString* const FlickrTokenKey = @"token";
+NSString* const FKNotificationKeyURL = @"url";
+NSString* const FKNotificationKeyHTTPStatus = @"HTTPStatus";
+NSString* const FKNotificationKeyDescription = @"description";
+NSString* const FKNotificationKeyToken = @"token";
